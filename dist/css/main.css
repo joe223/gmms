@@ -8,6 +8,7 @@ body {
 }
 
 .map {
+    position: absolute;
     top: 60px;
     /*ugly set fullscreen*/
     height: 93%;

@@ -3,7 +3,7 @@
 
     // define an AMD module that relies on 'leaflet'
     if (typeof define === 'function' && define.amd) {
-        define(['leaflet', 'd3', 'topojson'], factory);
+        define(['./leaflet', 'd3', 'topojson'], factory);
     // define a Common JS module that relies on 'leaflet'
     } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('leaflet'), require('d3'), require('topojson'));

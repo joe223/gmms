@@ -16,11 +16,13 @@
 <body>
 
 <div class="ui fixed inverted menu menu-height">
-    <div class="ui container">
-        <a href="#" class="header item">
-            <h1>建通全球地理信息工程项目监管平台</h1>
-        </a>
-    </div>
+    <h1 class="ui inverted">建通全球地理信息工程项目监管平台</h1>
+    <!--<div class="ui container">-->
+
+    <!--<a href="#" class="header item">-->
+
+    <!--</a>-->
+    <!--</div>-->
 </div>
 
 <div id="sidebar" class="sidebar collapsed siderbar-top">
@@ -29,9 +31,9 @@
         <ul role="tablist">
             <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
             <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
-            <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
-            <li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a>
-            </li>
+            <li><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="#sim" role="tab"><i class="fa fa-bug"></i></a></li>
+            <li><a href="#add" role="tab"><i class="fa fa-plus-circle"></i></a></li>
         </ul>
 
         <ul role="tablist">
@@ -42,7 +44,7 @@
     <!-- Tab panes -->
     <div class="sidebar-content">
         <div class="sidebar-pane" id="home">
-            <h1 class="sidebar-header">
+            <h1 class="sidebar-header" style="top:0 !important;">
                 sidebar-v2
                 <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
             </h1>
@@ -66,6 +68,23 @@
             <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
         </div>
 
+        <div class="sidebar-pane" id="add">
+            <div class="field">
+                <div class="ui action input">
+                    <input type="text" id="_attachmentName">
+                    <label for="geoFile" class="ui icon button btn-file" >
+                        <i class="fa fa-plus-circle"></i>
+                        <input type="file" id="geoFile" name="attachmentName" style="display: none">
+                    </label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui icon button btn-file" onclick="addGeoFile()">
+                    <i class="fa fa-paper-plane"></i>
+                </div>
+            </div>
+        </div>
+
         <div class="sidebar-pane" id="settings">
             <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
         </div>
@@ -77,23 +96,24 @@
 </div>
 
 
-<script src="dist/js/jquery-3.1.1.min.js"></script>
-<script src="dist/js/semantic.min.js"></script>
+<script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
+<script src="dist/js/plugins/semantic.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
-<script src="dist/js/leaflet-sidebar.js"></script>
-<script src="dist/js/tdtLayer.js"></script>
-<script src="dist/js/Control.GlobeMiniMap.js"></script>
-<script src="dist/js/L.Polyline.SnakeAnim.js"></script>
+<script src="dist/js/plugins/leaflet-sidebar.js"></script>
+<script src="dist/js/plugins/tdtLayer.js"></script>
+<script src="dist/js/plugins/Control.GlobeMiniMap.js"></script>
+<script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>
 <script src="dist/js/map.js"></script>
-<script src="dist/js/route.js"></script>
+<script src="dist/js/mapAction.js"></script>
+<script src="dist/js/plugins/route.js"></script>
 <script>
     var map = initMap();
     addPoints(map);
     addLineStrings(map);
     addGeoJSON('dist/json/guang_dong_geo.json', map);
-//    addGeoJSON('dist/json/guangzhou_polyline.json', map);
+    //    addGeoJSON('dist/json/guangzhou_polyline.json', map);
 </script>
 
 </body>

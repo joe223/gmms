@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="dist/css/MarkerCluster.css">
     <link rel="stylesheet" href="dist/css/MarkerCluster.Default.css">
     <link rel="stylesheet" href="dist/css/main.css">
+    <link rel="stylesheet" href="dist/css/vis.min.css">
     <link rel="shortcut icon" href="favicon.png" />
 </head>
 
@@ -27,7 +28,7 @@
             <h1 class="ui inverted "><i class="cube icon"></i>建通全球地理信息工程项目监管平台</h1>
         </a>
         <div class="right menu">
-            <a class="item">王大锤</a>
+            <a class="item">XXX</a>
             <a class="item">退出</a>
         </div>
     </div>
@@ -37,10 +38,10 @@
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
             <ul role="tablist">
-                <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off')"><i class="fa fa-bars"></i></a></li>
-                <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on')"><i class="fa fa-user"></i></a></li>
-                <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off')"><i class="fa fa-bug"></i></a></li>
-                <li><a href="#add" role="tab" onclick="switcher('off', 'on', 'off')"><i class="fa fa-plus-circle"></i></a>
+                <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i class="fa fa-bars"></i></a></li>
+                <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on', 'on')"><i class="fa fa-user"></i></a></li>
+                <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off', 'off')"><i class="fa fa-bug"></i></a></li>
+                <li><a href="#add" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i class="fa fa-plus-circle"></i></a>
                 </li>
             </ul>
 
@@ -179,7 +180,7 @@
     <script src="dist/js/plugins/topojson.min.js"></script>
     <script src="dist/js/plugins/leaflet-sidebar.js"></script>
     <script src="dist/js/plugins/tdtLayer.js"></script>
-    <!-- <script src="dist/js/plugins/Control.GlobeMiniMap.js"></script> -->
+     <script src="dist/js/plugins/Control.GlobeMiniMap.js"></script>
     <script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>
     <script src="dist/js/map.js"></script>
     <script src="dist/js/mapAction.js"></script>
@@ -203,6 +204,7 @@
 
         var heatmap = null;
         var markers = null;
+        var globalMiniMap = null;
 
         var map = initMap();
         var marker = L.marker([0, 0]).addTo(map);

@@ -2,10 +2,11 @@
  * Created by Administrator on 2017/3/14 0014.
  */
 
-function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher) {
+function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSwitcher) {
     switchSimPanel(timelineSwitcher);
     switcheHeatmapPanel(heatmapSwitcher);
     switchFeatureLayer(featureSwitcher);
+    switchTimeline(timeLineSwitcher);
 }
 
 //隐藏时间线功能及其控件
@@ -30,7 +31,7 @@ function switcheHeatmapPanel(switcher) {
         if (heatmap != null) {
             map.removeLayer(heatmap);
         }
-        if(markers!=null){
+        if (markers != null) {
             map.removeLayer(markers);
         }
     }
@@ -49,5 +50,14 @@ function switchFeatureLayer(switcher) {
             map.removeLayer(lineLayer);
         }
     }
+}
 
+function switchTimeline(switcher) {
+    if (switcher === 'off') {
+        if (globalMiniMap != null) {
+            map.removeControl(globalMiniMap);
+        }
+    } else {
+        map.addControl(globalMiniMap);
+    }
 }

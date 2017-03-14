@@ -16,10 +16,11 @@ function initMap() {
         position: 'topright'
     }).addTo(map);
 
-    // 右下角 mini 地球控件，暂时不需要
-    // new L.Control.GlobeMiniMap({
-    //     topojsonSrc: 'dist/json/world.json'
-    // }).addTo(map);
+
+    globalMiniMap = new L.Control.GlobeMiniMap({
+        topojsonSrc: 'dist/json/world.json'
+    });
+    map.addControl(globalMiniMap);
 
     var sidebar = L.control.sidebar('sidebar').addTo(map);
 

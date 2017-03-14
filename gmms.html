@@ -6,9 +6,10 @@
     <title>建通全球地理信息工程项目监管平台</title>
     <link rel="stylesheet" href="dist/css/semantic.min.css">
     <link href="dist/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="dist/css/leaflet.css"/>
     <!--[if lt IE 9]>
-    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+    <!--<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> -->
+    <![endif]-->
     <link rel="stylesheet" href="dist/css/leaflet-sidebar.css">
     <link rel="stylesheet" href="dist/css/main.css">
     <link rel="shortcut icon" href="favicon.png"/>
@@ -24,9 +25,9 @@
         </a>
 
         <!--<div class="ui item floated right">-->
-            <!--<a class="ui tiny image">-->
-                <!--<img src="https://semantic-ui.com/images/avatar/large/jenny.jpg">-->
-            <!--</a>-->
+        <!--<a class="ui tiny image">-->
+        <!--<img src="https://semantic-ui.com/images/avatar/large/jenny.jpg">-->
+        <!--</a>-->
         <!--</div>-->
     </div>
 </div>
@@ -35,13 +36,12 @@
     <!-- Nav tabs -->
     <div class="sidebar-tabs">
         <ul role="tablist">
-            <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-            <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
-            <li><a href="#messages" role="tab" data-tooltip="Add users to your feed"><i class="fa fa-envelope"></i></a>
+            <li><a href="#home" role="tab" onclick="switcher('off', 'off')"><i class="fa fa-bars"></i></a></li>
+            <li><a href="#profile" role="tab" onclick="switcher('off', 'off')"><i class="fa fa-user"></i></a></li>
+            <li><a href="#messages" role="tab" onclick="switcher('off', 'off')"><i class="fa fa-envelope"></i></a>
             </li>
-            <li><a href="#sim" role="tab" data-tooltip="Add users to your feed"><i class="fa fa-bug"></i></a></li>
-            <li><a href="#add" role="tab" data-tooltip="Add users to your feed"><i
-                    class="fa fa-plus-circle"></i></a>
+            <li><a href="#sim" role="tab" onclick="switcher('on', 'off')"><i class="fa fa-bug"></i></a></li>
+            <li><a href="#add" role="tab" onclick="switcher('off', 'on')"><i class="fa fa-plus-circle"></i></a>
             </li>
         </ul>
 
@@ -73,7 +73,40 @@
         </div>
 
         <div class="sidebar-pane" id="profile">
-            <h1>Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <h1>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <div class="ui link card">
+                <div class="content" onclick=" addPointsLayer()">
+                    <div class="header">Cute Dog</div>
+                    <div class="meta">
+                        <span class="category">点数据演示</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui link card">
+                <div class="content" onclick="addLineStrings();">
+                    <div class="header">Cute Dog</div>
+                    <div class="meta">
+                        <span class="category">线数据演示</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui link card">
+                <div class="content" onclick="addPolygonLayer();">
+                    <div class="header">Cute Dog</div>
+                    <div class="meta">
+                        <span class="category">面数据演示</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="sidebar-pane" id="messages">
@@ -85,6 +118,43 @@
             <div class="ui button" data-inverted="" data-tooltip="Add users to your feed"
                  data-position="left center">
                 Left Center
+            </div>
+        </div>
+
+        <div class="sidebar-pane" id="sim">
+            <h1>要素数据演化<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <div class="ui link card">
+                <div class="content">
+                    <div class="header">Cute Dog</div>
+                    <div class="meta">
+                        <span class="category">点数据演化</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui link card">
+                <div class="content">
+                    <div class="header">Cute Dog</div>
+                    <div class="meta">
+                        <span class="category">线数据演化</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui link card">
+                <div class="content" onclick="">
+                    <div class="header">Cute Dog</div>
+                    <div class="meta">
+                        <span class="category">面数据演化</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -100,8 +170,8 @@
                 </div>
             </div>
             <div class="field">
-                <div class="ui icon button btn-file" onclick="addGeoFile()">
-                    <i class="fa fa-paper-plane" data-tooltip="Add users to your feed"></i>
+                <div class="ui icon button btn-file" onclick="hidderLayer()">
+                    <i class="fa fa-paper-plane"></i>
                 </div>
             </div>
         </div>
@@ -115,26 +185,43 @@
 <div id="map" class="map">
 
 </div>
+<div id="timeline" style="display: none">
+
+</div>
 
 
 <script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
 <script src="dist/js/plugins/semantic.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+<script src="dist/js/plugins/leaflet.js"></script>
+<script src="dist/js/plugins/d3.min.js"></script>
+<script src="dist/js/plugins/topojson.min.js"></script>
 <script src="dist/js/plugins/leaflet-sidebar.js"></script>
 <script src="dist/js/plugins/tdtLayer.js"></script>
 <script src="dist/js/plugins/Control.GlobeMiniMap.js"></script>
 <script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>
 <script src="dist/js/map.js"></script>
 <script src="dist/js/mapAction.js"></script>
+<script src="dist/js/siderbarAction.js"></script>
 <script src="dist/js/plugins/route.js"></script>
+<script src="dist/js/plugins/leaflet-heat.js"></script>
+<script src="dist/js/plugins/leaflet.ajax.js"></script>
+<script src="dist/js/timeline.js"></script>
+<script src="dist/js/plugins/vis.min.js"></script>
+<script src="dist/js/plugins/LeafletPlayback.js"></script>
+<script src="dist/js/data/demo-tracks.js"></script>
+<script src="dist/js/data/realworld.10000.js"></script>
 <script>
+    var tileMap = null;
+    var labelMap = null;
+
+    var timeline = null;
+    var playback = null;
+
+    var heatmap = null;
+
     var map = initMap();
-    addPoints(map);
-    addLineStrings(map);
-    addGeoJSON('dist/json/guang_dong_geo.json', map);
-    //    addGeoJSON('dist/json/guangzhou_polyline.json', map);
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+    marker.options.opacity = 0;
 </script>
 
 </body>

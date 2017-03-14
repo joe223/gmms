@@ -20,4 +20,13 @@ body {
 
 .siderbar-top {
     top: 70px;
+    bottom: 300px;
+}
+
+#timeline {
+    height: 120px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

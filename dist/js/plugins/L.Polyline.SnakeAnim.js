@@ -55,7 +55,7 @@ L.Polyline.include({
 
 		this._update();
 		this._snake();
-		this.fire('snakestart');
+		// this.fire('snakestart');
 		return this;
 	},
 
@@ -120,7 +120,7 @@ L.Polyline.include({
 		this._latlngs[ this._snakingRings ].push(headLatLng);
 
 		this.setLatLngs(this._latlngs);
-		this.fire('snake');
+		// this.fire('snake');
 		L.Util.requestAnimFrame(this._snake, this);
 	},
 
@@ -128,7 +128,7 @@ L.Polyline.include({
 
 		this.setLatLngs(this._snakeLatLngs);
 		this._snaking = false;
-		this.fire('snakeend');
+		// this.fire('snakeend');
 
 	}
 
@@ -168,7 +168,7 @@ L.LayerGroup.include({
 		}
 		this.clearLayers();
 
-		this.fire('snakestart');
+		// this.fire('snakestart');
 		return this._snakeNext();
 	},
 
@@ -177,7 +177,7 @@ L.LayerGroup.include({
 
 
 		if (this._snakingLayersDone >= this._snakingLayers.length) {
-			this.fire('snakeend');
+			// this.fire('snakeend');
 			this._snaking = false;
 			return;
 		}
@@ -197,7 +197,7 @@ L.LayerGroup.include({
 		}
 
 
-		this.fire('snake');
+		// this.fire('snake');
 		return this;
 	}
 

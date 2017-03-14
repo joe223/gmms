@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="dist/css/leaflet.css"/>
     <!--[if lt IE 9]>
     <!--<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> -->
-    <![endif]-->
+    <!--<![endif]&ndash;&gt;-->
+    <link rel="stylesheet" href="dist/css/leaflet.fullscreen.css">
     <link rel="stylesheet" href="dist/css/leaflet-sidebar.css">
+    <link rel="stylesheet" href="dist/css/MarkerCluster.css">
+    <link rel="stylesheet" href="dist/css/MarkerCluster.Default.css">
     <link rel="stylesheet" href="dist/css/main.css">
     <link rel="shortcut icon" href="favicon.png"/>
 </head>
@@ -36,12 +39,10 @@
     <!-- Nav tabs -->
     <div class="sidebar-tabs">
         <ul role="tablist">
-            <li><a href="#home" role="tab" onclick="switcher('off', 'off')"><i class="fa fa-bars"></i></a></li>
-            <li><a href="#profile" role="tab" onclick="switcher('off', 'off')"><i class="fa fa-user"></i></a></li>
-            <li><a href="#messages" role="tab" onclick="switcher('off', 'off')"><i class="fa fa-envelope"></i></a>
-            </li>
-            <li><a href="#sim" role="tab" onclick="switcher('on', 'off')"><i class="fa fa-bug"></i></a></li>
-            <li><a href="#add" role="tab" onclick="switcher('off', 'on')"><i class="fa fa-plus-circle"></i></a>
+            <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off')"><i class="fa fa-bars"></i></a></li>
+            <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on')"><i class="fa fa-user"></i></a></li>
+            <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off')"><i class="fa fa-bug"></i></a></li>
+            <li><a href="#add" role="tab" onclick="switcher('off', 'on', 'off')"><i class="fa fa-plus-circle"></i></a>
             </li>
         </ul>
 
@@ -54,70 +55,74 @@
     <div class="sidebar-content">
         <div class="sidebar-pane" id="home">
             <h1>
-                sidebar-v2
+                三维数据信息
                 <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
             </h1>
 
-            <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a
-                    href="http://openlayers.org/">OpenLayers</a>.</p>
+            <div class="ui link card">
+                <div class="content">
+                    <div class="header" onclick="show3DPointsModel()">三维点云</div>
+                    <div class="ui modal" id="3dPointsShow">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            三维点云
+                        </div>
+                        <div class="image content">
+                            <iframe height=300px width=80%s src='http://player.youku.com/embed/XMTg0OTYxODIzMg=='
+                                    frameborder=0
+                            'allowfullscreen'></iframe>
+                        </div>
+                        <div class="actions">
+                            <div class="ui black deny button" id="3dPointsClose" onclick="hide3DPointsModel()">
+                                关闭
+                            </div>
+                        </div>
+                    </div>
 
-            <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-                duo
-                dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-                amet.
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                et
-                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+            <div class="ui link card">
+                <div class="content" onclick="show3DLineModel();">
+                    <div class="header">无人机航拍</div>
+                    <div class="ui modal" id="3dLinesShow">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            无人机航拍
+                        </div>
+                        <div class="image content">
+                            <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'
+                                   allowFullScreen='true' quality='high' width='80%' height='300px' align='middle'
+                                   allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+                        </div>
+                        <div class="actions">
+                            <div class="ui black deny button" onclick="hide3dLineModel()">
+                                关闭
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         <div class="sidebar-pane" id="profile">
             <h1>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
             <div class="ui link card">
                 <div class="content" onclick=" addPointsLayer()">
-                    <div class="header">Cute Dog</div>
-                    <div class="meta">
-                        <span class="category">点数据演示</span>
-                    </div>
-                    <div class="description">
-                        <p></p>
-                    </div>
+                    <div class="header">点数据演示</div>
+
                 </div>
             </div>
             <div class="ui link card">
                 <div class="content" onclick="addLineStrings();">
-                    <div class="header">Cute Dog</div>
-                    <div class="meta">
-                        <span class="category">线数据演示</span>
-                    </div>
-                    <div class="description">
-                        <p></p>
-                    </div>
+                    <div class="header">线数据演示</div>
                 </div>
             </div>
             <div class="ui link card">
                 <div class="content" onclick="addPolygonLayer();">
-                    <div class="header">Cute Dog</div>
-                    <div class="meta">
-                        <span class="category">面数据演示</span>
-                    </div>
-                    <div class="description">
-                        <p></p>
-                    </div>
+                    <div class="header">面数据演示</div>
                 </div>
-            </div>
-        </div>
-
-        <div class="sidebar-pane" id="messages">
-            <h1>Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-            <div class="ui button" data-inverted="" data-tooltip="Add users to your feed"
-                 data-position="right center">
-                Right Center
-            </div>
-            <div class="ui button" data-inverted="" data-tooltip="Add users to your feed"
-                 data-position="left center">
-                Left Center
             </div>
         </div>
 
@@ -125,7 +130,7 @@
             <h1>要素数据演化<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
             <div class="ui link card">
                 <div class="content">
-                    <div class="header">Cute Dog</div>
+                    <div class="header">点数据演化</div>
                     <div class="meta">
                         <span class="category">点数据演化</span>
                     </div>
@@ -159,21 +164,8 @@
         </div>
 
         <div class="sidebar-pane" id="add">
-            <h1>添加数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-            <div class="field">
-                <div class="ui action input">
-                    <input type="text" id="_attachmentName">
-                    <label for="geoFile" class="ui icon button btn-file">
-                        <i class="fa fa-plus-circle"></i>
-                        <input type="file" id="geoFile" name="attachmentName" style="display: none">
-                    </label>
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui icon button btn-file" onclick="hidderLayer()">
-                    <i class="fa fa-paper-plane"></i>
-                </div>
-            </div>
+            <h1>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+
         </div>
 
         <div class="sidebar-pane" id="settings">
@@ -189,11 +181,11 @@
 
 </div>
 
-
 <script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
 <script src="dist/js/plugins/semantic.min.js"></script>
 <script src="dist/js/plugins/leaflet.js"></script>
 <script src="dist/js/plugins/d3.min.js"></script>
+<script src="dist/js/plugins/Leaflet.fullscreen.min.js"></script>
 <script src="dist/js/plugins/topojson.min.js"></script>
 <script src="dist/js/plugins/leaflet-sidebar.js"></script>
 <script src="dist/js/plugins/tdtLayer.js"></script>
@@ -201,15 +193,17 @@
 <script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>
 <script src="dist/js/map.js"></script>
 <script src="dist/js/mapAction.js"></script>
-<script src="dist/js/siderbarAction.js"></script>
 <script src="dist/js/plugins/route.js"></script>
 <script src="dist/js/plugins/leaflet-heat.js"></script>
 <script src="dist/js/plugins/leaflet.ajax.js"></script>
-<script src="dist/js/timeline.js"></script>
+<script src="dist/js/timelineAction.js"></script>
 <script src="dist/js/plugins/vis.min.js"></script>
 <script src="dist/js/plugins/LeafletPlayback.js"></script>
 <script src="dist/js/data/demo-tracks.js"></script>
 <script src="dist/js/data/realworld.10000.js"></script>
+<script src="dist/js/siderbarAction.js"></script>
+<script src="dist/js/3dAction.js"></script>
+<script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
 <script>
     var tileMap = null;
     var labelMap = null;
@@ -218,9 +212,10 @@
     var playback = null;
 
     var heatmap = null;
+    var markers = null;
 
     var map = initMap();
-    var marker = L.marker([51.5, -0.09]).addTo(map);
+    var marker = L.marker([0, 0]).addTo(map);
     marker.options.opacity = 0;
 </script>
 

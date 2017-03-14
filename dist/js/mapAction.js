@@ -80,27 +80,39 @@ function showLayer(layerGroupName) {
     groupName.splice(groupName.indexOf(layerGroupName), 1);
     groupName.forEach(function (layer) {
         if (layer === 'point') {
-            if (pointsLayer != undefined) {
+            if (pointsLayer != null) {
                 map.removeLayer(pointsLayer);
             }
         } else if (layer === 'line') {
-            if (lineLayer != undefined) {
+            if (lineLayer != null) {
                 map.removeLayer(lineLayer);
             }
         } else if (layer === 'polygon') {
-            if (polygonLayer != undefined) {
+            if (polygonLayer != null) {
                 map.removeLayer(polygonLayer);
             }
         }
     });
 }
 var heatmapPointsLayer = null;
+
 function showHeatmap() {
     if (heatmap == null) {
         addressPoints = addressPoints.map(function (p) {
             return [p[0], p[1]];
         });
         heatmapPointsLayer = L.polyline(addressPoints);
+        markers = L.markerClusterGroup();
+        for (var i = 0; i < addressPoints.length; i++) {
+            var a = addressPoints[i];
+            var title = a[2];
+            var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title});
+            marker.bindPopup(title);
+            markers.addLayer(marker);
+        };
+
+        map.addLayer(markers);
+
         heatmap = L.heatLayer(addressPoints);
         map.fitBounds(heatmapPointsLayer.getBounds());
         map.addLayer(heatmap);
@@ -108,7 +120,7 @@ function showHeatmap() {
         if (heatmapPointsLayer != null) {
             map.fitBounds(heatmapPointsLayer.getBounds());
         }
-
+        map.addLayer(markers);
         map.addLayer(heatmap);
     }
 

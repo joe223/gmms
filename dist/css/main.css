@@ -11,7 +11,7 @@ body {
     position: absolute;
     top: 60px;
     /*ugly set fullscreen*/
-    height: 93%;
+    height: 100%;
     width: 100%;
     bottom: 0 !important;
     padding: 0;

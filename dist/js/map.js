@@ -22,7 +22,12 @@ function initMap() {
     // L.tileLayer('http://120.55.74.101:8012/mapbox-studio-outdoors/{z}/{x}/{y}.png', {
     //     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     // }).addTo(map);
-
+    /*
+    * add map control
+    * */
+    L.control.fullscreen({
+        position: 'topright',
+    }).addTo(map);
     new L.Control.GlobeMiniMap({
         topojsonSrc: 'dist/json/world.json'
     }).addTo(map);

@@ -723,7 +723,7 @@ L.Playback.TracksLayer = L.Class.extend({
             };
         }
     
-        this.layer = new L.GeoJSON(null, layer_options);
+        this.layer = new L.GeoJSON(null, layer_options).addTo(map);
         //
         // var overlayControl = {
         //     'GPS Tracks' : this.layer
@@ -744,6 +744,7 @@ L.Playback.TracksLayer = L.Class.extend({
     // add new geoJSON layer
     addLayer : function(geoJSON) {
         this.layer.addData(geoJSON);
+        map.fitBounds(this.layer.getBounds());
     }
 });
 L.Playback = L.Playback || {};

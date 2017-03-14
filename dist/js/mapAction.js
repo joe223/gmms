@@ -2,7 +2,9 @@
  * Created by beyouth on 2017/3/12.
  */
 
-var pointsLayer = null;
+var earthquakeLayer= null;
+var flightLayer = null;
+
 var lineLayer = null;
 var polygonLayer = null;
 
@@ -16,15 +18,15 @@ function addGeoFile() {
 };
 
 //添加点要素
-function addPointsLayer() {
+function addEarthquakePoints() {
     showLayer('point');
-    if (pointsLayer == null) {
+    if (earthquakeLayer == null) {
         var earthquakeFeedPointsURL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson';
-        pointsLayer = L.geoJson.ajax(earthquakeFeedPointsURL);
-        pointsLayer.on('data:loaded', function () {
-            map.addLayer(pointsLayer);
-            map.fitBounds(pointsLayer.getBounds());
-            pointsLayer.on('click', function (e) {
+        earthquakeLayer = L.geoJson.ajax(earthquakeFeedPointsURL);
+        earthquakeLayer.on('data:loaded', function () {
+            map.addLayer(earthquakeLayer);
+            map.fitBounds(earthquakeLayer.getBounds());
+            earthquakeLayer.on('click', function (e) {
                 marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.title + "</h3>").openPopup();
@@ -32,9 +34,21 @@ function addPointsLayer() {
         })
 
     } else {
-        map.fitBounds(pointsLayer.getBounds());
-        map.addLayer(pointsLayer);
+        map.fitBounds(earthquakeLayer.getBounds());
+        map.addLayer(earthquakeLayer);
     }
+}
+
+function addFlightPoints() {
+    var flightURL = 'https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=37.48,27.45,92.07,134.71&faa=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=7200&gliders=1&stats=1'
+    $.get(flightURL, function (data) {
+        var geoData = [];
+        for(var key in data){
+            if(typeof data[key] == Array){
+                geoData.append();
+            }
+        }
+    })
 }
 
 //添加线要素
@@ -115,13 +129,13 @@ function showHeatmap() {
 
         heatmap = L.heatLayer(addressPoints);
         map.fitBounds(heatmapPointsLayer.getBounds());
-        map.addLayer(heatmap);
+        // map.addLayer(heatmap);
     } else {
         if (heatmapPointsLayer != null) {
             map.fitBounds(heatmapPointsLayer.getBounds());
         }
         map.addLayer(markers);
-        map.addLayer(heatmap);
+        // map.addLayer(heatmap);
     }
 
 }

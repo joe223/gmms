@@ -43,12 +43,14 @@ function switchFeatureLayer(switcher) {
         if (polygonLayer != null) {
             map.removeLayer(polygonLayer);
         }
-        if (pointsLayer != null) {
-            map.removeLayer(pointsLayer);
+        if (earthquakeLayer != null) {
+            map.removeLayer(earthquakeLayer);
         }
         if (lineLayer != null) {
             map.removeLayer(lineLayer);
         }
+    } else {
+        addEarthquakePoints();
     }
 }
 

@@ -7,7 +7,7 @@
     <title>建通全球地理信息工程项目监管平台</title>
     <link rel="stylesheet" href="dist/css/semantic.min.css">
     <link href="dist/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="dist/css/leaflet.css" />
+    <link rel="stylesheet" href="dist/css/leaflet.css"/>
     <!--[if lt IE 9]>
     <!--<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> -->
     <!--<![endif]&ndash;&gt;-->
@@ -17,199 +17,217 @@
     <link rel="stylesheet" href="dist/css/MarkerCluster.Default.css">
     <link rel="stylesheet" href="dist/css/main.css">
     <link rel="stylesheet" href="dist/css/vis.min.css">
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="favicon.png"/>
 </head>
 
 <body>
 
-    <!-- 导航条 start -->
-    <div class="ui top fixed inverted menu menu-height">
-        <a href="#" class="ui item left">
-            <h1 class="ui inverted "><i class="cube icon"></i>建通全球地理信息工程项目监管平台</h1>
-        </a>
-        <div class="right menu">
-            <a class="item">XXX</a>
-            <a class="item">退出</a>
-        </div>
+<!-- 导航条 start -->
+<div class="ui top fixed inverted menu menu-height">
+    <a href="#" class="ui item left">
+        <h1 class="ui inverted "><i class="cube icon"></i>建通全球地理信息工程项目监管平台</h1>
+    </a>
+    <div class="right menu">
+        <a class="item">王二小</a>
+        <a class="item">退出</a>
     </div>
-    <!-- 导航条 end -->
+</div>
+<!-- 导航条 end -->
 
-    <div id="sidebar" class="sidebar collapsed siderbar-top">
-        <!-- Nav tabs -->
-        <div class="sidebar-tabs">
-            <ul role="tablist">
-                <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i class="fa fa-bars"></i></a></li>
-                <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on', 'on')"><i class="fa fa-user"></i></a></li>
-                <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off', 'off')"><i class="fa fa-bug"></i></a></li>
-                <li><a href="#add" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i class="fa fa-plus-circle"></i></a>
-                </li>
-            </ul>
+<div id="sidebar" class="sidebar collapsed siderbar-top">
+    <!-- Nav tabs -->
+    <div class="sidebar-tabs">
+        <ul role="tablist">
+            <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i class="fa fa-bars"></i></a>
+            </li>
+            <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on', 'on');"><i
+                    class="fa fa-user"></i></a></li>
+            <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off', 'off')"><i class="fa fa-bug"></i></a>
+            </li>
+            <li><a href="#add" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i class="fa fa-plus-circle"></i></a>
+            </li>
+        </ul>
 
-            <ul role="tablist">
-                <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-            </ul>
-        </div>
+        <ul role="tablist">
+            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        </ul>
+    </div>
 
-        <!-- Tab panes -->
-        <div class="sidebar-content">
-            <div class="sidebar-pane" id="home">
-                <h1>
+    <!-- Tab panes -->
+    <div class="sidebar-content">
+        <div class="sidebar-pane" id="home">
+            <h1>
                 三维数据信息
                 <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
             </h1>
 
-                <div class="ui link card">
-                    <div class="content">
-                        <div class="header" onclick="show3DPointsModel()">三维点云</div>
-                        <div class="ui modal" id="3dPointsShow">
-                            <i class="close icon"></i>
-                            <div class="header">
-                                三维点云
-                            </div>
-                            <div class="content" width="100%" height="100%">
-                                <iframe height=300px width=400px src='http://player.youku.com/embed/XMTg0OTYxODIzMg==' frameborder=0 'allowfullscreen'></iframe>
-                            </div>
-                            <div class="actions">
-                                <div class="ui black deny button" id="3dPointsClose" onclick="hide3DPointsModel()">
-                                    关闭
-                                </div>
+            <div class="ui link card">
+                <div class="content">
+                    <div class="header" onclick="show3DPointsModel()">三维点云</div>
+                    <div class="ui modal" id="3dPointsShow">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            三维点云
+                        </div>
+                        <div class="content" width="100%" height="100%">
+                            <iframe height=300px width=400px src='http://player.youku.com/embed/XMTg0OTYxODIzMg=='
+                                    frameborder=0
+                            'allowfullscreen'></iframe>
+                        </div>
+                        <div class="actions">
+                            <div class="ui black deny button" id="3dPointsClose" onclick="hide3DPointsModel()">
+                                关闭
                             </div>
                         </div>
-
                     </div>
-                </div>
-                <div class="ui link card">
-                    <div class="content" onclick="show3DLineModel();">
-                        <div class="header">无人机航拍</div>
-                        <div class="ui modal" id="3dLinesShow">
-                            <i class="close icon"></i>
-                            <div class="header">
-                                无人机航拍
-                            </div>
-                            <div class="content" width="100%" height="100%">
-                                <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf' allowFullScreen='true' quality='high' width='400px' height='300px' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-                            </div>
-                            <div class="actions">
-                                <div class="ui black deny button" onclick="hide3dLineModel()">
-                                    关闭
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
                 </div>
             </div>
-
-            <div class="sidebar-pane" id="profile">
-                <h1>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                <div class="ui link card">
-                    <div class="content" onclick=" addPointsLayer()">
-                        <div class="header">点数据演示</div>
-
-                    </div>
-                </div>
-                <div class="ui link card">
-                    <div class="content" onclick="addLineStrings();">
-                        <div class="header">线数据演示</div>
-                    </div>
-                </div>
-                <div class="ui link card">
-                    <div class="content" onclick="addPolygonLayer();">
-                        <div class="header">面数据演示</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sidebar-pane" id="sim">
-                <h1>要素数据演化<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                <div class="ui link card">
-                    <div class="content">
-                        <div class="header">点数据演化</div>
-                        <div class="meta">
-                            <span class="category">点数据演化</span>
+            <div class="ui link card">
+                <div class="content" onclick="show3DLineModel();">
+                    <div class="header">无人机航拍</div>
+                    <div class="ui modal" id="3dLinesShow">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            无人机航拍
                         </div>
-                        <div class="description">
-                            <p></p>
+                        <div class="content" width="100%" height="100%">
+                            <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'
+                                   allowFullScreen='true' quality='high' width='400px' height='300px' align='middle'
+                                   allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+                        </div>
+                        <div class="actions">
+                            <div class="ui black deny button" onclick="hide3dLineModel()">
+                                关闭
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="ui link card">
-                    <div class="content">
-                        <div class="header">Cute Dog</div>
-                        <div class="meta">
-                            <span class="category">线数据演化</span>
-                        </div>
-                        <div class="description">
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui link card">
-                    <div class="content" onclick="">
-                        <div class="header">Cute Dog</div>
-                        <div class="meta">
-                            <span class="category">面数据演化</span>
-                        </div>
-                        <div class="description">
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="sidebar-pane" id="add">
-                <h1>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-
-            </div>
-
-            <div class="sidebar-pane" id="settings">
-                <h1>Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                </div>
             </div>
         </div>
+
+        <div class="sidebar-pane" id="profile">
+            <h1>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <div class="ui top attached tabular menu">
+                <a class="item active" data-tab="first">兴趣点</a>
+                <a class="item" data-tab="second">路线</a>
+                <a class="item" data-tab="third">行政区划</a>
+            </div>
+            <div class="ui bottom attached tab segment active" data-tab="first">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="point" id="earthquakeCheckbox" checked="checked">
+                    <label>两周内全球地震数据</label>
+                </div>
+                <div class="ui checkbox " style="display: block">
+                    <input type="checkbox" name="point" id="flightCheckbox">
+                    <label>航班数据</label>
+                </div>
+                <div class="ui checkbox " style="display: block">
+                    <input type="checkbox" name="point" id="busStopCheckbox">
+                    <label>公交站点</label>
+                </div>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="second">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="polyline" id="tracks" checked="checked">
+                    <label>个人出行轨迹</label>
+                </div>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="third">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="polygon" id="region" checked="checked">
+                    <label>广东省行政区划</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sidebar-pane" id="sim">
+            <h1>要素数据演化<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <div class="ui link card">
+                <div class="content">
+                    <div class="header">点数据演化</div>
+                    <div class="meta">
+                        <span class="category">点数据演化</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-pane" id="add">
+            <h1>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <div class="ui large buttons">
+                <button class="ui button" id="createHeatMapButton">生成热力图</button>
+                <div class="or"></div>
+                <button class="ui button" id="hideHeatMapButton">隐藏热力图</button>
+            </div>
+        </div>
+
+        <div class="sidebar-pane" id="settings">
+            <h1>帮助<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+        </div>
     </div>
+</div>
 
-    <div id="map" class="map"></div>
+<div id="map" class="map"></div>
 
-    <div id="timeline" style="display: none"></div>
+<div id="timeline" style="display: none"></div>
 
-    <script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
-    <script src="dist/js/plugins/semantic.min.js"></script>
-    <script src="dist/js/plugins/leaflet.js"></script>
-    <script src="dist/js/plugins/d3.min.js"></script>
-    <script src="dist/js/plugins/Leaflet.fullscreen.min.js"></script>
-    <script src="dist/js/plugins/topojson.min.js"></script>
-    <script src="dist/js/plugins/leaflet-sidebar.js"></script>
-    <script src="dist/js/plugins/tdtLayer.js"></script>
-     <script src="dist/js/plugins/Control.GlobeMiniMap.js"></script>
-    <script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>
-    <script src="dist/js/map.js"></script>
-    <script src="dist/js/mapAction.js"></script>
-    <script src="dist/js/plugins/route.js"></script>
-    <script src="dist/js/plugins/leaflet-heat.js"></script>
-    <script src="dist/js/plugins/leaflet.ajax.js"></script>
-    <script src="dist/js/timelineAction.js"></script>
-    <script src="dist/js/plugins/vis.min.js"></script>
-    <script src="dist/js/plugins/LeafletPlayback.js"></script>
-    <script src="dist/js/data/demo-tracks.js"></script>
-    <script src="dist/js/data/realworld.10000.js"></script>
-    <script src="dist/js/siderbarAction.js"></script>
-    <script src="dist/js/3dAction.js"></script>
-    <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
-    <script>
-        var tileMap = null;
-        var labelMap = null;
+<!--plugins-->
+<script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
+<script src="dist/js/plugins/semantic.min.js"></script>
+<script src="dist/js/plugins/leaflet.js"></script>
+<script src="dist/js/plugins/d3.min.js"></script>
+<script src="dist/js/plugins/Leaflet.fullscreen.min.js"></script>
+<script src="dist/js/plugins/topojson.min.js"></script>
+<script src="dist/js/plugins/leaflet-sidebar.js"></script>
+<script src="dist/js/plugins/tdtLayer.js"></script>
+<script src="dist/js/plugins/Control.GlobeMiniMap.js"></script>
+<script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>
+<script src="dist/js/plugins/route.js"></script>
+<script src="dist/js/plugins/leaflet-heat.js"></script>
+<script src="dist/js/plugins/leaflet.ajax.js"></script>
+<script src="dist/js/timelineAction.js"></script>
+<script src="dist/js/plugins/vis.min.js"></script>
+<script src="dist/js/plugins/LeafletPlayback.js"></script>
+<script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
 
-        var timeline = null;
-        var playback = null;
+<!--data-->
+<script src="dist/js/data/demo-tracks.js"></script>
+<script src="dist/js/data/realworld.10000.js"></script>
+<!--map-->
+<script src="dist/js/map.js"></script>
+<!--action-->
+<script src="dist/js/mapAction.js"></script>
+<script src="dist/js/siderbarAction.js"></script>
+<script src="dist/js/3dAction.js"></script>
+<script src="dist/js/heatmapAction.js"></script>
+<script src="dist/js/featureAction.js"></script>
+<script>
+    //    ui script
+    $('.menu .item').tab();
+</script>
 
-        var heatmap = null;
-        var markers = null;
-        var globalMiniMap = null;
+<script>
+    //  logic script
+    var tileMap = null;
+    var labelMap = null;
 
-        var map = initMap();
-        var marker = L.marker([0, 0]).addTo(map);
-        marker.options.opacity = 0;
-    </script>
+    var timeline = null;
+    var playback = null;
+
+    var heatmap = null;
+    var markers = null;
+    var globalMiniMap = null;
+
+    var map = initMap();
+    var marker = L.marker([0, 0]).addTo(map);
+    marker.options.opacity = 0;
+</script>
 
 </body>
 

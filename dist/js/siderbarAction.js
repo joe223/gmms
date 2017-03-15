@@ -12,14 +12,11 @@ function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSw
 //隐藏时间线功能及其控件
 function switchSimPanel(switcher) {
     if (switcher === 'on') {
-        $('#timeline').css("display", "block");
         $('body').append($('<div/>', {
             id: 'timeline'
         }));
         initTimeLine();
     } else {
-        $('#timeline').css("display", "none");
-        timeline = null;
         $('#timeline').remove();
         if (playback != null) {
             playback.destroy();

@@ -4,15 +4,10 @@
 
 function show3DPointsModel() {
     $('#3dPointsShow').modal('show');
-}
-function hide3DPointsModel() {
-    $('#3dPointsShow').modal('close');
+    sidebar.close();
 }
 
 function show3DLineModel() {
     $('#3dLinesShow').modal('show');
-}
-
-function hide3dLineModel() {
-    $('#3dLinesShow').modal('hide');
+    sidebar.close();
 }

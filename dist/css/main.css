@@ -3,6 +3,11 @@ body {
     margin: 0;
 }
 
+/*显示timeline时body样式调整*/
+.body-show-timeline {
+    padding: 60px 0 120px 0 !important;
+}
+
 .menu-height {
     height: 60px;
 }
@@ -23,11 +28,12 @@ body {
 
 #timeline {
     z-index: 999;
-    height: 120px;
-    position: absolute;
+    position: fixed;
     left: 0;
-    right: 0;
-    bottom: 80px;
+    bottom: 0;
+    height: 120px;
+    width: 100%;
+    background: #fff;
 }
 
 .datetimeControl p {

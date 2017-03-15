@@ -1,6 +1,11 @@
 /**
  * Created by Administrator on 2017/3/14 0014.
  */
+
+// const variable
+var bodyElment = document.body;
+
+
 // 总开关
 function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSwitcher) {
     switchSimPanel(timelineSwitcher);
@@ -15,8 +20,10 @@ function switchSimPanel(switcher) {
         $('body').append($('<div/>', {
             id: 'timeline'
         }));
+        bodyElment.classList.add('body-show-timeline');
         initTimeLine();
     } else {
+        bodyElment.classList.remove('body-show-timeline');
         $('#timeline').remove();
         if (playback != null) {
             playback.destroy();

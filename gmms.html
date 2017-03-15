@@ -61,9 +61,9 @@
                 <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
             </h1>
 
-            <div class="ui link card">
+            <div class="ui link card" onclick="show3DPointsModel()">
                 <div class="content">
-                    <div class="header" onclick="show3DPointsModel()">三维点云</div>
+                    <div class="header" >三维点云</div>
                     <div class="ui modal" id="3dPointsShow">
                         <i class="close icon"></i>
                         <div class="header">
@@ -80,11 +80,13 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div class="image">
+                    <img src="dist/css/images/lidar.jpg">
                 </div>
             </div>
-            <div class="ui link card">
-                <div class="content" onclick="show3DLineModel();">
+            <div class="ui link card"  onclick="show3DLineModel();">
+                <div class="content">
                     <div class="header">无人机航拍</div>
                     <div class="ui modal" id="3dLinesShow">
                         <i class="close icon"></i>
@@ -102,7 +104,9 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div class="image">
+                    <img src="dist/css/images/danxia_3d.jpg">
                 </div>
             </div>
         </div>
@@ -110,9 +114,9 @@
         <div class="sidebar-pane" id="profile">
             <h1>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
             <div class="ui top attached tabular menu">
-                <a class="item active" data-tab="first">兴趣点</a>
-                <a class="item" data-tab="second">路线</a>
-                <a class="item" data-tab="third">行政区划</a>
+                <a class="item active" data-tab="first" id="pointTab">兴趣点</a>
+                <a class="item" data-tab="second" id="lineTab">路线</a>
+                <a class="item" data-tab="third" id="polygonTab">行政区划</a>
             </div>
             <div class="ui bottom attached tab segment active" data-tab="first">
                 <div class="ui checkbox">
@@ -123,20 +127,20 @@
                     <input type="checkbox" name="point" id="flightCheckbox">
                     <label>航班数据</label>
                 </div>
-                <div class="ui checkbox " style="display: block">
-                    <input type="checkbox" name="point" id="busStopCheckbox">
-                    <label>公交站点</label>
-                </div>
+                <!--<div class="ui checkbox " style="display: block">-->
+                <!--<input type="checkbox" name="point" id="busStopCheckbox">-->
+                <!--<label>公交站点</label>-->
+                <!--</div>-->
             </div>
             <div class="ui bottom attached tab segment" data-tab="second">
                 <div class="ui checkbox">
-                    <input type="checkbox" name="polyline" id="tracks" checked="checked">
+                    <input type="checkbox" name="polyline" id="tracksCheckbox">
                     <label>个人出行轨迹</label>
                 </div>
             </div>
             <div class="ui bottom attached tab segment" data-tab="third">
                 <div class="ui checkbox">
-                    <input type="checkbox" name="polygon" id="region" checked="checked">
+                    <input type="checkbox" name="polygon" id="regionCheckbox">
                     <label>广东省行政区划</label>
                 </div>
             </div>
@@ -161,9 +165,9 @@
         <div class="sidebar-pane" id="add">
             <h1>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
             <div class="ui large buttons">
-                <button class="ui button" id="createHeatMapButton">生成热力图</button>
+                <button class="ui button primary" id="createHeatMapButton">生成热力图</button>
                 <div class="or"></div>
-                <button class="ui button" id="hideHeatMapButton">隐藏热力图</button>
+                <button class="ui button primary" id="hideHeatMapButton">隐藏热力图</button>
             </div>
         </div>
 

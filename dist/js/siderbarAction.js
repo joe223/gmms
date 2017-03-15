@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/3/14 0014.
  */
-
+// 总开关
 function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSwitcher) {
     switchSimPanel(timelineSwitcher);
     switcheHeatmapPanel(heatmapSwitcher);

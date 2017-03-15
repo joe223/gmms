@@ -2,7 +2,7 @@
  * Created by beyouth on 2017/3/12.
  */
 
-var earthquakeLayer= null;
+var earthquakeLayer = null;
 var flightLayer = null;
 
 var lineLayer = null;
@@ -19,7 +19,7 @@ function addGeoFile() {
 
 //添加点要素
 function addEarthquakePoints() {
-    showLayer('point');
+
     if (earthquakeLayer == null) {
         var earthquakeFeedPointsURL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson';
         earthquakeLayer = L.geoJson.ajax(earthquakeFeedPointsURL);
@@ -40,20 +40,25 @@ function addEarthquakePoints() {
 }
 
 function addFlightPoints() {
-    var flightURL = 'https://data-live.flightradar24.com/zones/fcgi/feed.js?bounds=37.48,27.45,92.07,134.71&faa=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=7200&gliders=1&stats=1'
+    var flightURL = 'dist/json/feed.json'
     $.get(flightURL, function (data) {
-        var geoData = [];
-        for(var key in data){
-            if(typeof data[key] == Array){
-                geoData.append();
+
+        flightLayer = L.markerClusterGroup();
+
+        for (var key in data) {
+            if (data[key].length !== undefined) {
+                var title = '航班' + data[key][7] + '_' + data[key][6];
+                var marker = L.marker(new L.LatLng(data[key][1], data[key][2]), {title: title});
+                marker.bindPopup(title);
+                flightLayer.addLayer(marker);
             }
         }
+        map.addLayer(flightLayer);
     })
 }
 
 //添加线要素
 function addLineStrings() {
-    showLayer('line');
     if (lineLayer == null) {
         var lineLayerURL = 'dist/json/track.geojson';
         lineLayer = L.geoJson.ajax(lineLayerURL);
@@ -70,7 +75,6 @@ function addLineStrings() {
 
 // 添加面要素
 function addPolygonLayer() {
-    showLayer('polygon');
     if (polygonLayer == null) {
         polygonLayer = L.geoJson.ajax('dist/json/guang_dong_geo.json');
         polygonLayer.on('data:loaded', function () {
@@ -88,14 +92,39 @@ function addPolygonLayer() {
     }
 }
 
-//隐藏要素图层
+//只显示某要素图层
 function showLayer(layerGroupName) {
     var groupName = ['point', 'line', 'polygon'];
     groupName.splice(groupName.indexOf(layerGroupName), 1);
+    if (layerGroupName === 'point') {
+        if (earthquakeLayer != null) {
+            map.addLayer(earthquakeLayer);
+            map.fitBounds(earthquakeLayer.getBounds());
+        } else {
+            addEarthquakePoints();
+        }
+    } else if (layerGroupName === 'line') {
+        if (lineLayer != null) {
+            map.addLayer(lineLayer);
+            map.fitBounds(lineLayer.getBounds());
+        } else {
+            addLineStrings();
+        }
+    } else if (layerGroupName === 'polygon') {
+        if (polygonLayer != null) {
+            map.addLayer(polygonLayer);
+            map.fitBounds(polygonLayer.getBounds());
+        } else {
+            addPolygonLayer();
+        }
+    }
     groupName.forEach(function (layer) {
         if (layer === 'point') {
-            if (pointsLayer != null) {
-                map.removeLayer(pointsLayer);
+            if (earthquakeLayer != null) {
+                map.removeLayer(earthquakeLayer);
+            }
+            if (flightLayer != null) {
+                map.removeLayer(flightLayer);
             }
         } else if (layer === 'line') {
             if (lineLayer != null) {
@@ -123,7 +152,8 @@ function showHeatmap() {
             var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title});
             marker.bindPopup(title);
             markers.addLayer(marker);
-        };
+        }
+        ;
 
         map.addLayer(markers);
 

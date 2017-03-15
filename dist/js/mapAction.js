@@ -150,7 +150,7 @@ function showHeatmap() {
             var a = addressPoints[i];
             var title = a[2];
             var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title});
-            marker.bindPopup(title);
+            // marker.bindPopup(title);
             markers.addLayer(marker);
         }
         ;

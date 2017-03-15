@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="dist/css/MarkerCluster.Default.css">
     <link rel="stylesheet" href="dist/css/main.css">
     <link rel="stylesheet" href="dist/css/vis.min.css">
+
     <link rel="shortcut icon" href="favicon.png"/>
 </head>
 
@@ -40,6 +41,8 @@
         <ul role="tablist">
             <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i class="fa fa-bars"></i></a>
             </li>
+            <li><a href="#test" role="tab"><i class="fa fa-bars"></i></a>
+            </li>
             <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on', 'on');"><i
                     class="fa fa-user"></i></a></li>
             <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off', 'off')"><i class="fa fa-bug"></i></a>
@@ -56,10 +59,10 @@
     <!-- Tab panes -->
     <div class="sidebar-content">
         <div class="sidebar-pane" id="home">
-            <h1>
+            <h2>
                 三维数据信息
                 <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
-            </h1>
+            </h2>
 
             <div class="ui link card" onclick="show3DPointsModel()">
                 <div class="content">
@@ -74,11 +77,6 @@
                                     frameborder=0
                             'allowfullscreen'></iframe>
                         </div>
-                        <!--<div class="actions">-->
-                            <!--<div class="ui black deny button" id="3dPointsClose" onclick="hide3DPointsModel()">-->
-                                <!--关闭-->
-                            <!--</div>-->
-                        <!--</div>-->
                     </div>
                 </div>
                 <div class="image">
@@ -109,6 +107,11 @@
                     <img src="dist/css/images/danxia_3d.jpg">
                 </div>
             </div>
+        </div>
+
+        <div class="sidebar-pane" id="test">
+            <h2>要素数据播报<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+
         </div>
 
         <div class="sidebar-pane" id="profile">
@@ -148,7 +151,7 @@
         </div>
 
         <div class="sidebar-pane" id="sim">
-            <h1>要素数据播报<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <h2>要素数据播报<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
             <div class="ui link card">
                 <div class="content">
                     <div class="header">要素数据播报</div>
@@ -160,7 +163,7 @@
         </div>
 
         <div class="sidebar-pane" id="add">
-            <h1>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <h2>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
             <div class="ui large buttons">
                 <button class="ui button primary" id="createHeatMapButton">生成热力图</button>
                 <div class="or"></div>
@@ -169,7 +172,7 @@
         </div>
 
         <div class="sidebar-pane" id="settings">
-            <h1>帮助<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <h2>帮助<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
         </div>
     </div>
 </div>

@@ -13,8 +13,10 @@ var baseMap = null;
 function initMap() {
     var map = L.map('map', {
         zoomControl: false,
-        miniZoom: 3
-    }).setView([21.324, 100.434], 5);
+        miniZoom: 3,
+        zoom: 8,
+        center: [23.324, 113.434],
+    })
 
     // 全屏地图控件
     L.control.fullscreen({
@@ -38,31 +40,31 @@ function initMap() {
 
     tiandiVMap = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
         maxZoom: 18,
-        minZoom: 1,
+        minZoom: 3,
         attribution: '&copy; <a href="http://www.tianditu.com/">天地图</a> contributors',
         type: 'basemap',
     })
     tiandiLMap = L.tileLayer.chinaProvider('TianDiTu.Normal.Annotion', {
         maxZoom: 18,
-        minZoom: 1,
+        minZoom: 3,
         type: 'basemap',
     });
 
     gaoDeMap = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
         maxZoom: 18,
-        minZoom: 1,
+        minZoom: 3,
         type: 'basemap',
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     });
     googleMap = L.tileLayer.chinaProvider('Google.Normal.Map', {
         maxZoom: 18,
-        minZoom: 1,
+        minZoom: 3,
         type: 'basemap',
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     });
     geoQMap = L.tileLayer.chinaProvider('Geoq.Normal.Map', {
         maxZoom: 18,
-        minZoom: 1,
+        minZoom: 3,
         type: 'basemap',
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     });
@@ -70,6 +72,8 @@ function initMap() {
     darkBaseMap = L.tileLayer('http://120.55.74.101:8012/mapbox-studio-dark/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         type: 'basemap',
+        maxZoom: 18,
+        minZoom: 3,
     });
     tiandiMap = L.layerGroup([tiandiVMap, tiandiLMap]);
     map.addLayer(tiandiMap);

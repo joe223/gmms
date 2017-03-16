@@ -23,11 +23,6 @@ function initMap() {
     map.addControl(globalMiniMap);
 
     sidebar = L.control.sidebar('sidebar').addTo(map);
-    // Show sidebar
-    // sidebar.show();
-
-    // Hide sidebar
-    // sidebar.hide();
 
     tileMap = L.tileLayer("http://t0.tianditu.cn/vec_w/wmts?" +
         "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +

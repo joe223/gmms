@@ -10,6 +10,11 @@ var polygonLayer = null;
 
 var popup = L.popup();
 
+// var warning = L.AwesomeMarkers.icon({
+//     icon: 'warning',
+//     markerColor: 'red'
+// });
+
 
 function addGeoFile() {
     // var geoFileControl = document.getElementById('geoFile');

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="dist/css/MarkerCluster.Default.css">
     <link rel="stylesheet" href="dist/css/main.css">
     <link rel="stylesheet" href="dist/css/vis.min.css">
+    <link rel="stylesheet" href="dist/css/jqtree.css">
 
     <link rel="shortcut icon" href="favicon.png"/>
 </head>
@@ -66,7 +67,7 @@
 
             <div class="ui link card" onclick="show3DPointsModel()">
                 <div class="content">
-                    <div class="header" >三维点云</div>
+                    <div class="header">三维点云</div>
                     <div class="ui modal" id="3dPointsShow">
                         <i class="close icon"></i>
                         <div class="header">
@@ -83,7 +84,7 @@
                     <img src="dist/css/images/lidar.jpg">
                 </div>
             </div>
-            <div class="ui link card"  onclick="show3DLineModel();">
+            <div class="ui link card" onclick="show3DLineModel();">
                 <div class="content">
                     <div class="header">无人机航拍</div>
                     <div class="ui modal" id="3dLinesShow">
@@ -97,9 +98,9 @@
                                    allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
                         </div>
                         <!--<div class="actions">-->
-                            <!--<div class="ui black deny button" onclick="hide3dLineModel()">-->
-                                <!--关闭-->
-                            <!--</div>-->
+                        <!--<div class="ui black deny button" onclick="hide3dLineModel()">-->
+                        <!--关闭-->
+                        <!--</div>-->
                         <!--</div>-->
                     </div>
                 </div>
@@ -110,8 +111,8 @@
         </div>
 
         <div class="sidebar-pane" id="test">
-            <h2>要素数据播报<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-
+            <h2>test<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+            <div id="tree1"></div>
         </div>
 
         <div class="sidebar-pane" id="profile">
@@ -199,6 +200,7 @@
 <script src="dist/js/plugins/vis.min.js"></script>
 <script src="dist/js/plugins/LeafletPlayback.js"></script>
 <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
+<script src="dist/js/plugins/tree.jquery.js"></script>
 
 <!--data-->
 <script src="dist/js/data/demo-tracks.js"></script>
@@ -211,6 +213,7 @@
 <script src="dist/js/3dAction.js"></script>
 <script src="dist/js/heatmapAction.js"></script>
 <script src="dist/js/featureAction.js"></script>
+<script src="dist/js/treeAction.js"></script>
 <script>
     //    ui script
     $('.menu .item').tab();
@@ -221,16 +224,19 @@
     var tileMap = null;
     var labelMap = null;
 
+    var baseLayerBlack = null;
+    var baseLayer = null;
 
     var heatmap = null;
     var markers = null;
 
-//    map control
+    //    map control
     var globalMiniMap = null;
     var sidebar = null;
 
     var timeline = null;
     var playback = null;
+
 
     var map = initMap();
     var marker = L.marker([0, 0]).addTo(map);

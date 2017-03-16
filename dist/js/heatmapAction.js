@@ -12,3 +12,13 @@ $('#createHeatMapButton').on('click', function () {
         map.addLayer(heatmap);
     }
 });
+
+$('#createISOpButton').on('click', function () {
+    showISOMap();
+});
+
+$('#hideISOButton').on('click', function () {
+    if (isoLayer != null) {
+        map.removeLayer(heatmap);
+    }
+});

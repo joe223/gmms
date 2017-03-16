@@ -47,7 +47,7 @@ function createFlightDom() {
         final_data: '成果数据',
         image: '项目展示'
     }
-    var table = $('<table class="ui celled striped table"></table>');
+    var table = $('<table class="ui celled striped table info-table"></table>');
 
     var thead = $('<thead><tr><th colspan="2">项目简介</th></thead>');
     table.append(thead);
@@ -58,7 +58,7 @@ function createFlightDom() {
             var tdOne = $('<td></td>').text(details_map[property]);
             var tdTwo = null;
             if (property === 'image') {
-                tdTwo = $('<td><img onclick="showImageGallery()" src="' + data[property] + '" style="height: 60px;width: 60px;"></img></td>');
+                tdTwo = $('<td><img onclick="showImageGallery()" src="' + data[property] + '" style="height: 100px;width: 200px;"></img></td>');
             } else if (property === 'raw_data' || property === 'final_data') {
                 tdTwo = $('<td><a href="' + data[property] + '">' + data[property] + '</a></td>');
             }
@@ -75,19 +75,12 @@ function createFlightDom() {
     return table;
 }
 
-function popTest() {
-    return '<table class="ui celled striped table"> <thead> <tr><th colspan="3">Git Repository </th> </tr></thead>' +
-        '<tbody> <tr> <td class="collapsing"> <i class="folder icon"></i> node_modules </td> <td>Initial commit</td>' +
-        '<td class="right aligned collapsing">10 hours ago</td> </tr> <tr> <td> <i class="folder icon"></i> test </td>' +
-        '<td>Initial commit</td> <td class="right aligned">10 hours ago</td> </tr> <tr> <td>' +
-        ' <i class="folder icon"></i> build </td> <td>Initial commit</td> <td class="right aligned">10 hours ago</td> </tr> </tbody></table>'
-}
-
 //添加点要素
 function addEarthquakePoints() {
 
     if (earthquakeLayer == null) {
-        var earthquakeFeedPointsURL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson';
+        // var earthquakeFeedPointsURL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson';
+        var earthquakeFeedPointsURL = 'dist/json/gas_station.geojson'
         earthquakeLayer = L.geoJson.ajax(earthquakeFeedPointsURL);
         earthquakeLayer.on('data:loaded', function () {
             map.addLayer(earthquakeLayer);
@@ -95,8 +88,7 @@ function addEarthquakePoints() {
             earthquakeLayer.on('click', function (e) {
                 marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
-                // marker.bindPopup("<h3>" + e.layer.feature.properties.title + "</h3>").openPopup();
-                console.log(createFlightDom()[0].outerHTML);
+                map.setView(e.latlng, 13);
                 marker.bindPopup(createFlightDom()[0].outerHTML).openPopup();
             })
         })
@@ -156,6 +148,7 @@ function addPolygonLayer() {
             polygonLayer.on('click', function (e) {
                 marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
+                map.setView(e.latlng, 6);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.name + "</h3>").openPopup();
             })
         })
@@ -219,6 +212,7 @@ function showHeatmap() {
         });
         heatmapPointsLayer = L.polyline(addressPoints);
         markers = L.markerClusterGroup();
+
         for (var i = 0; i < addressPoints.length; i++) {
             var a = addressPoints[i];
             var title = a[2];
@@ -227,18 +221,33 @@ function showHeatmap() {
             markers.addLayer(marker);
         }
         ;
-
         map.addLayer(markers);
 
         heatmap = L.heatLayer(addressPoints);
         map.fitBounds(heatmapPointsLayer.getBounds());
-        // map.addLayer(heatmap);
     } else {
         if (heatmapPointsLayer != null) {
             map.fitBounds(heatmapPointsLayer.getBounds());
         }
         map.addLayer(markers);
-        // map.addLayer(heatmap);
     }
+}
 
+function showISOMap() {
+    if (isoLayer == null) {
+        L.Util.ajax("dist/json/pp1.geojson").then(function (points) {
+            for (var i = 0; i < points.features.length; i++) {
+                points.features[i].properties.z = Math.random() * 10;
+            }
+            var breaks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            var isolined = turf.isolines(points, 'z', 30, breaks);
+            isoLayer = L.geoJSON(isolined);
+            map.addLayer(isoLayer);
+            map.fitBounds(isoLayer.getBounds());
+        });
+
+    } else {
+        map.addLayer(isoLayer);
+        map.fitBounds(isoLayer.getBounds());
+    }
 }

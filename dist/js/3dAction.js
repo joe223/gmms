@@ -2,12 +2,17 @@
  * Created by Administrator on 2017/3/14 0014.
  */
 
-function show3DPointsModel() {
+$('#show3DPointsModel').on('click', function () {
     $('#3dPointsShow').modal('show');
     sidebar.close();
-}
+});
 
-function show3DLineModel() {
+$('#show3DLineModel').on('click', function () {
     $('#3dLinesShow').modal('show');
     sidebar.close();
-}
+});
+
+$('#show3DPolygonModel').on('click', function () {
+    $('#3dPolygonShow').modal('show');
+    sidebar.close();
+});

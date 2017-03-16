@@ -42,12 +42,12 @@
         <ul role="tablist">
             <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i class="fa fa-bars"></i></a>
             </li>
-            <li><a href="#basemap" role="tab" onclick="'off', 'off', 'off', 'off'"><i class="fa fa-map"></i></a></li>
-            <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on', 'on');"><i
-                    class="fa fa-user"></i></a></li>
-            <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off', 'off')"><i class="fa fa-bug"></i></a>
+            <li><a href="#basemap" role="tab" onclick="switcher('off', 'off', 'off', 'off')"><i
+                    class="fa fa-map"></i></a></li>
+            <li><a href="#sim" role="tab" onclick="switcher('off', 'off', 'off', 'off')"><i class="fa fa-line-chart"></i></a>
             </li>
-            <li><a href="#add" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i class="fa fa-plus-circle"></i></a>
+            <li><a href="#heatmap" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i
+                    class="fa fa-globe"></i></a>
             </li>
         </ul>
 
@@ -60,104 +60,182 @@
     <div class="sidebar-content">
         <div class="sidebar-pane" id="home">
             <h2>建通全球信息管理平台项目展示<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-            <div id="tree1">
+            <div class="styled ui accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    WebGIS三维展示平台
+                </div>
+                <div class="content">
+                    <div class="accordion transition visible" style="display:block !important;">
+                        <div class="title">
+                            <i class="icon dropdown"></i>
+                            倾斜测量摄影项目
+                        </div>
+                        <div class="content">
+                            <div class="ui label" id="show3DPointsModel">
+                                <i class="fa fa-map-marker"></i>
+                                <p> 点数据展示</p>
+                            </div>
+                            <div class="ui label" id="show3DLineModel">
+                                <i class="fa fa-road"></i>
+                                <p> 线数据展示</p>
+                            </div>
+                            <div class="ui label" id="show3DPolygonModel">
+                                <i class="fa fa-square"></i>
+                                <p> 面数据展示</p>
+                            </div>
+
+                        </div>
+                        <div class="title">
+                            <i class="icon dropdown"></i>
+                            激光点云项目
+                        </div>
+                        <div class="content">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    <i class="icon dropdown"></i>高速公路测量项目
+                </div>
+                <div class="content">
+                    <div class="accordion transition visible" style="display:block !important;">
+                        <div class="title">
+                            <i class="icon dropdown"></i>测量监测站点
+                        </div>
+                        <div class="content">
+                            <div class="ui label" id="earthquakeCheckbox">
+                                <i class="fa fa-map-marker"></i>
+                                <p> 点数据展示</p>
+                            </div>
+
+                        </div>
+
+                        <div class="title">
+                            <i class="icon dropdown"></i>测量线路
+                        </div>
+                        <div class="content">
+                            <div class="ui label" id="tracksCheckbox">
+                                <i class="fa fa-road"></i>
+                                <p> 线数据展示</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    <i class="icon dropdown"></i>数字县区
+                </div>
+                <div class="content">
+                    <div class="ui label" id="regionCheckbox">
+                        <i class="fa fa-square"></i>
+                        <p> 线数据展示</p>
+                    </div>
+                </div>
+
+                <div class="title">
+                    <i class="dropdown icon"></i>地籍调查
+                </div>
+                <div class="content"></div>
             </div>
+
+            <!--<div id="tree1">-->
+            <!--</div>-->
         </div>
         <div class="sidebar-pane" id="basemap">
             <h2>底图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-            <div></div>
-            <div class="ui link card" id="tiandiMap">
-                <div class="content">
-                    <a class="header" href="#">天地图</a>
+            <div class="ui styled accordion">
+                <div class="active title">
+                    <i class="dropdown icon"></i>
+                    天地图
                 </div>
-                <div class="image">
-                    <img src="dist/css/images/tianDiTuTerrain.jpg">
+                <div class="active content ">
+                    <div class="ui image" id="tiandiMap">
+                        <img src="dist/css/images/tianDiTuTerrain.jpg">
+                    </div>
                 </div>
-            </div>
-            <div class="ui link card" id="gaodeMap">
-                <div class="content">
-                    <a class="header" href="#">高德底图</a>
-                </div>
-                <div class="image">
-                    <img src="dist/css/images/gaode.png">
-                </div>
-            </div>
-            <div class="ui link card" id="googleMap">
-                <div class="content">
-                    <a class="header" href="#">谷歌底图</a>
-                </div>
-                <div class="image">
-                    <img src="dist/css/images/google.png">
-                </div>
-            </div>
-            <div class="ui link card" id="geoQMap">
-                <div class="content">
-                    <a class="header" href="#">GeoQ底图</a>
-                </div>
-                <div class="image">
-                    <img src="dist/css/images/geoq.png">
-                </div>
-            </div>
-            <div class="ui link card" id="darkMap">
-                <div class="content">
-                    <a class="header" href="#">黑色底图</a>
-                </div>
-                <div class="image">
-                    <img src="dist/css/images/dark.png">
-                </div>
-            </div>
-        </div>
 
-        <div class="sidebar-pane" id="profile">
-            <h2>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-            <div class="ui top attached tabular menu">
-                <a class="item active" data-tab="first" id="pointTab">兴趣点</a>
-                <a class="item" data-tab="second" id="lineTab">路线</a>
-                <a class="item" data-tab="third" id="polygonTab">行政区划</a>
-            </div>
-            <div class="ui bottom attached tab segment active" data-tab="first">
-                <div class="ui checkbox">
-                    <input type="checkbox" name="point" id="earthquakeCheckbox" checked="checked">
-                    <label>两周内全球地震数据</label>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    高德地图
                 </div>
-                <div class="ui checkbox " style="display: block">
-                    <input type="checkbox" name="point" id="flightCheckbox">
-                    <label>航班数据</label>
+                <div class="content link">
+                    <div class="ui image " id="gaodeMap">
+                        <img src="dist/css/images/gaode.png">
+                    </div>
                 </div>
-            </div>
-            <div class="ui bottom attached tab segment" data-tab="second">
-                <div class="ui checkbox">
-                    <input type="checkbox" name="polyline" id="tracksCheckbox">
-                    <label>个人出行轨迹</label>
+                <div class="title">
+                    <i class="dropdown icon">
+                    </i>
+                    GeoQ
                 </div>
-            </div>
-            <div class="ui bottom attached tab segment" data-tab="third">
-                <div class="ui checkbox">
-                    <input type="checkbox" name="polygon" id="regionCheckbox">
-                    <label>广东省行政区划</label>
+                <div class="content link">
+                    <div class="ui image " id="geoQMap">
+                        <img src="dist/css/images/geoq.png">
+                    </div>
                 </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    谷歌地图
+                </div>
+                <div class="content link">
+                    <div class="ui image " id="googleMap">
+                        <img src="dist/css/images/google.png">
+                    </div>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    黑色
+                </div>
+                <div class="content link">
+                    <div class="ui image " id="darkMap">
+                        <img src="dist/css/images/dark.png">
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
         <div class="sidebar-pane" id="sim">
             <h2>要素数据播报<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-            <div class="ui link card">
-                <div class="content">
-                    <div class="header">要素数据播报</div>
+            <div class="ui accordion styled">
+                <div class="active title">
+                    <i class="dropdown icon"></i>用户王二小轨迹动态模拟
                 </div>
-                <div class="image">
-                    <img src="dist/css/images/lidar.jpg">
+                <div class="active content">
+                    <div class="ui image" id="trackSimulation">
+                        <img src="dist/css/images/track.png">
+                    </div>
                 </div>
+
             </div>
         </div>
 
-        <div class="sidebar-pane" id="add">
+        <div class="sidebar-pane" id="heatmap">
             <h2>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-            <div class="ui large buttons">
-                <button class="ui button primary" id="createHeatMapButton">生成热力图</button>
-                <div class="or"></div>
-                <button class="ui button primary" id="hideHeatMapButton">隐藏热力图</button>
+
+            <div class="ui styled accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>热力图
+                </div>
+                <div class="content">
+                    <div class="ui  buttons">
+                        <button class="ui button primary" id="createHeatMapButton">生成热力图</button>
+                        <div class="or"></div>
+                        <button class="ui button primary" id="hideHeatMapButton">隐藏热力图</button>
+                    </div>
+                </div>
+
+                <div class="title">
+                    <i class="dropdown icon"></i>等值线图
+                </div>
+                <div class="content">
+                    <div class="ui buttons">
+                        <button class="ui button primary" id="createISOpButton">生成等值线图</button>
+                        <div class="or"></div>
+                        <button class="ui button primary" id="hideISOButton">隐藏等值线图</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -176,11 +254,11 @@
     <div class="header">
         倾斜摄影测量项目
     </div>
-    <div class="content" width="100%" height="100%">
-        <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'
-               allowFullScreen='true' quality='high' width='400px' height='300px' align='middle'
-               allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-    </div>
+
+    <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'
+           allowFullScreen='true' quality='high' width='100%' height='100%' align='middle'
+           allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+
 </div>
 
 <div class="ui modal" id="3dPointsShow">
@@ -188,20 +266,32 @@
     <div class="header">
         激光点云采集项目
     </div>
-    <div class="content" width="100%" height="100%">
-        <iframe height=300px width=400px src='http://player.youku.com/embed/XMTg0OTYxODIzMg=='
-                frameborder=0
-        'allowfullscreen'></iframe>
-    </div>
+
+    <embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'
+           quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'
+           mode='transparent' type='application/x-shockwave-flash'></embed>
+
 </div>
 
-<div class="ui modal" id="imageGallery">
+<div class="ui modal" id="3dPolygonShow">
+    <i class="close icon"></i>
+    <div class="header">
+        激光点云采集项目
+    </div>
+
+    <embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'
+           quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'
+           mode='transparent' type='application/x-shockwave-flash'></embed>
+
+</div>
+
+<div class="ui long modal" id="imageGallery">
     <i class="close icon"></i>
     <div class="header">
         项目成果展示
     </div>
     <div class="image content">
-        <div class="ui medium image">
+        <div class="ui large image">
             <img src="dist/css/images/lidar.jpg">
         </div>
         <div class="description">
@@ -234,6 +324,7 @@
 <script src="dist/js/plugins/LeafletPlayback.js"></script>
 <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
 <script src="dist/js/plugins/tree.jquery.js"></script>
+<script src="dist/js/plugins/turf.min.js"></script>
 
 <!--data-->
 <script src="dist/js/data/demo-tracks.js"></script>
@@ -248,16 +339,16 @@
 <script src="dist/js/featureAction.js"></script>
 <script src="dist/js/treeAction.js"></script>
 <script src="dist/js/basemap.js"></script>
+<script src="dist/js/simlationAction.js"></script>
 <script>
     //    ui script
     $('.menu .item').tab();
+    $('.ui.accordion').accordion();
 </script>
 
 <script>
     //  logic script
-
-
-
+    var isoLayer = null;
     var heatmap = null;
     var markers = null;
 
@@ -272,6 +363,7 @@
     var map = initMap();
     var marker = L.marker([0, 0]).addTo(map);
     marker.options.opacity = 0;
+
 </script>
 
 </body>

@@ -10,53 +10,18 @@ $('#flightCheckbox').click(function () {
     }
 });
 
-$('#earthquakeCheckbox').click(function () {
-    if (this.checked) {
-        addEarthquakePoints();
-    } else {
-        map.removeLayer(earthquakeLayer);
-    }
+$('#earthquakeCheckbox').on('click', function () {
+    addEarthquakePoints();
 });
 
-$('#tracksCheckbox').click(function () {
-    if (this.checked) {
-        addLineStrings();
-    } else {
-        if (lineLayer != null) {
-            map.removeLayer(lineLayer);
-        }
-
-    }
+$('#tracksCheckbox').on('click', function () {
+    addLineStrings();
 });
 
-$('#regionCheckbox').click(function () {
-    if (this.checked) {
-        addPolygonLayer();
-    } else {
-        if (polygonLayer != null) {
-            map.removeLayer(polygonLayer);
-        }
-
-    }
+$('#regionCheckbox').on('click', function () {
+    addPolygonLayer();
 });
 
-
-$('#tracks').click(function () {
-    if (this.checked) {
-        addLineStrings();
-    } else {
-        map.removeLayer(lineLayer);
-    }
-})
-
-
-$('#region').click(function () {
-    if (this.checked) {
-        addPolygonLayer();
-    } else {
-        map.removeLayer(polygonLayer);
-    }
-})
 
 $('#pointTab').click(function () {
     showLayer('point');

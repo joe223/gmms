@@ -71,6 +71,21 @@
                     <img src="dist/css/images/tianDiTuTerrain.jpg">
                 </div>
             </div>
+            <div class="ui link card" id="gaodeMap">
+                <div class="image">
+                    <img src="dist/css/images/gaode.png">
+                </div>
+            </div>
+            <div class="ui link card" id="googleMap">
+                <div class="image">
+                    <img src="dist/css/images/google.png">
+                </div>
+            </div>
+            <div class="ui link card" id="geoQMap">
+                <div class="image">
+                    <img src="dist/css/images/geoq.png">
+                </div>
+            </div>
             <div class="ui link card" id="darkMap">
                 <div class="image">
                     <img src="dist/css/images/dark.png">
@@ -199,6 +214,7 @@
 <script src="dist/js/plugins/leaflet-heat.js"></script>
 <script src="dist/js/plugins/leaflet.ajax.js"></script>
 <script src="dist/js/timelineAction.js"></script>
+<script src="dist/js/plugins/leaflet.ChineseTmsProviders.js"></script>
 <script src="dist/js/plugins/vis.min.js"></script>
 <script src="dist/js/plugins/LeafletPlayback.js"></script>
 <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
@@ -224,13 +240,8 @@
 
 <script>
     //  logic script
-    var basemap = 'tiandi';
-    var tileMap = null;
-    var labelMap = null;
-    var darkBaseMap = null;
 
-    var baseLayerBlack = null;
-    var baseLayer = null;
+
 
     var heatmap = null;
     var markers = null;

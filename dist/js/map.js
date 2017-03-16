@@ -1,10 +1,20 @@
 /**
  * Created by Administrator on 2017/3/13 0013.
  */
+var tiandiMap = null;
+var darkBaseMap = null;
+var gaoDeMap = null;
+var googleMap = null;
+var geoQMap = null;
+var tiandiVMap = null;
+var tiandiLMap = null;
+var baseMap = null;
+
 function initMap() {
     var map = L.map('map', {
-        zoomControl: false
-    }).setView([32.324, 103.434], 5);
+        zoomControl: false,
+        miniZoom: 3
+    }).setView([21.324, 100.434], 5);
 
     // 全屏地图控件
     L.control.fullscreen({
@@ -24,23 +34,51 @@ function initMap() {
 
     sidebar = L.control.sidebar('sidebar').addTo(map);
 
-    tileMap = L.tileLayer("http://t0.tianditu.cn/vec_w/wmts?" +
-        "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
-        "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}");
+    // 底图
 
-    labelMap = L.tileLayer("http://t0.tianditu.com/cva_w/wmts?" +
-        "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
-        "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}", {
-            attribution: '&copy; <a href="http://www.tianditu.com/">天地图</a> contributors'
-        });
-
-    var cities = L.layerGroup([tileMap, labelMap]);
-
-    map.addLayer(cities);
-
-    darkBaseMap = L.tileLayer('http://120.55.74.101:8012/mapbox-studio-dark/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    tiandiVMap = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 1,
+        attribution: '&copy; <a href="http://www.tianditu.com/">天地图</a> contributors',
+        type: 'basemap',
+    })
+    tiandiLMap = L.tileLayer.chinaProvider('TianDiTu.Normal.Annotion', {
+        maxZoom: 18,
+        minZoom: 1,
+        type: 'basemap',
     });
 
+    gaoDeMap = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 1,
+        type: 'basemap',
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    });
+    googleMap = L.tileLayer.chinaProvider('Google.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 1,
+        type: 'basemap',
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    });
+    geoQMap = L.tileLayer.chinaProvider('Geoq.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 1,
+        type: 'basemap',
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    });
+
+    darkBaseMap = L.tileLayer('http://120.55.74.101:8012/mapbox-studio-dark/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        type: 'basemap',
+    });
+    tiandiMap = L.layerGroup([tiandiVMap, tiandiLMap]);
+    map.addLayer(tiandiMap);
+    baseMap = {
+        'tiandiMap': tiandiMap,
+        'darkBaseMap': darkBaseMap,
+        'gaoDeMap': gaoDeMap,
+        'googleMap': googleMap,
+        'geoQMap': geoQMap
+    };
     return map;
 };

@@ -19,6 +19,6 @@ $('#createISOpButton').on('click', function () {
 
 $('#hideISOButton').on('click', function () {
     if (isoLayer != null) {
-        map.removeLayer(heatmap);
+        map.removeLayer(isoLayer);
     }
 });

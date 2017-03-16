@@ -42,8 +42,7 @@
         <ul role="tablist">
             <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i class="fa fa-bars"></i></a>
             </li>
-            <li><a href="#test" role="tab"><i class="fa fa-bars"></i></a>
-            </li>
+            <li><a href="#basemap" role="tab" onclick="'off', 'off', 'off', 'off'"><i class="fa fa-map"></i></a></li>
             <li><a href="#profile" role="tab" onclick="switcher('off', 'off', 'on', 'on');"><i
                     class="fa fa-user"></i></a></li>
             <li><a href="#sim" role="tab" onclick="switcher('on', 'off', 'off', 'off')"><i class="fa fa-bug"></i></a>
@@ -60,63 +59,27 @@
     <!-- Tab panes -->
     <div class="sidebar-content">
         <div class="sidebar-pane" id="home">
-            <h2>
-                三维数据信息
-                <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
-            </h2>
-
-            <div class="ui link card" onclick="show3DPointsModel()">
-                <div class="content">
-                    <div class="header">三维点云</div>
-                    <div class="ui modal" id="3dPointsShow">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            三维点云
-                        </div>
-                        <div class="content" width="100%" height="100%">
-                            <iframe height=300px width=400px src='http://player.youku.com/embed/XMTg0OTYxODIzMg=='
-                                    frameborder=0
-                            'allowfullscreen'></iframe>
-                        </div>
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="dist/css/images/lidar.jpg">
-                </div>
-            </div>
-            <div class="ui link card" onclick="show3DLineModel();">
-                <div class="content">
-                    <div class="header">无人机航拍</div>
-                    <div class="ui modal" id="3dLinesShow">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            无人机航拍
-                        </div>
-                        <div class="content" width="100%" height="100%">
-                            <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'
-                                   allowFullScreen='true' quality='high' width='400px' height='300px' align='middle'
-                                   allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
-                        </div>
-                        <!--<div class="actions">-->
-                        <!--<div class="ui black deny button" onclick="hide3dLineModel()">-->
-                        <!--关闭-->
-                        <!--</div>-->
-                        <!--</div>-->
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="dist/css/images/danxia_3d.jpg">
-                </div>
+            <h2>建通全球信息管理平台项目展示<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+            <div id="tree1">
             </div>
         </div>
-
-        <div class="sidebar-pane" id="test">
-            <h2>test<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-            <div id="tree1"></div>
+        <div class="sidebar-pane" id="basemap">
+            <h2>底图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+            <div></div>
+            <div class="ui link card" id="tiandiMap">
+                <div class="image">
+                    <img src="dist/css/images/tianDiTuTerrain.jpg">
+                </div>
+            </div>
+            <div class="ui link card" id="darkMap">
+                <div class="image">
+                    <img src="dist/css/images/dark.png">
+                </div>
+            </div>
         </div>
 
         <div class="sidebar-pane" id="profile">
-            <h1>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <h2>要素数据<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
             <div class="ui top attached tabular menu">
                 <a class="item active" data-tab="first" id="pointTab">兴趣点</a>
                 <a class="item" data-tab="second" id="lineTab">路线</a>
@@ -131,10 +94,6 @@
                     <input type="checkbox" name="point" id="flightCheckbox">
                     <label>航班数据</label>
                 </div>
-                <!--<div class="ui checkbox " style="display: block">-->
-                <!--<input type="checkbox" name="point" id="busStopCheckbox">-->
-                <!--<label>公交站点</label>-->
-                <!--</div>-->
             </div>
             <div class="ui bottom attached tab segment" data-tab="second">
                 <div class="ui checkbox">
@@ -180,7 +139,50 @@
 
 <div id="map" class="map"></div>
 
-<!--<div id="timeline"></div>-->
+<!--弹出框 三维项目信息-->
+
+<div class="ui modal" id="3dLinesShow">
+    <i class="close icon"></i>
+    <div class="header">
+        倾斜摄影测量项目
+    </div>
+    <div class="content" width="100%" height="100%">
+        <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'
+               allowFullScreen='true' quality='high' width='400px' height='300px' align='middle'
+               allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+    </div>
+</div>
+
+<div class="ui modal" id="3dPointsShow">
+    <i class="close icon"></i>
+    <div class="header">
+        激光点云采集项目
+    </div>
+    <div class="content" width="100%" height="100%">
+        <iframe height=300px width=400px src='http://player.youku.com/embed/XMTg0OTYxODIzMg=='
+                frameborder=0
+        'allowfullscreen'></iframe>
+    </div>
+</div>
+
+<div class="ui modal" id="imageGallery">
+    <i class="close icon"></i>
+    <div class="header">
+        项目成果展示
+    </div>
+    <div class="image content">
+        <div class="ui medium image">
+            <img src="dist/css/images/lidar.jpg">
+        </div>
+        <div class="description">
+            <div class="ui header">XX点云数据简介.</div>
+            <p>点云数据是对现实世界物体形状最自然的表示方法之
+                一，但是它仅能表示物体的几何属性，而不能表示物体的
+                拓扑以及纹理等信息。如何利用有限的三维采样获得完整
+                的三维几何？毫无疑问，唯一的途径是重建。</p>
+        </div>
+    </div>
+</div>
 
 <!--plugins-->
 <script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
@@ -214,6 +216,7 @@
 <script src="dist/js/heatmapAction.js"></script>
 <script src="dist/js/featureAction.js"></script>
 <script src="dist/js/treeAction.js"></script>
+<script src="dist/js/basemap.js"></script>
 <script>
     //    ui script
     $('.menu .item').tab();
@@ -221,8 +224,10 @@
 
 <script>
     //  logic script
+    var basemap = 'tiandi';
     var tileMap = null;
     var labelMap = null;
+    var darkBaseMap = null;
 
     var baseLayerBlack = null;
     var baseLayer = null;

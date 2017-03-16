@@ -38,9 +38,9 @@ function initMap() {
 
     map.addLayer(cities);
 
-    // L.tileLayer('http://120.55.74.101:8012/mapbox-studio-outdoors/{z}/{x}/{y}.png', {
-    //     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(map);
+    darkBaseMap = L.tileLayer('http://120.55.74.101:8012/mapbox-studio-dark/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    });
 
     return map;
 };

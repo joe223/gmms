@@ -1,6 +1,5 @@
 {
 "type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4030" } },
 "features": [
 { "type": "Feature", "properties": { "NAME": "���ļǾƼҽ��Ϸֵ�", "KIND": "1380", "ADDRESS": "�㶫ʡ��ݸ�ж�ݸ�����Ĳ�", "TELEPHONE": null }, "geometry": { "type": "Point", "coordinates": [ 113.647542, 23.11817 ] } },
 { "type": "Feature", "properties": { "NAME": "�������P", "KIND": "1380", "ADDRESS": "�㶫ʡ��ɽ�з�ɽ�����Ĳ�", "TELEPHONE": "075785720388" }, "geometry": { "type": "Point", "coordinates": [ 113.206682, 23.095926 ] } },

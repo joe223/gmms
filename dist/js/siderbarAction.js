@@ -12,6 +12,12 @@ function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSw
     switcheHeatmapPanel(heatmapSwitcher);
     switchFeatureLayer(featureSwitcher);
     switchTimeline(timeLineSwitcher);
+    if (marker != null) {
+        map.removeLayer(marker);
+    }
+    if (drawControl != null) {
+        map.removeControl(drawControl);
+    }
 }
 
 //隐藏时间线功能及其控件

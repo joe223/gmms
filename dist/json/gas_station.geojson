@@ -1,6 +1,5 @@
 {
 "type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4030" } },
 "features": [
 { "type": "Feature", "properties": { "NAME": "������վ", "KIND": "4082", "ADDRESS": "�㶫ʡ�����з�خ����ɽ��", "TELEPHONE": null }, "geometry": { "type": "Point", "coordinates": [ 113.401375, 22.818234 ] } },
 { "type": "Feature", "properties": { "NAME": "����ʯ�����ڼ���վ", "KIND": "4082", "ADDRESS": "�㶫ʡ�����з�خ��������", "TELEPHONE": null }, "geometry": { "type": "Point", "coordinates": [ 113.402185, 22.805887 ] } },

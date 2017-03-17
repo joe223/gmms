@@ -10,6 +10,66 @@ var polygonLayer = null;
 
 var popup = L.popup();
 
+
+var details = [
+    {
+        name: 'H121公路勘察点',
+        type: '一级项目',
+        position: 'XX省国道XX县市',
+        contract: '项目合同',
+        start_time: '2016-09-10',
+        end_time: '2016-12-22',
+        raw_data: 'dist/json/china.json',
+        final_data: 'dist/json/china.json',
+        image: 'http://www.honlitech.com/d/file/contents/2016/03/56d7e3124368c.png'
+    },
+    {
+        name: 'M3812 省道勘察点',
+        type: '二级项目',
+        position: 'XX省国道XX县市',
+        contract: '项目合同',
+        start_time: '2016-09-10',
+        end_time: '2016-12-22',
+        raw_data: 'dist/json/china.json',
+        final_data: 'dist/json/china.json',
+        image: 'dist/css/images/lidar.jpg'
+    },
+    {
+        name: 'H12M12 国道勘察点',
+        type: '一级项目',
+        position: 'XX省国道XX县市',
+        contract: '项目合同',
+        start_time: '2016-09-10',
+        end_time: '2016-12-22',
+        raw_data: 'dist/json/gas_station.geojson',
+        final_data: 'dist/json/gas_station.geojson',
+        image: 'http://www.lidar360.com/wp-content/uploads/2016/10/Viewernew-1-1024x555.png'
+    },
+    {
+        name: 'M3ds12 县道勘察点',
+        type: '三级项目',
+        position: 'XX省国道XX县市',
+        contract: '项目合同',
+        start_time: '2016-09-10',
+        end_time: '2016-12-22',
+        raw_data: 'dist/json/feed.json',
+        final_data: 'dist/json/feed.json',
+        image: 'http://www.lidar360.com/wp-content/uploads/2015/10/%E9%A6%99%E8%95%89%E5%9B%AD%E7%82%B9%E4%BA%91%E5%B1%95%E7%A4%BA_%E5%89%AF%E6%9C%AC.png'
+    }
+];
+
+var details_map = {
+    name: '项目名称',
+    type: '项目类型',
+    position: '项目地点',
+    contract: '项目合同',
+    start_time: '开始时间',
+    end_time: '结束时间',
+    raw_data: '原始数据',
+    final_data: '成果数据',
+    image: '项目展示'
+}
+
 // var warning = L.AwesomeMarkers.icon({
 //     icon: 'warning',
 //     markerColor: 'red'
@@ -20,57 +80,35 @@ function showImageGallery() {
     sidebar.close();
 }
 
-function createFlightDom() {
-    var details = [
-        {
-            name: 'H121公路勘察点',
-            type: '一级项目',
-            position: 'XX省国道XX县市',
-            contract: '项目合同',
-            start_time: '2016-09-10',
-            end_time: '2016-12-22',
-            raw_data: 'dist/json/china.json',
-            final_data: 'dist/json/china.json',
-            image: 'dist/css/images/lidar.jpg'
-        },
-        // {name: '', type: '', postition: '', contract: '', start_time: '', end_time: '', raw_data: '', final_data: ''},
-        // {name: '', type: '', postition: '', contract: '', start_time: '', end_time: '', raw_data: '', final_data: ''}
-    ];
-    var details_map = {
-        name: '项目名称',
-        type: '项目类型',
-        position: '项目地点',
-        contract: '项目合同',
-        start_time: '开始时间',
-        end_time: '结束时间',
-        raw_data: '原始数据',
-        final_data: '成果数据',
-        image: '项目展示'
-    }
+function createFlightDom(details, details_map) {
+
     var table = $('<table class="ui celled striped table info-table"></table>');
 
     var thead = $('<thead><tr><th colspan="2">项目简介</th></thead>');
     table.append(thead);
     var tbody = $('<tbody></tbody>');
-    details.forEach(function (data) {
-        for (var property in data) {
-            var tr = $('<tr></tr>');
-            var tdOne = $('<td></td>').text(details_map[property]);
-            var tdTwo = null;
-            if (property === 'image') {
-                tdTwo = $('<td><img onclick="showImageGallery()" src="' + data[property] + '" style="height: 100px;width: 200px;"></img></td>');
-            } else if (property === 'raw_data' || property === 'final_data') {
-                tdTwo = $('<td><a href="' + data[property] + '">' + data[property] + '</a></td>');
-            }
-            else {
-                tdTwo = $('<td></td>').text(data[property]);
-            }
-
-            tr.append(tdOne);
-            tr.append(tdTwo);
-            tbody.append(tr)
+    var index = Math.floor(Math.random() * details.length);
+    data = details[index];
+    var imgSrc = '';
+    for (var property in data) {
+        var tr = $('<tr></tr>');
+        var tdOne = $('<td></td>').text(details_map[property]);
+        var tdTwo = null;
+        if (property === 'image') {
+            tdTwo = $('<td><img onclick="showImageGallery()" src="' + data[property] + '" style="height: 100px;width: 200px;"></img></td>');
+            imgSrc = data[property];
+        } else if (property === 'raw_data' || property === 'final_data') {
+            tdTwo = $('<td><a href="' + data[property] + '" target="_black">下载</a></td>');
         }
-    })
+        else {
+            tdTwo = $('<td></td>').text(data[property]);
+        }
+
+        tr.append(tdOne);
+        tr.append(tdTwo);
+        tbody.append(tr)
+    }
+    $('#imgAddress').attr('src', imgSrc);
     table.append(tbody);
     return table;
 }
@@ -89,7 +127,7 @@ function addEarthquakePoints() {
                 marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
                 map.setView(e.latlng, 13);
-                marker.bindPopup(createFlightDom()[0].outerHTML).openPopup();
+                marker.bindPopup(createFlightDom(details, details_map)[0].outerHTML).openPopup();
             })
         })
 
@@ -231,6 +269,14 @@ function showHeatmap() {
         }
         map.addLayer(markers);
     }
+
+    // 加载空间分析图层
+    L.Util.ajax("dist/json/pp1.geojson").then(function (points) {
+        spatialAnalyzeGeoJSON = points;
+        spatialAnalyzeGeoJSON.features.forEach(function (point) {
+            point.geometry.coordinates = [point.geometry.coordinates[1], point.geometry.coordinates[0]];
+        })
+    });
 }
 
 function showISOMap() {
@@ -240,7 +286,7 @@ function showISOMap() {
                 points.features[i].properties.z = Math.random() * 10;
             }
             var breaks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-            var isolined = turf.isolines(points, 'z', 30, breaks);
+            var isolined = turf.isolines(points, 'z', 20, breaks);
             isoLayer = L.geoJSON(isolined);
             map.addLayer(isoLayer);
             map.fitBounds(isoLayer.getBounds());

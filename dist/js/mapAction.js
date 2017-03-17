@@ -281,12 +281,12 @@ function showHeatmap() {
 
 function showISOMap() {
     if (isoLayer == null) {
-        L.Util.ajax("dist/json/pp1.geojson").then(function (points) {
+        L.Util.ajax("dist/json/gas_station.geojson").then(function (points) {
             for (var i = 0; i < points.features.length; i++) {
                 points.features[i].properties.z = Math.random() * 10;
             }
-            var breaks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-            var isolined = turf.isolines(points, 'z', 20, breaks);
+            var breaks = [0, 1, 2, 3, 4, 5, 6];
+            var isolined = turf.isolines(points, 'z', 50, breaks);
             isoLayer = L.geoJSON(isolined);
             map.addLayer(isoLayer);
             map.fitBounds(isoLayer.getBounds());

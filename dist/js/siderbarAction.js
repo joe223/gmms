@@ -18,6 +18,9 @@ function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSw
     if (drawControl != null) {
         map.removeControl(drawControl);
     }
+    if(isoLayer!=null){
+        map.removeLayer(isoLayer);
+    }
 }
 
 //隐藏时间线功能及其控件

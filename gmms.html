@@ -35,7 +35,6 @@
     </div>
 </div>
 <!-- 导航条 end -->
-
 <div id="sidebar" class="sidebar collapsed siderbar-top">
     <!-- Nav tabs -->
     <div class="sidebar-tabs">
@@ -253,9 +252,15 @@
 
         <div class="sidebar-pane" id="settings">
             <h2>帮助<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+            <div class="ui styled accordion">
+                <div class="active title">
+                    <i class="dropdown icon"></i>图标分析
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <div id="map" class="map"></div>
 
@@ -328,6 +333,18 @@
     </div>
 </div>
 
+<div class="ui modal" id="chartShow">
+    <i class="close icon"></i>
+    <div class="header">
+        图表
+    </div>
+    <div class="image content">
+        <div class="description">
+        <div id="chart" style="width:600px;height:400px"></div>
+        </div>
+    </div>
+</div>
+
 <!--plugins-->
 <script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
 <script src="dist/js/plugins/semantic.min.js"></script>
@@ -348,6 +365,10 @@
 <script src="dist/js/plugins/LeafletPlayback.js"></script>
 <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
 <script src="dist/js/plugins/tree.jquery.js"></script>
+
+
+<!--chart-->
+<script src="dist/js/plugins/echarts.min.js"></script>
 
 <!--analyze-->
 <script src="dist/js/plugins/turf.min.js"></script>
@@ -370,6 +391,7 @@
 <script src="dist/js/treeAction.js"></script>
 <script src="dist/js/basemap.js"></script>
 <script src="dist/js/simlationAction.js"></script>
+<script src="dist/js/echartAction.js"></script>
 <script>
     //    ui script
     $('.menu .item').tab();
@@ -402,6 +424,7 @@
     var marker = L.marker([0, 0]).addTo(map);
     marker.options.opacity = 0;
 
+    createChart();
 </script>
 
 </body>

@@ -31,17 +31,21 @@ $('#analyze').on('click', function () {
             polygon: {
                 allowIntersection: false, // Restricts shapes to simple polygons
                 drawError: {
-                    color: '#e1e100', // Color the shape will turn when intersects
+                    color: '#FF0000', // Color the shape will turn when intersects
                     message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
                 },
                 shapeOptions: {
-                    color: '#bada55'
+                    color: '#FF0000'
                 }
             },
-            circle: {},
+            circle: {
+                shapeOptions: {
+                    color: '#FF0000'
+                }
+            },
             rectangle: {
                 shapeOptions: {
-                    clickable: false
+                    color: '#FF0000'
                 }
             },
             marker: false

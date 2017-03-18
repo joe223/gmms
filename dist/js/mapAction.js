@@ -127,7 +127,9 @@ function addEarthquakePoints() {
                 marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
                 map.setView(e.latlng, 13);
-                marker.bindPopup(createFlightDom(details, details_map)[0].outerHTML).openPopup();
+                var table = createFlightDom(details, details_map)
+                marker.bindPopup(table[0].outerHTML).openPopup();
+                map.addLayer(marker);
             })
         })
 
@@ -150,9 +152,10 @@ function addFlightPoints() {
                 if (data[key].length !== undefined) {
                     var title = '航班' + data[key][7] + '_' + data[key][6];
                     var flightMarker = L.marker(new L.LatLng(data[key][1], data[key][2]), {title: title});
-                    var table = createFlightDom();
+                    var table = createFlightDom(details, details_map);
                     flightMarker.bindPopup(table[0].outerHTML);
                     flightLayer.addLayer(flightMarker);
+                    map.addLayer(flightMarker);
                 }
             }
             map.addLayer(flightLayer);
@@ -285,8 +288,10 @@ function showISOMap() {
             for (var i = 0; i < points.features.length; i++) {
                 points.features[i].properties.z = Math.random() * 10;
             }
+
             var breaks = [0, 1, 2, 3, 4, 5, 6];
             var isolined = turf.isolines(points, 'z', 50, breaks);
+
             isoLayer = L.geoJSON(isolined);
             map.addLayer(isoLayer);
             map.fitBounds(isoLayer.getBounds());

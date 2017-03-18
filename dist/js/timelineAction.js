@@ -22,8 +22,6 @@ function initTimeLine() {
     // Setup timeline
     timeline = new vis.Timeline(document.getElementById('timeline'), timelineData, timelineOptions);
 
-
-
     // Set custom time marker (blue)
     timeline.setCustomTime(startTime);
     // Playback options

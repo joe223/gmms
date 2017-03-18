@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="dist/css/main.css">
     <link rel="stylesheet" href="dist/css/vis.min.css">
     <link rel="stylesheet" href="dist/css/leaflet.draw.css">
+    <link rel="stylesheet" href="dist/css/L.Icon.Pulse.css">
 
     <link rel="shortcut icon" href="favicon.png"/>
 </head>
@@ -191,7 +192,14 @@
                         <img src="dist/css/images/dark.png">
                     </div>
                 </div>
-
+                <div class="title">
+                    <i class="dropdown icon"></i>Toner
+                </div>
+                <div class="content link">
+                    <div class="ui image" id="tonerMap">
+                        <img src="dist/css/images/toner.png" alt="">
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -340,7 +348,7 @@
     </div>
     <div class="image content">
         <div class="description">
-        <div id="chart" style="width:600px;height:400px"></div>
+            <div id="chart" style="width:600px;height:400px"></div>
         </div>
     </div>
 </div>
@@ -365,6 +373,7 @@
 <script src="dist/js/plugins/LeafletPlayback.js"></script>
 <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
 <script src="dist/js/plugins/tree.jquery.js"></script>
+<script src="dist/js/plugins/L.Icon.Pulse.js"></script>
 
 
 <!--chart-->
@@ -416,13 +425,13 @@
     var drawControl = null;
 
     var map = initMap();
-
     var editableLayers = new L.FeatureGroup();
     map.addLayer(editableLayers);
 
 
-    var marker = L.marker([0, 0]).addTo(map);
-    marker.options.opacity = 0;
+    var pulsingIcon = L.icon.pulse({iconSize: [20, 20], color: 'red'});
+    var marker = L.marker([50, 15], {icon: pulsingIcon});
+    //    var marker = L.marker([0, 0]);
 
     createChart();
 </script>

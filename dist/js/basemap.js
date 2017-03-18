@@ -21,6 +21,10 @@ $('#geoQMap').on('click', function () {
     changeBaseMap('geoQMap');
 });
 
+$('#tonerMap').on('click', function () {
+    changeBaseMap('tonerMap');
+})
+
 // 切换底图
 function changeBaseMap(baseLayer) {
     map.eachLayer(function (layer) {

@@ -8,6 +8,7 @@ var googleMap = null;
 var geoQMap = null;
 var tiandiVMap = null;
 var tiandiLMap = null;
+var tonerMap = null;
 var baseMap = null;
 
 function initMap() {
@@ -75,6 +76,14 @@ function initMap() {
         maxZoom: 18,
         minZoom: 3,
     });
+
+    tonerMap = L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        type: 'basemap',
+        maxZoom: 18,
+        minZoom: 3,
+    })
+
     tiandiMap = L.layerGroup([tiandiVMap, tiandiLMap]);
     map.addLayer(tiandiMap);
     baseMap = {
@@ -82,7 +91,8 @@ function initMap() {
         'darkBaseMap': darkBaseMap,
         'gaoDeMap': gaoDeMap,
         'googleMap': googleMap,
-        'geoQMap': geoQMap
+        'geoQMap': geoQMap,
+        'tonerMap': tonerMap
     };
     return map;
 };

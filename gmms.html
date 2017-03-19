@@ -70,36 +70,26 @@
                 </div>
                 <div class="content">
                     <div class="accordion transition visible" style="display:block !important;">
-                        <div class="title">
-                            <i class="icon dropdown"></i>
-                            倾斜测量摄影项目
-                        </div>
-                        <div class="content">
-                            <div class="ui label" id="show3DPointsModel">
-                                <i class="fa fa-map-marker"></i>
-                                <p> 点数据展示</p>
-                            </div>
-                            <div class="ui label" id="show3DLineModel">
-                                <i class="fa fa-road"></i>
-                                <p> 线数据展示</p>
-                            </div>
-                            <div class="ui label" id="show3DPolygonModel">
-                                <i class="fa fa-square"></i>
-                                <p> 面数据展示</p>
-                            </div>
-
-                        </div>
-                        <div class="title">
-                            <i class="icon dropdown"></i>
-                            激光点云项目
-                        </div>
-                        <div class="content">
-
-                        </div>
+                        <div class="ui divider"></div>
+                        <button class="ui basic button" id="show3DPointsModel">
+                            <i class="fa fa-circle"></i>
+                            倾斜摄影测量应用
+                        </button>
+                        <div class="ui divider"></div>
+                        <button class="ui basic button" id="show3DLineModel">
+                            <i class="fa fa-minus"></i>
+                            点云数据在线浏览
+                        </button>
+                        <div class="ui divider"></div>
+                        <button class="ui basic button" id="show3DPolygonModel">
+                            <i class="fa fa-square"></i>
+                            数字城市项目展示
+                        </button>
+                        <div class="ui divider"></div>
                     </div>
                 </div>
                 <div class="title">
-                    <i class="icon dropdown"></i>高速公路测量项目
+                    <i class="icon dropdown"></i>道路监控测量项目
                 </div>
                 <div class="content">
                     <div class="accordion transition visible" style="display:block !important;">
@@ -107,38 +97,43 @@
                             <i class="icon dropdown"></i>测量监测站点
                         </div>
                         <div class="content">
-                            <div class="ui label" id="earthquakeCheckbox">
-                                <i class="fa fa-map-marker"></i>
-                                <p> 点数据展示</p>
+                            <div class="ui checkbox">
+                                <input type="checkbox" id="earthquakeCheckbox">
+                                <label>测量点</label>
                             </div>
-
                         </div>
 
                         <div class="title">
-                            <i class="icon dropdown"></i>测量线路
+                            <i class="icon dropdown"></i>铁路沿线监控
                         </div>
                         <div class="content">
-                            <div class="ui label" id="tracksCheckbox">
-                                <i class="fa fa-road"></i>
-                                <p> 线数据展示</p>
+                            <div class="ui checkbox">
+                                <input type="checkbox" id="tracksCheckbox">
+                                <label>路线监控展示</label>
                             </div>
+
                         </div>
                     </div>
                 </div>
                 <div class="title">
-                    <i class="icon dropdown"></i>数字县区
+                    <i class="icon dropdown"></i>数字市区
                 </div>
                 <div class="content">
-                    <div class="ui label" id="regionCheckbox">
-                        <i class="fa fa-square"></i>
-                        <p> 线数据展示</p>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="regionCheckbox">
+                        <label>监控区域展示</label>
                     </div>
                 </div>
 
                 <div class="title">
                     <i class="dropdown icon"></i>地籍调查
                 </div>
-                <div class="content"></div>
+                <div class="content">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="dijiCheckbox">
+                        <label>地籍调查区划</label>
+                    </div>
+                </div>
             </div>
 
             <!--<div id="tree1">-->
@@ -343,17 +338,17 @@
     </div>
 </div>
 
-<div class="ui modal" id="chartShow">
-    <i class="close icon"></i>
-    <div class="header">
-        图表
-    </div>
-    <div class="image content">
-        <div class="description">
-            <div id="chart" style="width:600px;height:400px"></div>
-        </div>
-    </div>
-</div>
+<!--<div class="ui modal" id="chartShow">-->
+<!--<i class="close icon"></i>-->
+<!--<div class="header">-->
+<!--图表-->
+<!--</div>-->
+<!--<div class="image content">-->
+<!--<div class="description">-->
+<!--<div id="chart" style="width:600px;height:400px"></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 <!--plugins-->
 <script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
@@ -400,7 +395,6 @@
 <script src="dist/js/3dAction.js"></script>
 <script src="dist/js/heatmapAction.js"></script>
 <script src="dist/js/featureAction.js"></script>
-<script src="dist/js/treeAction.js"></script>
 <script src="dist/js/basemap.js"></script>
 <script src="dist/js/simlationAction.js"></script>
 <script src="dist/js/echartAction.js"></script>

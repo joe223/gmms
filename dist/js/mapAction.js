@@ -7,6 +7,7 @@ var flightLayer = null;
 
 var lineLayer = null;
 var polygonLayer = null;
+var dijiLayer = null;
 
 var popup = L.popup();
 
@@ -70,10 +71,28 @@ var details_map = {
     image: '项目展示'
 }
 
-// var warning = L.AwesomeMarkers.icon({
-//     icon: 'warning',
-//     markerColor: 'red'
-// });
+
+var videos = [
+    "<iframe height=360 width=100% src='http://player.youku.com/embed/XODM2ODUyMDUy' frameborder=0 'allowfullscreen'></iframe>",
+    "<iframe height=360 width=100% src='http://player.youku.com/embed/XNDI3MjU0MzY4' frameborder=0 'allowfullscreen'></iframe>",
+    "<iframe height=360 width=100% src='http://player.youku.com/embed/XODkyMTE0NDQ4' frameborder=0 'allowfullscreen'></iframe>",
+    "<iframe height=360 width=100% src='http://player.youku.com/embed/XNjY3NTA4MjIw' frameborder=0 'allowfullscreen'></iframe>"
+];
+
+var icons = [
+    'coffee',
+    'map-marker',
+    'map-signs',
+    'photo',
+    'bus',
+    'bicycle',
+    'cab'
+];
+var colors = [
+    'red',
+    'blue',
+    'yellow'
+];
 
 function showImageGallery() {
     $('#imageGallery').modal('show');
@@ -88,7 +107,7 @@ function createFlightDom(details, details_map) {
     table.append(thead);
     var tbody = $('<tbody></tbody>');
     var index = Math.floor(Math.random() * details.length);
-    data = details[index];
+    var data = details[index];
     var imgSrc = '';
     for (var property in data) {
         var tr = $('<tr></tr>');
@@ -119,7 +138,16 @@ function addEarthquakePoints() {
     if (earthquakeLayer == null) {
         // var earthquakeFeedPointsURL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson';
         var earthquakeFeedPointsURL = 'dist/json/gas_station.geojson'
-        earthquakeLayer = L.geoJson.ajax(earthquakeFeedPointsURL);
+
+        earthquakeLayer = L.geoJson.ajax(earthquakeFeedPointsURL, {
+            pointToLayer: function (feature, latlng) {
+                var icon = L.AwesomeMarkers.icon({
+                    icon: icons[Math.floor(Math.random() * icons.length)],
+                    markerColor: colors[Math.floor(Math.random() * colors.length)]
+                });
+                return L.marker(latlng, {icon: icon});
+            }
+        });
         earthquakeLayer.on('data:loaded', function () {
             map.addLayer(earthquakeLayer);
             map.fitBounds(earthquakeLayer.getBounds());
@@ -166,11 +194,20 @@ function addFlightPoints() {
 //添加线要素
 function addLineStrings() {
     if (lineLayer == null) {
-        var lineLayerURL = 'dist/json/track.geojson';
+        var lineLayerURL = 'dist/json/railway.geojson';
         lineLayer = L.geoJson.ajax(lineLayerURL);
         lineLayer.on('data:loaded', function () {
             map.addLayer(lineLayer);
             map.fitBounds(lineLayer.getBounds());
+            lineLayer.on('click', function (e) {
+                marker.setLatLng(e.latlng);
+                map.setView(e.latlng, 9);
+                var index = Math.floor(Math.random() * details.length);
+                var data = details[index];
+                marker.bindPopup('<h3>' + data['name'] + '段监控</h3>'+ '<p>拍摄时间: 2017-02-01 09:30</p>' + videos[Math.floor(Math.random() * videos.length)]).openPopup();
+                $('.leaflet-popup-content').height(440).width(600);
+                map.addLayer(marker);
+            })
         })
 
     } else {
@@ -191,6 +228,90 @@ var colors_hex = [
     '#204CA3'
 ]
 
+
+function runChartScript(name) {
+    var myChart = echarts.init(document.getElementById('dijiChart'));
+    var option = {
+        backgroundColor: '#FFFFFF',
+
+        title: {
+            text: name + '土地使用状况',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#000000'
+            }
+        },
+
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+
+        visualMap: {
+            show: false,
+            min: 80,
+            max: 300,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series: [
+            {
+                name: '土地使用状况',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '50%'],
+                data: [
+                    {value: Math.floor(Math.random() * 100 + 50), name: '建设用地'},
+                    {value: Math.floor(Math.random() * 100 + 50), name: '公园用地'},
+                    {value: Math.floor(Math.random() * 100 + 50), name: '耕地'},
+                    {value: Math.floor(Math.random() * 100 + 50), name: '保留地'},
+                    {value: Math.floor(Math.random() * 100 + 50), name: '工业用地'}
+                ].sort(function (a, b) {
+                    return a.value - b.value
+                }),
+                roseType: 'angle',
+                toolbox: {
+                    saveAsImage: {show: true}
+                },
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#EF7161',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
+    sidebar.close();
+}
+
 // 添加面要素
 function addPolygonLayer() {
     if (polygonLayer == null) {
@@ -210,79 +331,58 @@ function addPolygonLayer() {
             map.fitBounds(polygonLayer.getBounds());
             polygonLayer.on('click', function (e) {
                 marker.setLatLng(e.latlng);
+                marker.options.opacity = 1;
                 map.setView(e.latlng, 8);
-                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "</h3>").openPopup();
+                //TODO infowindow
+                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "</h3>" + '<div id="dijiChart" style="width:400px;height:300px"></div>').openPopup();
+                map.addLayer(marker);
+                setTimeout(function () {
+                    runChartScript(e.layer.feature.properties.name);
+                }, 250);
             })
         })
     } else {
         map.fitBounds(polygonLayer.getBounds());
         map.addLayer(polygonLayer);
     }
-}
+};
 
-//只显示某要素图层
-function showLayer(layerGroupName) {
-    var groupName = ['point', 'line', 'polygon'];
-    groupName.splice(groupName.indexOf(layerGroupName), 1);
-    if (layerGroupName === 'point') {
-        if (earthquakeLayer != null) {
-            map.addLayer(earthquakeLayer);
-            map.fitBounds(earthquakeLayer.getBounds());
-        } else {
-            addEarthquakePoints();
-        }
-    } else if (layerGroupName === 'line') {
-        if (lineLayer != null) {
-            map.addLayer(lineLayer);
-            map.fitBounds(lineLayer.getBounds());
-        } else {
-            addLineStrings();
-        }
-    } else if (layerGroupName === 'polygon') {
-        if (polygonLayer != null) {
-            map.addLayer(polygonLayer);
-            map.fitBounds(polygonLayer.getBounds());
-        } else {
-            addPolygonLayer();
-        }
+function addDijiLayer() {
+    if (dijiLayer == null) {
+        dijiLayer = L.geoJson.ajax('dist/json/440100.json', {
+            style: function () {
+                var color = colors_hex[Math.floor(Math.random() * colors_hex.length)];
+                return {
+                    "color": color,
+                    "weight": 5,
+                    "opacity": 0.9
+                };
+            }
+        });
+
+        dijiLayer.on('data:loaded', function () {
+            map.addLayer(dijiLayer);
+            map.fitBounds(dijiLayer.getBounds());
+            dijiLayer.on('click', function (e) {
+                marker.setLatLng(e.latlng);
+                marker.options.opacity = 1;
+                map.setView(e.latlng, 10);
+                //TODO infowindow
+                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "</h3>" + '<div id="dijiChart" style="width:400px;height:300px"></div>').openPopup();
+                map.addLayer(marker);
+                setTimeout(function () {
+                    runChartScript(e.layer.feature.properties.name);
+                }, 250);
+            })
+        })
+    } else {
+        map.fitBounds(dijiLayer.getBounds());
+        map.addLayer(dijiLayer);
     }
-    groupName.forEach(function (layer) {
-        if (layer === 'point') {
-            if (earthquakeLayer != null) {
-                map.removeLayer(earthquakeLayer);
-            }
-            if (flightLayer != null) {
-                map.removeLayer(flightLayer);
-            }
-        } else if (layer === 'line') {
-            if (lineLayer != null) {
-                map.removeLayer(lineLayer);
-            }
-        } else if (layer === 'polygon') {
-            if (polygonLayer != null) {
-                map.removeLayer(polygonLayer);
-            }
-        }
-    });
-}
+};
 
 
 var heatmapPointsLayer = null;
-var icons = [
-    'coffee',
-    'map-marker',
-    'map-signs',
-    'photo',
-    'bus',
-    'bicycle',
-    'cab'
-];
-var colors = [
-    'red',
-    'blue',
-    'yellow',
-    'black'
-];
 
 
 function showHeatmap() {
@@ -300,7 +400,6 @@ function showHeatmap() {
                 icon: icons[Math.floor(Math.random() * icons.length)],
                 markerColor: colors[Math.floor(Math.random() * colors.length)]
             });
-            console.log(icons[Math.floor(Math.random() * icons.length)]);
             var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title, icon: icon});
             markers.addLayer(marker);
         }

@@ -56,19 +56,19 @@ function initMap() {
         maxZoom: 18,
         minZoom: 3,
         type: 'basemap',
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        attribution: '&copy; <a href="http://osm.org/copyright">高德地图/a> contributors',
     });
     googleMap = L.tileLayer.chinaProvider('Google.Normal.Map', {
         maxZoom: 18,
         minZoom: 3,
         type: 'basemap',
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        attribution: '&copy; <a href="http://osm.org/copyright">谷歌地图</a> contributors',
     });
     geoQMap = L.tileLayer.chinaProvider('Geoq.Normal.Map', {
         maxZoom: 18,
         minZoom: 3,
         type: 'basemap',
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        attribution: '&copy; <a href="http://osm.org/copyright">GeoQ地图</a> contributors',
     });
 
     darkBaseMap = L.tileLayer('http://120.55.74.101:8012/mapbox-studio-dark/{z}/{x}/{y}.png', {
@@ -87,7 +87,7 @@ function initMap() {
 
 
     var temperature = L.tileLayer('http://{s}.maps.owm.io:8099/5735d67f5836286b007625cd/{z}/{x}/{y}?hash=c0468a6816b9afd0c048cf6ca39f0620', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenWeatherMap</a> contributors',
         type: 'heatmap',
         maxZoom: 18,
         minZoom: 3,

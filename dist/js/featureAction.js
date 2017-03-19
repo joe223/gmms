@@ -3,6 +3,7 @@
  */
 
 $('#flightCheckbox').click(function () {
+    hideMarker();
     if (this.checked) {
         addFlightPoints();
     } else {
@@ -10,41 +11,53 @@ $('#flightCheckbox').click(function () {
     }
 });
 
-$('#earthquakeCheckbox').on('click', function () {
-    addEarthquakePoints();
+$('#earthquakeCheckbox').click(function () {
+    hideMarker();
+    if (this.checked) {
+        addEarthquakePoints();
+    } else {
+        if (earthquakeLayer != null) {
+            map.removeLayer(earthquakeLayer);
+        }
+    }
+
 });
 
-$('#tracksCheckbox').on('click', function () {
-    addLineStrings();
+function hideMarker() {
+    if(marker!=null){
+        map.removeLayer(marker);
+    }
+}
+
+$('#tracksCheckbox').click(function () {
+    hideMarker();
+    if (this.checked) {
+        addLineStrings();
+    } else {
+        if (lineLayer != null) {
+            map.removeLayer(lineLayer);
+        }
+    }
 });
 
-$('#regionCheckbox').on('click', function () {
-    addPolygonLayer();
+$('#regionCheckbox').click(function () {
+    hideMarker();
+    if (this.checked) {
+        addPolygonLayer();
+    } else {
+        if (lineLayer != null) {
+            map.removeLayer(polygonLayer);
+        }
+    }
 });
 
-
-$('#pointTab').click(function () {
-    showLayer('point');
-    $('#earthquakeCheckbox').prop('checked', true);
-    $('#flightCheckbox').prop('checked', false);
-    $('#tracksCheckbox').prop('checked', false);
-    $('#regionCheckbox').prop('checked', false);
-
-})
-
-$('#lineTab').on('click', function () {
-    showLayer('line');
-    $('#earthquakeCheckbox').prop('checked', false);
-    $('#flightCheckbox').prop('checked', false);
-    $('#tracksCheckbox').prop('checked', true);
-    $('#regionCheckbox').prop('checked', false);
-})
-
-
-$('#polygonTab').on('click', function () {
-    showLayer('polygon');
-    $('#earthquakeCheckbox').prop('checked', false);
-    $('#flightCheckbox').prop('checked', false);
-    $('#tracksCheckbox').prop('checked', false);
-    $('#regionCheckbox').prop('checked', true);
+$('#dijiCheckbox').click(function () {
+    hideMarker();
+    if (this.checked) {
+        addDijiLayer();
+    } else {
+        if (dijiLayer != null) {
+            map.removeLayer(dijiLayer);
+        }
+    }
 })

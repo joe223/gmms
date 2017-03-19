@@ -179,17 +179,38 @@ function addLineStrings() {
     }
 }
 
+var colors_hex = [
+    '#E52D34',
+    '#BC252B',
+    '#FBC17B',
+    '#FFF38F',
+    '#D1C029',
+    '#9DE477',
+    '#4B9C1F',
+    '#7CA7FF',
+    '#204CA3'
+]
+
 // 添加面要素
 function addPolygonLayer() {
     if (polygonLayer == null) {
-        polygonLayer = L.geoJson.ajax('dist/json/guang_dong_geo.json');
+        polygonLayer = L.geoJson.ajax('dist/json/guang_dong_geo.json', {
+            style: function () {
+                var color = colors_hex[Math.floor(Math.random() * colors_hex.length)];
+                return {
+                    "color": color,
+                    "weight": 5,
+                    "opacity": 0.9
+                };
+            }
+        });
+
         polygonLayer.on('data:loaded', function () {
             map.addLayer(polygonLayer);
             map.fitBounds(polygonLayer.getBounds());
             polygonLayer.on('click', function (e) {
-                marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
-                map.setView(e.latlng, 6);
+                map.setView(e.latlng, 8);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.name + "</h3>").openPopup();
             })
         })
@@ -244,7 +265,25 @@ function showLayer(layerGroupName) {
         }
     });
 }
+
+
 var heatmapPointsLayer = null;
+var icons = [
+    'coffee',
+    'map-marker',
+    'map-signs',
+    'photo',
+    'bus',
+    'bicycle',
+    'cab'
+];
+var colors = [
+    'red',
+    'blue',
+    'yellow',
+    'black'
+];
+
 
 function showHeatmap() {
     if (heatmap == null) {
@@ -257,8 +296,12 @@ function showHeatmap() {
         for (var i = 0; i < addressPoints.length; i++) {
             var a = addressPoints[i];
             var title = a[2];
-            var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title});
-            // marker.bindPopup(title);
+            var icon = L.AwesomeMarkers.icon({
+                icon: icons[Math.floor(Math.random() * icons.length)],
+                markerColor: colors[Math.floor(Math.random() * colors.length)]
+            });
+            console.log(icons[Math.floor(Math.random() * icons.length)]);
+            var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title, icon: icon});
             markers.addLayer(marker);
         }
         ;

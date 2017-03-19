@@ -35,6 +35,7 @@ function initMap() {
     });
     map.addControl(globalMiniMap);
 
+
     sidebar = L.control.sidebar('sidebar').addTo(map);
 
     // 底图
@@ -77,15 +78,28 @@ function initMap() {
         minZoom: 3,
     });
 
-    tonerMap = L.tileLayer('http://a.tile.stamen.com/toner/{z}/{x}/{y}.png', {
+    tonerMap = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         type: 'basemap',
         maxZoom: 18,
         minZoom: 3,
     })
 
+
+    var temperature = L.tileLayer('http://{s}.maps.owm.io:8099/5735d67f5836286b007625cd/{z}/{x}/{y}?hash=c0468a6816b9afd0c048cf6ca39f0620', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        type: 'heatmap',
+        maxZoom: 18,
+        minZoom: 3,
+        opacity: 0.5
+    });
+
     tiandiMap = L.layerGroup([tiandiVMap, tiandiLMap]);
-    map.addLayer(tiandiMap);
+    map.addLayer(temperature);
+    map.addLayer(geoQMap);
+    temperature.setZIndex(99);
+
+    // map.addLayer(tiandiMap);
     baseMap = {
         'tiandiMap': tiandiMap,
         'darkBaseMap': darkBaseMap,

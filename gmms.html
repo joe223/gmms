@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="dist/css/vis.min.css">
     <link rel="stylesheet" href="dist/css/leaflet.draw.css">
     <link rel="stylesheet" href="dist/css/L.Icon.Pulse.css">
+    <link rel="stylesheet" href="dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="dist/css/leaflet.awesome-markers.css">
 
     <link rel="shortcut icon" href="favicon.png"/>
 </head>
@@ -42,7 +44,7 @@
         <ul role="tablist">
             <li><a href="#home" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i class="fa fa-bars"></i></a>
             </li>
-            <li><a href="#basemap" role="tab" onclick="switcher('off', 'off', 'off', 'off')"><i
+            <li><a href="#basemap" role="tab" onclick="switcher('off', 'off', 'off', 'on')"><i
                     class="fa fa-map"></i></a></li>
             <li><a href="#sim" role="tab" onclick="switcher('off', 'off', 'off', 'off')"><i
                     class="fa fa-line-chart"></i></a>
@@ -145,11 +147,11 @@
         <div class="sidebar-pane" id="basemap">
             <h2>底图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
             <div class="ui styled accordion">
-                <div class="active title">
+                <div class="title">
                     <i class="dropdown icon"></i>
                     天地图
                 </div>
-                <div class="active content ">
+                <div class="content ">
                     <div class="ui image" id="tiandiMap">
                         <img src="dist/css/images/tianDiTuTerrain.jpg">
                     </div>
@@ -164,12 +166,12 @@
                         <img src="dist/css/images/gaode.png">
                     </div>
                 </div>
-                <div class="title">
+                <div class="active title">
                     <i class="dropdown icon">
                     </i>
                     GeoQ
                 </div>
-                <div class="content link">
+                <div class="active content link">
                     <div class="ui image " id="geoQMap">
                         <img src="dist/css/images/geoq.png">
                     </div>
@@ -374,6 +376,7 @@
 <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
 <script src="dist/js/plugins/tree.jquery.js"></script>
 <script src="dist/js/plugins/L.Icon.Pulse.js"></script>
+<script src="dist/js/plugins/leaflet.awesome-markers.min.js"></script>
 
 
 <!--chart-->
@@ -431,7 +434,6 @@
 
     var pulsingIcon = L.icon.pulse({iconSize: [20, 20], color: 'red'});
     var marker = L.marker([50, 15], {icon: pulsingIcon});
-    //    var marker = L.marker([0, 0]);
 
     createChart();
 </script>

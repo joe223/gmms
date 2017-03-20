@@ -14,7 +14,7 @@ var popup = L.popup();
 
 var details = [
     {
-        name: 'H121公路勘察点',
+        name: 'H121巡线监控点',
         type: '一级项目',
         position: 'XX省国道XX县市',
         contract: '项目合同',
@@ -25,7 +25,7 @@ var details = [
         image: 'http://www.honlitech.com/d/file/contents/2016/03/56d7e3124368c.png'
     },
     {
-        name: 'M3812 省道勘察点',
+        name: 'M3812巡线监控点',
         type: '二级项目',
         position: 'XX省国道XX县市',
         contract: '项目合同',
@@ -47,7 +47,7 @@ var details = [
         image: 'http://www.lidar360.com/wp-content/uploads/2016/10/Viewernew-1-1024x555.png'
     },
     {
-        name: 'M3ds12 县道勘察点',
+        name: 'M3ds12巡线监控点',
         type: '三级项目',
         position: 'XX省国道XX县市',
         contract: '项目合同',
@@ -157,10 +157,10 @@ function addEarthquakePoints() {
                 map.setView(e.latlng, 13);
                 var table = createFlightDom(details, details_map)
                 marker.bindPopup(table[0].outerHTML).openPopup();
+                $('.leaflet-popup-content-wrapper').width(440);
                 map.addLayer(marker);
             })
         })
-
     } else {
         map.fitBounds(earthquakeLayer.getBounds());
         map.addLayer(earthquakeLayer);

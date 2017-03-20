@@ -24,7 +24,7 @@ $('#earthquakeCheckbox').click(function () {
 });
 
 function hideMarker() {
-    if(marker!=null){
+    if (marker != null) {
         map.removeLayer(marker);
     }
 }
@@ -37,10 +37,10 @@ $('#tracksCheckbox').click(function () {
         if (lineLayer != null) {
             map.removeLayer(lineLayer);
         }
-        if(bufferLayer!=null){
+        if (bufferLayer != null) {
             map.removeLayer(bufferLayer);
         }
-        if(lineMarkerLayer!=null){
+        if (lineMarkerLayer != null) {
             map.removeLayer(lineMarkerLayer);
         }
     }
@@ -67,4 +67,16 @@ $('#dijiCheckbox').click(function () {
         }
     }
 });
+
+
+$('#jiantong').click(function () {
+    if (this.checked) {
+        map.addLayer(sub_com);
+        map.fitBounds(sub_com.getBounds());
+    } else {
+        if (sub_com != null) {
+            map.removeLayer(sub_com);
+        }
+    }
+})
 

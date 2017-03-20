@@ -49,7 +49,8 @@
             <li><a href="#sim" role="tab" onclick="switcher('off', 'off', 'off', 'off')"><i
                     class="fa fa-line-chart"></i></a>
             </li>
-            <li><a href="#heatmap" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i class="fa fa-globe"></i></a>
+            <li><a href="#heatmap" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i
+                    class="fa fa-globe"></i></a>
             </li>
             <li><a href="#about" role="tab"><i class="fa fa-copyright"></i></a></li>
         </ul>
@@ -269,8 +270,16 @@
         </div>
 
         <div class="sidebar-pane" id="about">
-            <h2>关于<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-
+            <h2>关于公司<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+            <div class="ui styled accordion">
+                <div class="active title">建通 子公司分布</div>
+                <div class="active content">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="jiantong" checked="true">
+                        <label>子公司分布</label>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="sidebar-pane" id="settings">
@@ -422,6 +431,8 @@
     var bufferLayer = null;
     var lineMarkerLayer = null;
 
+    var sub_com = null;
+
     //    draw control
     var drawControl = null;
 
@@ -432,6 +443,9 @@
 
     var pulsingIcon = L.icon.pulse({iconSize: [20, 20], color: 'red'});
     var marker = L.marker([50, 15], {icon: pulsingIcon});
+
+    showSubCom();
+
 </script>
 
 </body>

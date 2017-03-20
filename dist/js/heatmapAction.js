@@ -60,7 +60,7 @@ $('#analyze').on('click', function () {
         var geoJSONData = null;
         if (event.layerType == 'circle') {
             var center = turf.point([layer._latlng.lng, layer._latlng.lat]);
-            var radius = layer._mRadius/1000;
+            var radius = layer._mRadius / 1000;
             var steps = 30;
             var units = 'kilometers';
             geoJSONData = turf.circle(center, radius, steps, units);
@@ -74,8 +74,52 @@ $('#analyze').on('click', function () {
             geoJSONData = turf.polygon([points]);
         }
         var analyzePolygon = turf.featureCollection(geoJSONData);
-        var ptsWithin = turf.within(spatialAnalyzeGeoJSON, analyzePolygon);
+
+        var points = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [111.6318, 21.5323]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [111.6318, 21.5523]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [111.6318, 21.5623]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [111.3318, 21.5223]
+                    }
+                }, {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [113.36318, 23.1523]
+                    }
+                }
+            ]
+        };
+
+        var ptsWithin = turf.within(points, analyzePolygon);
+        console.log(JSON.stringify(analyzePolygon));
+        console.log(JSON.stringify(points));
         console.log(ptsWithin);
     });
-
 });

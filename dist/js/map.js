@@ -19,8 +19,8 @@ function initMap() {
     var map = L.map('map', {
         zoomControl: false,
         miniZoom: 3,
-        zoom: 8,
-        center: [23.324, 113.434],
+        zoom: 4,
+        center: [27.324, 113.434],
     })
 
     // 全屏地图控件

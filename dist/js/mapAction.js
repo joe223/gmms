@@ -99,10 +99,52 @@ function showImageGallery() {
     sidebar.close();
 }
 
-function createFlightDom(details, details_map) {
+var subComNameMap = {
+    'name': '子公司名',
+    'address': '地址',
+    'email': '邮件',
+    'telephone': '电话'
+};
 
+function createSubComDom(subCom) {
     var table = $('<table class="ui celled striped table info-table"></table>');
+    var thead = $('<thead><tr><th colspan="2">' + subCom['properties']['name'] + '</th></thead>');
+    table.append(thead);
+    var tbody = $('<tbody></tbody>');
+    for (var property in subCom['properties']) {
+        var tr = $('<tr></tr>');
+        var tdOne = $('<td></td>').text(subComNameMap[property]);
+        var tdTwo = $('<td></td>').text(subCom['properties'][property]);
+        tr.append(tdOne);
+        tr.append(tdTwo);
+        tbody.append(tr);
+    }
+    table.append(tbody);
+    return table;
+}
 
+function showSubCom() {
+    sub_com = L.geoJSON.ajax('dist/json/sub_com.json', {
+        pointToLayer: function (feature, latlng) {
+            var icon = L.icon.pulse({iconSize: [20, 20], color: 'red'});
+            return L.marker(latlng, {icon: icon});
+        }
+    });
+    sub_com.on('click', function (e) {
+        marker.setLatLng(e.latlng);
+        map.setView(e.latlng, 5);
+        var table = createSubComDom(e.layer.feature);
+        marker.bindPopup(table[0].outerHTML).openPopup();
+        $('.leaflet-popup-content-wrapper').width(440);
+        map.addLayer(marker);
+    });
+    map.addLayer(sub_com);
+    map.fitBounds(sub_com.getBounds());
+};
+
+
+function createFlightDom(details, details_map) {
+    var table = $('<table class="ui celled striped table info-table"></table>');
     var thead = $('<thead><tr><th colspan="2">项目简介</th></thead>');
     table.append(thead);
     var tbody = $('<tbody></tbody>');

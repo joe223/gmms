@@ -483,6 +483,7 @@ function addDijiLayer() {
                 marker.options.opacity = 1;
                 map.setView(e.latlng, 10);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.name + "土地使用情况</h3>" + '<div id="dijiChart" style="width:380px;height:300px"></div>').openPopup();
+                $('.leaflet-popup-content-wrapper').width(420);
                 map.addLayer(marker);
                 setTimeout(function () {
                     runDijiChartScript();

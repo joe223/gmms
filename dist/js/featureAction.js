@@ -37,6 +37,9 @@ $('#tracksCheckbox').click(function () {
         if (lineLayer != null) {
             map.removeLayer(lineLayer);
         }
+        if(bufferLayer!=null){
+            map.removeLayer(bufferLayer);
+        }
     }
 });
 

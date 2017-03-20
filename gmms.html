@@ -49,9 +49,9 @@
             <li><a href="#sim" role="tab" onclick="switcher('off', 'off', 'off', 'off')"><i
                     class="fa fa-line-chart"></i></a>
             </li>
-            <li><a href="#heatmap" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i
-                    class="fa fa-globe"></i></a>
+            <li><a href="#heatmap" role="tab" onclick="switcher('off', 'on', 'off', 'on')"><i class="fa fa-globe"></i></a>
             </li>
+            <li><a href="#about" role="tab"><i class="fa fa-copyright"></i></a></li>
         </ul>
 
         <ul role="tablist">
@@ -218,10 +218,10 @@
         </div>
 
         <div class="sidebar-pane" id="sim">
-            <h2>要素数据播报<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+            <h2>XX工程进度播报<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
             <div class="ui accordion styled">
                 <div class="active title">
-                    <i class="dropdown icon"></i>用户王二小轨迹动态模拟
+                    <i class="dropdown icon"></i>XX工程进度展示
                 </div>
                 <div class="active content">
                     <div class="ui image" id="trackSimulation">
@@ -271,13 +271,14 @@
             </div>
         </div>
 
+        <div class="sidebar-pane" id="about">
+            <h2>关于<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+
+        </div>
+
         <div class="sidebar-pane" id="settings">
             <h2>帮助<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
-            <!--<div class="ui styled accordion">-->
-                <!--<div class="active title">-->
-                    <!--<i class="dropdown icon"></i>图标分析-->
-                <!--</div>-->
-            <!--</div>-->
+
         </div>
     </div>
 </div>
@@ -421,6 +422,8 @@
     var timeline = null;
     var playback = null;
     var spatialAnalyzeGeoJSON = null;
+    var bufferLayer = null;
+    var lineMarkerLayer = null;
 
     //    draw control
     var drawControl = null;

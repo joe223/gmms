@@ -195,10 +195,38 @@ function addFlightPoints() {
 function addLineStrings() {
     if (lineLayer == null) {
         var lineLayerURL = 'dist/json/railway.geojson';
-        lineLayer = L.geoJson.ajax(lineLayerURL);
+
+        lineLayer = L.geoJson.ajax(lineLayerURL, {
+            style: {
+                "color": "#312fff",
+                "weight": 2,
+                "opacity": 1,
+                "width": 3
+            }
+        });
+
+        L.Util.ajax(lineLayerURL).then(function (data) {
+            var unit = 'meters';
+
+            // for(var i=0;i<data.features.length;i++){
+            //
+            // }
+
+            var buffered = turf.buffer(data, 1000, unit);
+            bufferLayer = L.geoJSON(buffered, {
+                style: {
+                    "fillColor":'#312fff',
+                    "color": "#312fff",
+                    "weight": 5,
+                    "opacity": 0.2,
+                    "fillOpacity": 0.2
+                }
+            }).addTo(map);
+        });
+
         lineLayer.on('data:loaded', function () {
-            map.addLayer(lineLayer);
             map.fitBounds(lineLayer.getBounds());
+            map.addLayer(lineLayer);
             lineLayer.on('click', function (e) {
                 marker.setLatLng(e.latlng);
                 map.setView(e.latlng, 9);
@@ -213,6 +241,7 @@ function addLineStrings() {
     } else {
         map.fitBounds(lineLayer.getBounds());
         map.addLayer(lineLayer);
+        map.addLayer(bufferLayer);
     }
 }
 
@@ -440,7 +469,7 @@ function addDijiLayer() {
                 marker.setLatLng(e.latlng);
                 marker.options.opacity = 1;
                 map.setView(e.latlng, 10);
-                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "土地使用情况</h3>" + '<div id="dijiChart" style="width:400px;height:300px"></div>').openPopup();
+                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "土地使用情况</h3>" + '<div id="dijiChart" style="width:380px;height:300px"></div>').openPopup();
                 map.addLayer(marker);
                 setTimeout(function () {
                     runDijiChartScript();

@@ -66,6 +66,9 @@ function switchFeatureLayer(switcher) {
         if (lineLayer != null) {
             map.removeLayer(lineLayer);
         }
+        if(bufferLayer!=null){
+            map.removeLayer(bufferLayer);
+        }
     } else {
         addEarthquakePoints();
     }

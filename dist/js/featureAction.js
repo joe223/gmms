@@ -40,6 +40,9 @@ $('#tracksCheckbox').click(function () {
         if(bufferLayer!=null){
             map.removeLayer(bufferLayer);
         }
+        if(lineMarkerLayer!=null){
+            map.removeLayer(lineMarkerLayer);
+        }
     }
 });
 

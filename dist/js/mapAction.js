@@ -207,15 +207,10 @@ function addLineStrings() {
 
         L.Util.ajax(lineLayerURL).then(function (data) {
             var unit = 'meters';
-
-            // for(var i=0;i<data.features.length;i++){
-            //
-            // }
-
             var buffered = turf.buffer(data, 1000, unit);
             bufferLayer = L.geoJSON(buffered, {
                 style: {
-                    "fillColor":'#312fff',
+                    "fillColor": '#312fff',
                     "color": "#312fff",
                     "weight": 5,
                     "opacity": 0.2,
@@ -224,10 +219,22 @@ function addLineStrings() {
             }).addTo(map);
         });
 
-        lineLayer.on('data:loaded', function () {
-            map.fitBounds(lineLayer.getBounds());
-            map.addLayer(lineLayer);
-            lineLayer.on('click', function (e) {
+        lineMarkerLayer = L.geoJson.ajax('dist/json/railway_point.geojson', {
+            pointToLayer: function (feature, latlng) {
+                // var smallIcon = L.Icon({
+                //     options: {
+                //         iconSize: [27, 27],
+                //         iconAnchor: [13, 27],
+                //         popupAnchor:  [1, -24],
+                //         iconUrl: 'dist/css/favicon.png'
+                //     }
+                // });
+                return L.marker(latlng);
+            }
+        });
+        lineMarkerLayer.on('data:loaded', function () {
+            map.addLayer(lineMarkerLayer);
+            lineMarkerLayer.on('click', function (e) {
                 marker.setLatLng(e.latlng);
                 map.setView(e.latlng, 9);
                 var index = Math.floor(Math.random() * details.length);
@@ -236,12 +243,18 @@ function addLineStrings() {
                 $('.leaflet-popup-content').height(440).width(600);
                 map.addLayer(marker);
             })
+        });
+
+        lineLayer.on('data:loaded', function () {
+            map.fitBounds(lineLayer.getBounds());
+            map.addLayer(lineLayer);
         })
 
     } else {
         map.fitBounds(lineLayer.getBounds());
         map.addLayer(lineLayer);
         map.addLayer(bufferLayer);
+        map.addLayer(lineMarkerLayer);
     }
 }
 

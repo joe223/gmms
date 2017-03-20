@@ -23,7 +23,56 @@ $('#geoQMap').on('click', function () {
 
 $('#tonerMap').on('click', function () {
     changeBaseMap('tonerMap');
-})
+});
+
+$('#globalPrecipitation').click(function () {
+    hideMarker();
+    if (this.checked) {
+        map.addLayer(precipitation);
+        precipitation.setZIndex(99);
+    } else {
+        if (precipitation != null) {
+            map.removeLayer(precipitation);
+        }
+    }
+});
+
+$('#globalWind').click(function () {
+    hideMarker();
+    if (this.checked) {
+        map.addLayer(wind);
+        wind.setZIndex(99);
+    } else {
+        if (precipitation != null) {
+            map.removeLayer(wind);
+        }
+    }
+});
+
+$('#globalPressure').click(function () {
+    hideMarker();
+    if (this.checked) {
+        map.addLayer(pressure);
+        pressure.setZIndex(99);
+    } else {
+        if (pressure != null) {
+            map.removeLayer(pressure);
+        }
+    }
+});
+
+$('#globalTemperature').click(function () {
+    hideMarker();
+    if (this.checked) {
+        map.addLayer(temperature);
+        temperature.setZIndex(99);
+    } else {
+        if (precipitation != null) {
+            map.removeLayer(temperature);
+        }
+    }
+});
+
 
 // 切换底图
 function changeBaseMap(baseLayer) {

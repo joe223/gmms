@@ -45,7 +45,7 @@ $('#regionCheckbox').click(function () {
     if (this.checked) {
         addPolygonLayer();
     } else {
-        if (lineLayer != null) {
+        if (polygonLayer != null) {
             map.removeLayer(polygonLayer);
         }
     }
@@ -60,4 +60,5 @@ $('#dijiCheckbox').click(function () {
             map.removeLayer(dijiLayer);
         }
     }
-})
+});
+

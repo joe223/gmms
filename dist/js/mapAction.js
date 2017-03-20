@@ -204,7 +204,7 @@ function addLineStrings() {
                 map.setView(e.latlng, 9);
                 var index = Math.floor(Math.random() * details.length);
                 var data = details[index];
-                marker.bindPopup('<h3>' + data['name'] + '段监控</h3>'+ '<p>拍摄时间: 2017-02-01 09:30</p>' + videos[Math.floor(Math.random() * videos.length)]).openPopup();
+                marker.bindPopup('<h3>' + data['name'] + '段监控</h3>' + '<p>拍摄时间: 2017-02-01 09:30</p>' + videos[Math.floor(Math.random() * videos.length)]).openPopup();
                 $('.leaflet-popup-content').height(440).width(600);
                 map.addLayer(marker);
             })
@@ -229,86 +229,158 @@ var colors_hex = [
 ]
 
 
-function runChartScript(name) {
+function runDijiChartScript() {
     var myChart = echarts.init(document.getElementById('dijiChart'));
     var option = {
-        backgroundColor: '#FFFFFF',
-
-        title: {
-            text: name + '土地使用状况',
-            left: 'center',
-            top: 20,
-            textStyle: {
-                color: '#000000'
-            }
-        },
-
         tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
-
-        visualMap: {
-            show: false,
-            min: 80,
-            max: 300,
-            inRange: {
-                colorLightness: [0, 1]
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {show: true}
             }
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['建设用地', '公园用地', '耕地', '保留地', '工业用地']
         },
         series: [
             {
-                name: '土地使用状况',
+                name: '土地使用情况',
                 type: 'pie',
-                radius: '55%',
-                center: ['50%', '50%'],
-                data: [
-                    {value: Math.floor(Math.random() * 100 + 50), name: '建设用地'},
-                    {value: Math.floor(Math.random() * 100 + 50), name: '公园用地'},
-                    {value: Math.floor(Math.random() * 100 + 50), name: '耕地'},
-                    {value: Math.floor(Math.random() * 100 + 50), name: '保留地'},
-                    {value: Math.floor(Math.random() * 100 + 50), name: '工业用地'}
-                ].sort(function (a, b) {
-                    return a.value - b.value
-                }),
-                roseType: 'angle',
-                toolbox: {
-                    saveAsImage: {show: true}
-                },
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
                 label: {
                     normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
                         textStyle: {
-                            color: 'rgba(255, 255, 255, 0.3)'
+                            fontSize: '30',
+                            fontWeight: 'bold'
                         }
                     }
                 },
                 labelLine: {
                     normal: {
-                        lineStyle: {
-                            color: 'rgba(255, 255, 255, 0.3)'
-                        },
-                        smooth: 0.2,
-                        length: 10,
-                        length2: 20
+                        show: false
                     }
                 },
-                itemStyle: {
-                    normal: {
-                        color: '#EF7161',
-                        shadowBlur: 200,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                },
-
-                animationType: 'scale',
-                animationEasing: 'elasticOut',
-                animationDelay: function (idx) {
-                    return Math.random() * 200;
-                }
+                data: [
+                    {value: Math.floor(Math.random() * 400 + 50), name: '建设用地'},
+                    {value: Math.floor(Math.random() * 300 + 50), name: '公园用地'},
+                    {value: Math.floor(Math.random() * 250 + 50), name: '耕地'},
+                    {value: Math.floor(Math.random() * 400 + 50), name: '保留地'},
+                    {value: Math.floor(Math.random() * 400 + 50), name: '工业用地'}
+                ]
             }
         ]
     };
     myChart.setOption(option);
+    sidebar.close();
+}
+
+function runPolygonChart() {
+    var chart = echarts.init(document.getElementById('polygonChart'));
+    var option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data: ['PM2.5', 'PM10', 'O3', 'NO2', 'SO2', 'CO', '气压', '湿度', '风']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: 'PM2',
+                type: 'bar',
+                data: [320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name: 'PM10',
+                type: 'bar',
+                // stack: '广告',
+                data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: 'O3',
+                type: 'bar',
+                // stack: '广告',
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: 'NO2',
+                type: 'bar',
+                // stack: '广告',
+                data: [150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name: 'SO2',
+                type: 'bar',
+                data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+                markLine: {
+                    lineStyle: {
+                        normal: {
+                            type: 'dashed'
+                        }
+                    },
+                    data: [
+                        [{type: 'min'}, {type: 'max'}]
+                    ]
+                }
+            },
+            {
+                name: 'CO',
+                type: 'bar',
+                barWidth: 5,
+                // stack: '搜索引擎',
+                data: [620, 732, 701, 734, 1090, 1130, 1120]
+            },
+            {
+                name: '气压',
+                type: 'bar',
+                // stack: '搜索引擎',
+                data: [120, 132, 101, 134, 290, 230, 220]
+            },
+            {
+                name: '湿度',
+                type: 'bar',
+                // stack: '搜索引擎',
+                data: [60, 72, 71, 74, 190, 130, 110]
+            },
+            {
+                name: '风',
+                type: 'bar',
+                // stack: '搜索引擎',
+                data: [62, 82, 91, 84, 109, 110, 120]
+            }
+        ]
+    };
+    chart.setOption(option);
     sidebar.close();
 }
 
@@ -333,11 +405,12 @@ function addPolygonLayer() {
                 marker.setLatLng(e.latlng);
                 marker.options.opacity = 1;
                 map.setView(e.latlng, 8);
-                //TODO infowindow
-                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "</h3>" + '<div id="dijiChart" style="width:400px;height:300px"></div>').openPopup();
+
+                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "一周空气质量监控</h3>" + '<div id="polygonChart" style="width:520px;height:300px"></div>').openPopup();
+                $('.leaflet-popup-content-wrapper').width(560);
                 map.addLayer(marker);
                 setTimeout(function () {
-                    runChartScript(e.layer.feature.properties.name);
+                    runPolygonChart();
                 }, 250);
             })
         })
@@ -367,11 +440,10 @@ function addDijiLayer() {
                 marker.setLatLng(e.latlng);
                 marker.options.opacity = 1;
                 map.setView(e.latlng, 10);
-                //TODO infowindow
-                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "</h3>" + '<div id="dijiChart" style="width:400px;height:300px"></div>').openPopup();
+                marker.bindPopup("<h3>" + e.layer.feature.properties.name + "土地使用情况</h3>" + '<div id="dijiChart" style="width:400px;height:300px"></div>').openPopup();
                 map.addLayer(marker);
                 setTimeout(function () {
-                    runChartScript(e.layer.feature.properties.name);
+                    runDijiChartScript();
                 }, 250);
             })
         })
@@ -418,9 +490,6 @@ function showHeatmap() {
     // 加载空间分析图层
     L.Util.ajax("dist/json/pp1.geojson").then(function (points) {
         spatialAnalyzeGeoJSON = points;
-        spatialAnalyzeGeoJSON.features.forEach(function (point) {
-            point.geometry.coordinates = [point.geometry.coordinates[1], point.geometry.coordinates[0]];
-        })
     });
 }
 

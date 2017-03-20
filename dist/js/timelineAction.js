@@ -3,6 +3,22 @@
  */
 
 function initTimeLine() {
+
+    var icons = [
+        'coffee',
+        'map-marker',
+        'map-signs',
+        'photo',
+        'bus',
+        'bicycle',
+        'cab'
+    ];
+    var colors = [
+        'red',
+        'blue',
+        'yellow'
+    ];
+
     // Get start/end times
     var startTime = new Date(demoTracks[0].properties.time[0]);
     var endTime = new Date(demoTracks[0].properties.time[demoTracks[0].properties.time.length - 1]);
@@ -42,7 +58,6 @@ function initTimeLine() {
                 if (!result.radius) {
                     result.radius = 1;
                 }
-
                 return new L.CircleMarker(latlng, result);
             }
         },

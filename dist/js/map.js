@@ -10,6 +10,10 @@ var tiandiVMap = null;
 var tiandiLMap = null;
 var tonerMap = null;
 var baseMap = null;
+var precipitation = null;
+var wind = null;
+var pressure = null;
+var temperature = null;
 
 function initMap() {
     var map = L.map('map', {
@@ -86,7 +90,31 @@ function initMap() {
     })
 
 
-    var temperature = L.tileLayer('http://{s}.maps.owm.io:8099/5735d67f5836286b007625cd/{z}/{x}/{y}?hash=c0468a6816b9afd0c048cf6ca39f0620', {
+    temperature = L.tileLayer('http://{s}.maps.owm.io:8099/5735d67f5836286b007625cd/{z}/{x}/{y}?hash=c0468a6816b9afd0c048cf6ca39f0620', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenWeatherMap</a> contributors',
+        type: 'heatmap',
+        maxZoom: 18,
+        minZoom: 3,
+        opacity: 0.5
+    });
+
+    precipitation = L.tileLayer('http://{s}.maps.owm.io:8099/57456d1237fb4e01009cbb17/{z}/{x}/{y}?hash=c0468a6816b9afd0c048cf6ca39f0620', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenWeatherMap</a> contributors',
+        type: 'heatmap',
+        maxZoom: 18,
+        minZoom: 3,
+        opacity: 0.5
+    });
+
+    wind = L.tileLayer('http://{s}.maps.owm.io:8099/5735d67f5836286b0076267b/{z}/{x}/{y}?hash=c0468a6816b9afd0c048cf6ca39f0620', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenWeatherMap</a> contributors',
+        type: 'heatmap',
+        maxZoom: 18,
+        minZoom: 3,
+        opacity: 0.5
+    });
+
+    pressure = L.tileLayer('http://{s}.maps.owm.io:8099/5837ee50f77ebe01008ef68d/{z}/{x}/{y}?hash=c0468a6816b9afd0c048cf6ca39f0620', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenWeatherMap</a> contributors',
         type: 'heatmap',
         maxZoom: 18,
@@ -95,7 +123,6 @@ function initMap() {
     });
 
     tiandiMap = L.layerGroup([tiandiVMap, tiandiLMap]);
-    map.addLayer(temperature);
     map.addLayer(geoQMap);
     temperature.setZIndex(99);
 

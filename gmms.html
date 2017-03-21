@@ -279,6 +279,14 @@
                         <label>子公司分布</label>
                     </div>
                 </div>
+
+                <div class="title">建通公司全球业务分布示意图</div>
+                <div class="content">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="globalBusiness">
+                        <label>全球业务分布示意图</label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -445,6 +453,11 @@
     var marker = L.marker([50, 15], {icon: pulsingIcon});
 
     showSubCom();
+
+//    L.geoJSON.ajax('dist/json/THA.geo.json').addTo(map);
+//    L.geoJSON.ajax('dist/json/ZAF.geo.json').addTo(map);
+//    L.geoJSON.ajax('dist/json/CHL.geo.json').addTo(map);
+    L.geoJSON.ajax('dist/json/countries.geo.json').addTo(map);
 
 </script>
 

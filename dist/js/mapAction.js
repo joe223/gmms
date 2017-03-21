@@ -130,16 +130,19 @@ function showSubCom() {
             return L.marker(latlng, {icon: icon});
         }
     });
+    sub_com.on('data:loaded', function () {
+        map.addLayer(sub_com);
+        map.fitBounds(sub_com.getBounds());
+    });
     sub_com.on('click', function (e) {
         marker.setLatLng(e.latlng);
-        map.setView(e.latlng, 5);
+        // map.setView(e.latlng, 5);
         var table = createSubComDom(e.layer.feature);
         marker.bindPopup(table[0].outerHTML).openPopup();
         $('.leaflet-popup-content-wrapper').width(440);
         map.addLayer(marker);
     });
-    map.addLayer(sub_com);
-    map.fitBounds(sub_com.getBounds());
+
 };
 
 

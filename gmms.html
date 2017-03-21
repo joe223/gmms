@@ -71,7 +71,6 @@
                 </div>
                 <div class="content">
                     <div class="accordion transition visible" style="display:block !important;">
-                        <div class="ui divider"></div>
                         <button class="ui basic button" id="show3DPointsModel">
                             <i class="fa fa-circle"></i>
                             倾斜摄影测量应用
@@ -86,34 +85,20 @@
                             <i class="fa fa-square"></i>
                             数字城市项目展示
                         </button>
-                        <div class="ui divider"></div>
                     </div>
                 </div>
                 <div class="title">
                     <i class="icon dropdown"></i>电力巡线监控项目
                 </div>
                 <div class="content">
-                    <div class="accordion transition visible" style="display:block !important;">
-                        <div class="title">
-                            <i class="icon dropdown"></i>监测站点
-                        </div>
-                        <div class="content">
-                            <div class="ui checkbox">
-                                <input type="checkbox" id="earthquakeCheckbox">
-                                <label>测量点</label>
-                            </div>
-                        </div>
-
-                        <div class="title">
-                            <i class="icon dropdown"></i>电力巡线沿路监控
-                        </div>
-                        <div class="content">
-                            <div class="ui checkbox">
-                                <input type="checkbox" id="tracksCheckbox">
-                                <label>路线监控展示</label>
-                            </div>
-
-                        </div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="earthquakeCheckbox">
+                        <label>监测站点</label>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="tracksCheckbox">
+                        <label>电力巡线沿路监控</label>
                     </div>
                 </div>
                 <div class="title">
@@ -124,21 +109,25 @@
                         <input type="checkbox" id="regionCheckbox">
                         <label>数字城市空气质量监控</label>
                     </div>
+                    <div class="ui divider"></div>
                     <div class="ui checkbox">
                         <input type="checkbox" id="globalTemperature">
-                        <label>全球温色斑度图</label>
+                        <label>温度色斑度图</label>
                     </div>
+                    <div class="ui divider"></div>
                     <div class="ui checkbox">
                         <input type="checkbox" id="globalWind">
-                        <label>全球风速色斑图</label>
+                        <label>风速色斑图</label>
                     </div>
+                    <div class="ui divider"></div>
                     <div class="ui checkbox">
                         <input type="checkbox" id="globalPressure">
-                        <label>全球气压色斑图</label>
+                        <label>气压色斑图</label>
                     </div>
+                    <div class="ui divider"></div>
                     <div class="ui checkbox">
                         <input type="checkbox" id="globalPrecipitation">
-                        <label>全球降水色斑图</label>
+                        <label>降水色斑图</label>
                     </div>
                 </div>
 
@@ -231,7 +220,7 @@
         </div>
 
         <div class="sidebar-pane" id="heatmap">
-            <h2>上下班人流量热力图<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+            <h2>空间分析<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
 
             <div class="ui styled accordion">
                 <div class="title">
@@ -266,6 +255,16 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="title">
+                    <i class="icon dropdown"></i>时区分析
+                </div>
+                <div class="content">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="timeZone">
+                        <label> 时区</label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -283,8 +282,23 @@
                 <div class="title">建通公司全球业务分布示意图</div>
                 <div class="content">
                     <div class="ui checkbox">
-                        <input type="checkbox" id="globalBusiness">
-                        <label>全球业务分布示意图</label>
+                        <input type="checkbox" id="zafBusiness">
+                        <label>South Africa工程施工分布</label>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="thaBusiness">
+                        <label>Thiland 项目施工分布</label>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="indBusiness">
+                        <label>Indonesia 工程施工分布</label>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="bolBusiness">
+                        <label>Bolivia 项目施工分布</label>
                     </div>
                 </div>
             </div>
@@ -308,9 +322,11 @@
         倾斜摄影测量项目
     </div>
 
-    <embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'
-           allowFullScreen='true' quality='high' width='100%' height='100%' align='middle'
-           allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+    <iframe src="http://flisionpro.oss-cn-shenzhen.aliyuncs.com/danxiaDemo/App/demo.html" width='100%' height='100%'
+            frameborder="0"></iframe>
+    <!--<embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'-->
+    <!--allowFullScreen='true' quality='high' width='100%' height='100%' align='middle'-->
+    <!--allowScriptAccess='always' type='application/x-shockwave-flash'></embed>-->
 
 </div>
 
@@ -319,10 +335,10 @@
     <div class="header">
         激光点云采集项目
     </div>
-
-    <embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'
-           quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'
-           mode='transparent' type='application/x-shockwave-flash'></embed>
+    <iframe src="http://demo.flision.net/pointspirit_nologin/" frameborder="0" width='100%' height='100%'></iframe>
+    <!--<embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'-->
+    <!--quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'-->
+    <!--mode='transparent' type='application/x-shockwave-flash'></embed>-->
 
 </div>
 
@@ -332,9 +348,12 @@
         激光点云采集项目
     </div>
 
-    <embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'
-           quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'
-           mode='transparent' type='application/x-shockwave-flash'></embed>
+    <iframe height=100% width=100% src='http://player.youku.com/embed/XMTI5MDA4MTQ3Mg==' frameborder=0
+    'allowfullscreen'></iframe>
+
+    <!--<embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'-->
+           <!--quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'-->
+           <!--mode='transparent' type='application/x-shockwave-flash'></embed>-->
 
 </div>
 
@@ -379,7 +398,7 @@
 <script src="dist/js/plugins/leaflet-sidebar.js"></script>
 <script src="dist/js/plugins/tdtLayer.js"></script>
 <script src="dist/js/plugins/Control.GlobeMiniMap.js"></script>
-<script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>
+<!--<script src="dist/js/plugins/L.Polyline.SnakeAnim.js"></script>-->
 <script src="dist/js/plugins/route.js"></script>
 <script src="dist/js/plugins/leaflet-heat.js"></script>
 <script src="dist/js/plugins/leaflet.ajax.js"></script>
@@ -388,7 +407,7 @@
 <script src="dist/js/plugins/vis.min.js"></script>
 <script src="dist/js/plugins/LeafletPlayback.js"></script>
 <script src="dist/js/plugins/leaflet.markercluster-src.js"></script>
-<script src="dist/js/plugins/tree.jquery.js"></script>
+<!--<script src="dist/js/plugins/tree.jquery.js"></script>-->
 <script src="dist/js/plugins/L.Icon.Pulse.js"></script>
 <script src="dist/js/plugins/leaflet.awesome-markers.min.js"></script>
 <script src="dist/js/plugins/L.Terminator.js"></script>
@@ -398,7 +417,6 @@
 
 <!--analyze-->
 <script src="dist/js/plugins/turf.min.js"></script>
-
 
 <!--draw-->
 <script src="dist/js/plugins/leaflet.draw.js"></script>
@@ -441,6 +459,22 @@
 
     var sub_com = null;
 
+    var zafLayer = null;
+    var zafLineLayer = null;
+    var zafPointsLayer = null;
+
+    var indlayer = null;
+    var indPointLayer = null;
+    var indLineLayer = null;
+
+    var thiLayer = null;
+    var thiLineLayer = null;
+    var thiPointLayer = null;
+
+    var bolLayer =null;
+    var bolPointLayer = null;
+    var bolLineLayer
+
     //    draw control
     var drawControl = null;
 
@@ -452,14 +486,14 @@
     var pulsingIcon = L.icon.pulse({iconSize: [20, 20], color: 'red'});
     var marker = L.marker([50, 15], {icon: pulsingIcon});
 
-    L.terminator().addTo(map);
+    var teminatorLayer = L.terminator();
 
     showSubCom();
 
     //    L.geoJSON.ajax('dist/json/THA.geo.json').addTo(map);
     //    L.geoJSON.ajax('dist/json/ZAF.geo.json').addTo(map);
     //    L.geoJSON.ajax('dist/json/CHL.geo.json').addTo(map);
-//    L.geoJSON.ajax('dist/json/countries.geo.json').addTo(map);
+    //    L.geoJSON.ajax('dist/json/countries.geo.json').addTo(map);
 
 </script>
 

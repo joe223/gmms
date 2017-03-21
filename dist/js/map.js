@@ -18,7 +18,7 @@ var temperature = null;
 function initMap() {
     var map = L.map('map', {
         zoomControl: false,
-        miniZoom: 3,
+        // miniZoom: 3,
         zoom: 4,
         center: [27.324, 113.434],
     })

@@ -391,7 +391,7 @@
 <script src="dist/js/plugins/tree.jquery.js"></script>
 <script src="dist/js/plugins/L.Icon.Pulse.js"></script>
 <script src="dist/js/plugins/leaflet.awesome-markers.min.js"></script>
-
+<script src="dist/js/plugins/L.Terminator.js"></script>
 
 <!--chart-->
 <script src="dist/js/plugins/echarts.min.js"></script>
@@ -452,12 +452,14 @@
     var pulsingIcon = L.icon.pulse({iconSize: [20, 20], color: 'red'});
     var marker = L.marker([50, 15], {icon: pulsingIcon});
 
+    L.terminator().addTo(map);
+
     showSubCom();
 
-//    L.geoJSON.ajax('dist/json/THA.geo.json').addTo(map);
-//    L.geoJSON.ajax('dist/json/ZAF.geo.json').addTo(map);
-//    L.geoJSON.ajax('dist/json/CHL.geo.json').addTo(map);
-    L.geoJSON.ajax('dist/json/countries.geo.json').addTo(map);
+    //    L.geoJSON.ajax('dist/json/THA.geo.json').addTo(map);
+    //    L.geoJSON.ajax('dist/json/ZAF.geo.json').addTo(map);
+    //    L.geoJSON.ajax('dist/json/CHL.geo.json').addTo(map);
+//    L.geoJSON.ajax('dist/json/countries.geo.json').addTo(map);
 
 </script>
 

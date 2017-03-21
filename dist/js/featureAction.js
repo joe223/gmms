@@ -77,6 +77,9 @@ $('#jiantong').click(function () {
         if (sub_com != null) {
             map.removeLayer(sub_com);
         }
+        if(marker!=null){
+            map.removeLayer(marker);
+        }
     }
 })
 

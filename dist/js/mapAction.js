@@ -142,7 +142,6 @@ function showSubCom() {
         $('.leaflet-popup-content-wrapper').width(440);
         map.addLayer(marker);
     });
-
 };
 
 

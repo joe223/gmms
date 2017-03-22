@@ -1,6 +1,43 @@
 /**
  * Created by Administrator on 2017/3/22 0022.
  */
+
+//  logic script
+var isoLayer = null;
+var heatmap = null;
+var markers = null;
+
+// map control
+var globalMiniMap = null;
+var sidebar = null;
+
+var timeline = null;
+var playback = null;
+var spatialAnalyzeGeoJSON = null;
+var bufferLayer = null;
+var lineMarkerLayer = null;
+
+var sub_com = null;
+
+var zafLayer = null;
+var zafLineLayer = null;
+var zafPointsLayer = null;
+
+var indlayer = null;
+var indPointLayer = null;
+var indLineLayer = null;
+
+var thiLayer = null;
+var thiLineLayer = null;
+var thiPointLayer = null;
+
+var bolLayer = null;
+var bolPointLayer = null;
+var bolLineLayer
+
+//    draw control
+var drawControl = null;
+
 var colors_hex = [
     '#E52D34',
     '#BC252B',

@@ -33,6 +33,7 @@ $('#heatmapCheckbox').click(function () {
     if (this.checked) {
         if (heatmap != null) {
             map.addLayer(heatmap);
+            map.fitBounds(heatmapPointsLayer.getBounds());
         }
     } else {
         if (heatmap != null) {
@@ -113,7 +114,6 @@ $('#timeZone').click(function () {
 function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
     if (checked) {
         if (layer == null) {
-
             layer = L.geoJSON.ajax(data[0], {
                 'type': name,
                 style: function () {
@@ -140,17 +140,14 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
             });
             lineLayer.on('data:loaded', function () {
                 map.addLayer(lineLayer);
-            })
+            });
 
             pointLayer = L.geoJSON.ajax(data[2], {
                 'type': name,
                 pointToLayer: function (feature, latlng) {
                     var jiantong = L.icon({
                         iconUrl: 'dist/css/images/favicon1.png',
-                        iconSize: [35, 28], // size of the icon
-                        iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-                        shadowAnchor: [4, 62],  // the same for the shadow
-                        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                        iconSize: [35, 28]
                     });
                     return L.marker(latlng, {icon: jiantong});
                 }
@@ -158,7 +155,6 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
             pointLayer.on('data:loaded', function () {
                 map.addLayer(pointLayer);
             });
-
         } else {
             map.addLayer(layer);
             map.addLayer(pointLayer);

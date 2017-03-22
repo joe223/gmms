@@ -126,7 +126,6 @@ function initMap() {
     map.addLayer(geoQMap);
     temperature.setZIndex(99);
 
-    // map.addLayer(tiandiMap);
     baseMap = {
         'tiandiMap': tiandiMap,
         'darkBaseMap': darkBaseMap,

@@ -145,13 +145,8 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
             pointLayer = L.geoJSON.ajax(data[2], {
                 'type': name,
                 pointToLayer: function (feature, latlng) {
-                    // var icon = L.AwesomeMarkers.icon({
-                    //     icon: icons[Math.floor(Math.random() * icons.length)],
-                    //     markerColor: colors[Math.floor(Math.random() * colors.length)]
-                    // });
                     var jiantong = L.icon({
                         iconUrl: 'dist/css/images/favicon1.png',
-                        // shadowUrl: 'leaf-shadow.png',
                         iconSize: [35, 28], // size of the icon
                         iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
                         shadowAnchor: [4, 62],  // the same for the shadow

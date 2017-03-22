@@ -4,12 +4,12 @@
 
 $('#show3DPointsModel').on('click', function () {
     $('#3dPointsShow').modal('show');
-    sidebar.close();
+    // sidebar.close();
 });
 
 $('#show3DLineModel').on('click', function () {
     $('#3dLinesShow').modal('show');
-    sidebar.close();
+    // sidebar.close();
 });
 
 $('#show3DPolygonModel').on('click', function () {

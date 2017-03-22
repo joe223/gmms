@@ -18,7 +18,7 @@ function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSw
     if (drawControl != null) {
         map.removeControl(drawControl);
     }
-    if(isoLayer!=null){
+    if (isoLayer != null) {
         map.removeLayer(isoLayer);
     }
 }
@@ -66,10 +66,10 @@ function switchFeatureLayer(switcher) {
         if (lineLayer != null) {
             map.removeLayer(lineLayer);
         }
-        if(bufferLayer!=null){
+        if (bufferLayer != null) {
             map.removeLayer(bufferLayer);
         }
-        if(lineMarkerLayer!=null){
+        if (lineMarkerLayer != null) {
             map.removeLayer(lineMarkerLayer);
         }
     } else {

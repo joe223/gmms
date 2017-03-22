@@ -17,6 +17,8 @@ var spatialAnalyzeGeoJSON = null;
 var bufferLayer = null;
 var lineMarkerLayer = null;
 
+var heatmapPointsLayer = null;
+
 var sub_com = null;
 
 var zafLayer = null;

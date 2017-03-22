@@ -446,9 +446,6 @@ function addDijiLayer() {
 };
 
 
-var heatmapPointsLayer = null;
-
-
 function showHeatmap() {
     if (heatmap == null) {
         addressPoints = addressPoints.map(function (p) {
@@ -467,7 +464,6 @@ function showHeatmap() {
             var marker = L.marker(new L.LatLng(a[0], a[1]), {title: title, icon: icon});
             markers.addLayer(marker);
         }
-        ;
         map.addLayer(markers);
 
         heatmap = L.heatLayer(addressPoints);

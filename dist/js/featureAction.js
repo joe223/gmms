@@ -20,7 +20,6 @@ $('#earthquakeCheckbox').click(function () {
             map.removeLayer(earthquakeLayer);
         }
     }
-
 });
 
 function hideMarker() {
@@ -40,7 +39,6 @@ $('#heatmapCheckbox').click(function () {
             map.removeLayer(heatmap);
         }
     }
-    ;
 })
 
 $('#tracksCheckbox').click(function () {
@@ -126,6 +124,9 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
                 }
             });
             layer.on('data:loaded', function () {
+                layer.on('click', function () {
+                    //TODO 添加点击要素后面板展示内容
+                });
                 map.addLayer(layer);
                 map.fitBounds(layer.getBounds());
             });
@@ -154,6 +155,9 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
             });
             pointLayer.on('data:loaded', function () {
                 map.addLayer(pointLayer);
+                pointLayer.on('click', function () {
+                    //TODO 添加点击要素后面板展示内容
+                });
             });
         } else {
             map.addLayer(layer);

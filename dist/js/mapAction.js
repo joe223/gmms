@@ -57,9 +57,9 @@ function showSubCom() {
         marker.setLatLng(e.latlng);
         // map.setView(e.latlng, 5);
         var table = createSubComDom(e.layer.feature);
+        map.addLayer(marker);
         marker.bindPopup(table[0].outerHTML).openPopup();
         $('.leaflet-popup-content-wrapper').width(440);
-        map.addLayer(marker);
     });
 };
 
@@ -97,9 +97,7 @@ function createFlightDom(details, details_map) {
 
 //添加点要素
 function addEarthquakePoints() {
-
     if (earthquakeLayer == null) {
-        // var earthquakeFeedPointsURL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson';
         var earthquakeFeedPointsURL = 'dist/json/gas_station.geojson'
 
         earthquakeLayer = L.geoJson.ajax(earthquakeFeedPointsURL, {
@@ -118,10 +116,10 @@ function addEarthquakePoints() {
                 marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
                 map.setView(e.latlng, 13);
+                map.addLayer(marker);
                 var table = createFlightDom(details, details_map)
                 marker.bindPopup(table[0].outerHTML).openPopup();
                 $('.leaflet-popup-content-wrapper').width(440);
-                map.addLayer(marker);
             })
         })
     } else {
@@ -143,10 +141,10 @@ function addFlightPoints() {
                 if (data[key].length !== undefined) {
                     var title = '航班' + data[key][7] + '_' + data[key][6];
                     var flightMarker = L.marker(new L.LatLng(data[key][1], data[key][2]), {title: title});
+                    map.addLayer(flightMarker);
                     var table = createFlightDom(details, details_map);
                     flightMarker.bindPopup(table[0].outerHTML);
                     flightLayer.addLayer(flightMarker);
-                    map.addLayer(flightMarker);
                 }
             }
             map.addLayer(flightLayer);
@@ -202,9 +200,10 @@ function addLineStrings() {
                 map.setView(e.latlng, 9);
                 var index = Math.floor(Math.random() * details.length);
                 var data = details[index];
+                //顺序很重要
+                map.addLayer(marker);
                 marker.bindPopup('<h3>' + data['name'] + '段监控</h3>' + '<p>拍摄时间: 2017-02-01 09:30</p>' + videos[Math.floor(Math.random() * videos.length)]).openPopup();
                 $('.leaflet-popup-content').height(440).width(600);
-                map.addLayer(marker);
             })
         });
 
@@ -398,10 +397,9 @@ function addPolygonLayer() {
                 marker.setLatLng(e.latlng);
                 marker.options.opacity = 1;
                 map.setView(e.latlng, 8);
-
+                map.addLayer(marker);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.name + "一周空气质量监控</h3>" + '<div id="polygonChart" style="width:520px;height:300px"></div>').openPopup();
                 $('.leaflet-popup-content-wrapper').width(560);
-                map.addLayer(marker);
                 setTimeout(function () {
                     runPolygonChart();
                 }, 250);
@@ -433,9 +431,9 @@ function addDijiLayer() {
                 marker.setLatLng(e.latlng);
                 marker.options.opacity = 1;
                 map.setView(e.latlng, 10);
+                map.addLayer(marker);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.name + "土地使用情况</h3>" + '<div id="dijiChart" style="width:380px;height:300px"></div>').openPopup();
                 $('.leaflet-popup-content-wrapper').width(420);
-                map.addLayer(marker);
                 setTimeout(function () {
                     runDijiChartScript();
                 }, 250);

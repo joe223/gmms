@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="dist/css/vis.min.css">
     <link rel="stylesheet" href="dist/css/leaflet.draw.css">
     <link rel="stylesheet" href="dist/css/L.Icon.Pulse.css">
-    <link rel="stylesheet" href="dist/css/ionicons.min.css">
+    <!--<link rel="stylesheet" href="dist/css/ionicons.min.css">-->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
     <link rel="stylesheet" href="dist/css/leaflet.awesome-markers.css">
 
     <link rel="shortcut icon" href="favicon.png"/>
@@ -80,11 +81,11 @@
                             <i class="fa fa-minus"></i>
                             点云数据在线浏览
                         </button>
-                        <div class="ui divider"></div>
-                        <button class="ui basic button" id="show3DPolygonModel">
-                            <i class="fa fa-square"></i>
-                            数字城市项目展示
-                        </button>
+                        <!--<div class="ui divider"></div>-->
+                        <!--<button class="ui basic button" id="show3DPolygonModel">-->
+                            <!--<i class="fa fa-square"></i>-->
+                            <!--数字城市项目展示-->
+                        <!--</button>-->
                     </div>
                 </div>
                 <div class="title">
@@ -227,23 +228,22 @@
                     <i class="dropdown icon"></i>热力图
                 </div>
                 <div class="content">
-                    <div class="ui  buttons">
-                        <button class="ui button primary" id="createHeatMapButton">生成热力图</button>
-                        <div class="or"></div>
-                        <button class="ui button primary" id="hideHeatMapButton">隐藏热力图</button>
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="heatmapCheckbox">
+                        <label>热力图</label>
                     </div>
                 </div>
 
-                <div class="title">
-                    <i class="dropdown icon"></i>等值线图
-                </div>
-                <div class="content">
-                    <div class="ui buttons">
-                        <button class="ui button primary" id="createISOpButton">生成等值线图</button>
-                        <div class="or"></div>
-                        <button class="ui button primary" id="hideISOButton">隐藏等值线图</button>
-                    </div>
-                </div>
+                <!--<div class="title">-->
+                    <!--<i class="dropdown icon"></i>等值线图-->
+                <!--</div>-->
+                <!--<div class="content">-->
+                    <!--<div class="ui buttons">-->
+                        <!--<button class="ui button primary" id="createISOpButton">生成等值线图</button>-->
+                        <!--<div class="or"></div>-->
+                        <!--<button class="ui button primary" id="hideISOButton">隐藏等值线图</button>-->
+                    <!--</div>-->
+                <!--</div>-->
 
                 <div class="title">
                     <i class="icon dropdown"></i>空间分析
@@ -324,10 +324,6 @@
 
     <iframe src="http://flisionpro.oss-cn-shenzhen.aliyuncs.com/danxiaDemo/App/demo.html" width='100%' height='100%'
             frameborder="0"></iframe>
-    <!--<embed src='http://player.youku.com/player.php/sid/XMTgzMzI2NjE2OA==/v.swf'-->
-    <!--allowFullScreen='true' quality='high' width='100%' height='100%' align='middle'-->
-    <!--allowScriptAccess='always' type='application/x-shockwave-flash'></embed>-->
-
 </div>
 
 <div class="ui modal" id="3dPointsShow">
@@ -335,10 +331,7 @@
     <div class="header">
         激光点云采集项目
     </div>
-    <iframe src="http://demo.flision.net/pointspirit_nologin/" frameborder="0" width='100%' height='100%'></iframe>
-    <!--<embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'-->
-    <!--quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'-->
-    <!--mode='transparent' type='application/x-shockwave-flash'></embed>-->
+    <iframe src="http://demo.flision.net/pointspirit_nologin/" frameborder="0" width='100%' height='90%'></iframe>
 
 </div>
 
@@ -348,13 +341,8 @@
         激光点云采集项目
     </div>
 
-    <iframe height=100% width=100% src='http://player.youku.com/embed/XMTI5MDA4MTQ3Mg==' frameborder=0
+    <iframe height=100% width=90% src='http://player.youku.com/embed/XMTI5MDA4MTQ3Mg==' frameborder=0
     'allowfullscreen'></iframe>
-
-    <!--<embed src='http://player.youku.com/player.php/Type/Folder/Fid//Ob//sid/XMjY0MDQzMTIwMA==/v.swf'-->
-           <!--quality='high' width='100%' height='100%' align='middle' allowScriptAccess='always' allowFullScreen='true'-->
-           <!--mode='transparent' type='application/x-shockwave-flash'></embed>-->
-
 </div>
 
 <div class="ui long modal" id="imageGallery">
@@ -424,6 +412,9 @@
 <!--data-->
 <script src="dist/js/data/demo-tracks.js"></script>
 <script src="dist/js/data/realworld.10000.js"></script>
+
+<!--global var-->
+<script src="dist/js/global_var.js"></script>
 <!--map-->
 <script src="dist/js/map.js"></script>
 <!--action-->
@@ -471,7 +462,7 @@
     var thiLineLayer = null;
     var thiPointLayer = null;
 
-    var bolLayer =null;
+    var bolLayer = null;
     var bolPointLayer = null;
     var bolLineLayer
 

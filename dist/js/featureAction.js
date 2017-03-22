@@ -27,7 +27,20 @@ function hideMarker() {
     if (marker != null) {
         map.removeLayer(marker);
     }
-}
+};
+
+$('#heatmapCheckbox').click(function () {
+    if (this.checked) {
+        if (heatmap != null) {
+            map.addLayer(heatmap);
+        }
+    } else {
+        if (heatmap != null) {
+            map.removeLayer(heatmap);
+        }
+    }
+    ;
+})
 
 $('#tracksCheckbox').click(function () {
     hideMarker();
@@ -86,6 +99,7 @@ $('#jiantong').click(function () {
 $('#timeZone').click(function () {
     if (this.checked) {
         if (teminatorLayer != null) {
+            map.setView([20.233, 103.323], 3);
             map.addLayer(teminatorLayer);
         }
     } else {
@@ -95,142 +109,95 @@ $('#timeZone').click(function () {
     }
 });
 
-$('#zafBusiness').click(function () {
-    if (this.checked) {
-        if (zafLayer == null) {
-            zafLayer = L.geoJSON.ajax('dist/json/zaf2.geojson');
-            zafLayer.on('data:loaded', function () {
-                map.addLayer(zafLayer);
-                map.fitBounds(zafLayer.getBounds());
+
+function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
+    if (checked) {
+        if (layer == null) {
+
+            layer = L.geoJSON.ajax(data[0], {
+                'type': name,
+                style: function () {
+                    var color = colors_hex[Math.floor(Math.random() * colors_hex.length)];
+                    return {
+                        "color": color,
+                        "weight": 5,
+                        "opacity": 0.9
+                    };
+                }
             });
-            zafLineLayer = L.geoJSON.ajax('dist/json/zaf2_line.geojson');
-            zafLineLayer.on('data:loaded', function () {
-                map.addLayer(zafLineLayer);
+            layer.on('data:loaded', function () {
+                map.addLayer(layer);
+                map.fitBounds(layer.getBounds());
+            });
+            var color = colors_hex[Math.floor(Math.random() * colors_hex.length)];
+            lineLayer = L.geoJSON.ajax(data[1], {
+                'type': name, style: {
+                    "color": color,
+                    "weight": 2,
+                    "opacity": 1,
+                    "width": 3
+                }
+            });
+            lineLayer.on('data:loaded', function () {
+                map.addLayer(lineLayer);
             })
-            zafPointsLayer = L.geoJSON.ajax('dist/json/zaf2_points.geojson');
-            zafPointsLayer.on('data:loaded', function () {
-                map.addLayer(zafPointsLayer);
-            })
+
+            pointLayer = L.geoJSON.ajax(data[2], {
+                'type': name,
+                pointToLayer: function (feature, latlng) {
+                    // var icon = L.AwesomeMarkers.icon({
+                    //     icon: icons[Math.floor(Math.random() * icons.length)],
+                    //     markerColor: colors[Math.floor(Math.random() * colors.length)]
+                    // });
+                    var jiantong = L.icon({
+                        iconUrl: 'dist/css/images/favicon1.png',
+                        // shadowUrl: 'leaf-shadow.png',
+                        iconSize: [35, 28], // size of the icon
+                        iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+                        shadowAnchor: [4, 62],  // the same for the shadow
+                        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                    });
+                    return L.marker(latlng, {icon: jiantong});
+                }
+            });
+            pointLayer.on('data:loaded', function () {
+                map.addLayer(pointLayer);
+            });
+
         } else {
-            map.addLayer(zafLayer);
-            map.addLayer(zafLineLayer);
-            map.addLayer(zafPointsLayer);
-            map.fitBounds(zafLayer.getBounds());
+            map.addLayer(layer);
+            map.addLayer(pointLayer);
+            map.addLayer(lineLayer);
+            map.fitBounds(layer.getBounds());
         }
     } else {
-        if (zafLayer != null) {
-            map.removeLayer(zafLayer);
-        }
-        if (zafPointsLayer != null) {
-            map.removeLayer(zafPointsLayer);
-        }
-        if (zafLineLayer != null) {
-            map.removeLayer(zafLineLayer);
-        }
+        map.eachLayer(function (layer) {
+            if (layer.options.hasOwnProperty('type')) {
+                if (layer.options.type == name) {
+                    map.removeLayer(layer);
+                }
+            }
+        })
     }
+}
+
+
+$('#zafBusiness').click(function () {
+    layerSwitcher('zaf', this.checked, zafLayer, zafPointsLayer, zafLayer, ['dist/json/zaf2.geojson',
+        'dist/json/zaf2_line.geojson', 'dist/json/zaf2_points.geojson']);
 });
 
 $('#thaBusiness').click(function () {
-    if (this.checked) {
-        if (thiLayer == null) {
-            thiLayer = L.geoJSON.ajax('dist/json/tha.geojson');
-            thiLayer.on('data:loaded', function () {
-                map.addLayer(thiLayer);
-                map.fitBounds(thiLayer.getBounds());
-            });
-            thiLineLayer = L.geoJSON.ajax('dist/json/tha_line.geojson');
-            thiLineLayer.on('data:loaded', function () {
-                map.addLayer(thiLineLayer);
-            })
-            thiPointLayer = L.geoJSON.ajax('dist/json/tha_points.geojson');
-            thiPointLayer.on('data:loaded', function () {
-                map.addLayer(thiPointLayer);
-            })
-        } else {
-            map.addLayer(thiLayer);
-            map.addLayer(thiPointLayer);
-            map.addLayer(thiLineLayer);
-            map.fitBounds(thiLayer.getBounds());
-        }
-    } else {
-        if (thiLayer != null) {
-            map.removeLayer(thiLayer);
-        }
-        if (thiPointLayer != null) {
-            map.removeLayer(thiPointLayer);
-        }
-        if (thiLineLayer != null) {
-            map.removeLayer(thiLineLayer);
-        }
-    }
+    layerSwitcher('tha', this.checked, thiLayer, thiPointLayer, thiLineLayer, ['dist/json/tha.geojson',
+        'dist/json/tha_line.geojson', 'dist/json/tha_points.geojson']);
 });
 
 $('#indBusiness').click(function () {
-    if (this.checked) {
-        if (indlayer == null) {
-            indlayer = L.geoJSON.ajax('dist/json/ind2.geojson');
-            indlayer.on('data:loaded', function () {
-                map.addLayer(indlayer);
-                map.fitBounds(indlayer.getBounds());
-            });
-            indLineLayer = L.geoJSON.ajax('dist/json/ind2_line.geojson');
-            indLineLayer.on('data:loaded', function () {
-                map.addLayer(indLineLayer);
-            })
-            indPointLayer = L.geoJSON.ajax('dist/json/ind2_point.geojson');
-            indPointLayer.on('data:loaded', function () {
-                map.addLayer(indPointLayer);
-            })
-        } else {
-            map.addLayer(indlayer);
-            map.addLayer(indPointLayer);
-            map.addLayer(indLineLayer);
-            map.fitBounds(indlayer.getBounds());
-        }
-    } else {
-        if (indlayer != null) {
-            map.removeLayer(indlayer);
-        }
-        if (indLineLayer != null) {
-            map.removeLayer(indLineLayer);
-        }
-        if (indPointLayer != null) {
-            map.removeLayer(indPointLayer);
-        }
-    }
+    layerSwitcher('ind', this.checked, indlayer, indPointLayer, indLineLayer, ['dist/json/ind2.geojson',
+        'dist/json/ind2_line.geojson', 'dist/json/ind2_point.geojson']);
 });
 
 $('#bolBusiness').click(function () {
-    if (this.checked) {
-        if (bolLayer == null) {
-            bolLayer = L.geoJSON.ajax('dist/json/bol2.geojson');
-            bolLayer.on('data:loaded', function () {
-                map.addLayer(bolLayer);
-                map.fitBounds(bolLayer.getBounds());
-            });
-            bolLineLayer = L.geoJSON.ajax('dist/json/bol2_line.geojson');
-            bolLineLayer.on('data:loaded', function () {
-                map.addLayer(bolLineLayer);
-            })
-            bolPointLayer = L.geoJSON.ajax('dist/json/bol2_points.geojson');
-            bolPointLayer.on('data:loaded', function () {
-                map.addLayer(bolPointLayer);
-            })
-        } else {
-            map.addLayer(bolLayer);
-            map.addLayer(bolLineLayer);
-            map.addLayer(bolPointLayer);
-            map.fitBounds(bolLayer.getBounds());
-        }
-    } else {
-        if (bolLayer != null) {
-            map.removeLayer(bolLayer);
-        }
-        if (indLineLayer != null) {
-            map.removeLayer(bolLineLayer);
-        }
-        if (indPointLayer != null) {
-            map.removeLayer(bolPointLayer);
-        }
-    }
+    layerSwitcher('bol', this.checked, bolLayer, bolPointLayer, bolLineLayer, ['dist/json/bol2.geojson',
+        'dist/json/bol2_line.geojson', 'dist/json/bol2_points.geojson']);
 });

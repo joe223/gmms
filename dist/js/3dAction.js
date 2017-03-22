@@ -14,5 +14,4 @@ $('#show3DLineModel').on('click', function () {
 
 $('#show3DPolygonModel').on('click', function () {
     $('#3dPolygonShow').modal('show');
-    sidebar.close();
 });

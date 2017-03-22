@@ -21,7 +21,6 @@ var videos = [
 
 function showImageGallery() {
     $('#imageGallery').modal('show');
-    sidebar.close();
 }
 
 
@@ -55,45 +54,13 @@ function showSubCom() {
     });
     sub_com.on('click', function (e) {
         marker.setLatLng(e.latlng);
-        // map.setView(e.latlng, 5);
+        map.flyTo([e.latlng.lat + 0.1, e.latlng.lng], 8);
         var table = createSubComDom(e.layer.feature);
         map.addLayer(marker);
         marker.bindPopup(table[0].outerHTML).openPopup();
-        $('.leaflet-popup-content-wrapper').width(440);
+        $('.leaflet-popup-content-wrapper').width(440).height(328);
     });
 };
-
-
-function createFlightDom(details, details_map) {
-    var table = $('<table class="ui celled striped table info-table"></table>');
-    var thead = $('<thead><tr><th colspan="2">项目简介</th></thead>');
-    table.append(thead);
-    var tbody = $('<tbody></tbody>');
-    var index = Math.floor(Math.random() * details.length);
-    var data = details[index];
-    var imgSrc = '';
-    for (var property in data) {
-        var tr = $('<tr></tr>');
-        var tdOne = $('<td></td>').text(details_map[property]);
-        var tdTwo = null;
-        if (property === 'image') {
-            tdTwo = $('<td><img onclick="showImageGallery()" src="' + data[property] + '" style="height: 100px;width: 200px;"></img></td>');
-            imgSrc = data[property];
-        } else if (property === 'raw_data' || property === 'final_data') {
-            tdTwo = $('<td><a href="' + data[property] + '" target="_black">下载</a></td>');
-        }
-        else {
-            tdTwo = $('<td></td>').text(data[property]);
-        }
-
-        tr.append(tdOne);
-        tr.append(tdTwo);
-        tbody.append(tr)
-    }
-    $('#imgAddress').attr('src', imgSrc);
-    table.append(tbody);
-    return table;
-}
 
 //添加点要素
 function addEarthquakePoints() {
@@ -115,11 +82,11 @@ function addEarthquakePoints() {
             earthquakeLayer.on('click', function (e) {
                 marker.options.opacity = 1;
                 marker.setLatLng(e.latlng);
-                map.setView(e.latlng, 13);
+                map.flyTo([e.latlng.lat + 0.06, e.latlng.lng], 12);
                 map.addLayer(marker);
-                var table = createFlightDom(details, details_map)
+                var table = createFlightDom(details, details_map, '')
                 marker.bindPopup(table[0].outerHTML).openPopup();
-                $('.leaflet-popup-content-wrapper').width(440);
+                $('.leaflet-popup-content-wrapper').width(440).height(528);
             })
         })
     } else {
@@ -143,7 +110,7 @@ function addFlightPoints() {
                     var flightMarker = L.marker(new L.LatLng(data[key][1], data[key][2]), {title: title});
                     map.addLayer(flightMarker);
                     var table = createFlightDom(details, details_map);
-                    flightMarker.bindPopup(table[0].outerHTML);
+                    flightMarker.bindPopup(table[0].outerHTML).openPopup();
                     flightLayer.addLayer(flightMarker);
                 }
             }
@@ -182,28 +149,24 @@ function addLineStrings() {
 
         lineMarkerLayer = L.geoJson.ajax('dist/json/railway_point.geojson', {
             pointToLayer: function (feature, latlng) {
-                // var smallIcon = L.Icon({
-                //     options: {
-                //         iconSize: [27, 27],
-                //         iconAnchor: [13, 27],
-                //         popupAnchor:  [1, -24],
-                //         iconUrl: 'dist/css/favicon.png'
-                //     }
-                // });
-                return L.marker(latlng);
+                var jiantong = L.icon({
+                    iconUrl: 'dist/css/images/favicon1.png',
+                    iconSize: [35, 28]
+                });
+                return L.marker(latlng, {icon: jiantong});
             }
         });
         lineMarkerLayer.on('data:loaded', function () {
             map.addLayer(lineMarkerLayer);
             lineMarkerLayer.on('click', function (e) {
                 marker.setLatLng(e.latlng);
-                map.setView(e.latlng, 9);
+                map.flyTo([e.latlng.lat + 0.5, e.latlng.lng], 9)
                 var index = Math.floor(Math.random() * details.length);
                 var data = details[index];
                 //顺序很重要
                 map.addLayer(marker);
                 marker.bindPopup('<h3>' + data['name'] + '段监控</h3>' + '<p>拍摄时间: 2017-02-01 09:30</p>' + videos[Math.floor(Math.random() * videos.length)]).openPopup();
-                $('.leaflet-popup-content').height(440).width(600);
+                $('.leaflet-popup-content-wrapper').height(468).width(440);
             })
         });
 
@@ -274,7 +237,6 @@ function runDijiChartScript() {
         ]
     };
     myChart.setOption(option);
-    sidebar.close();
 }
 
 function runPolygonChart() {
@@ -373,7 +335,6 @@ function runPolygonChart() {
         ]
     };
     chart.setOption(option);
-    sidebar.close();
 }
 
 // 添加面要素
@@ -396,10 +357,10 @@ function addPolygonLayer() {
             polygonLayer.on('click', function (e) {
                 marker.setLatLng(e.latlng);
                 marker.options.opacity = 1;
-                map.setView(e.latlng, 8);
+                map.flyTo([e.latlng.lat + 0.3, e.latlng.lng], 8);
                 map.addLayer(marker);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.name + "一周空气质量监控</h3>" + '<div id="polygonChart" style="width:520px;height:300px"></div>').openPopup();
-                $('.leaflet-popup-content-wrapper').width(560);
+                $('.leaflet-popup-content-wrapper').width(560).height(365);
                 setTimeout(function () {
                     runPolygonChart();
                 }, 250);
@@ -430,10 +391,11 @@ function addDijiLayer() {
             dijiLayer.on('click', function (e) {
                 marker.setLatLng(e.latlng);
                 marker.options.opacity = 1;
-                map.setView(e.latlng, 10);
+                // map.setView(e.latlng, 8);
+                map.flyTo([e.latlng.lat + 0.5, e.latlng.lng], 8);
                 map.addLayer(marker);
                 marker.bindPopup("<h3>" + e.layer.feature.properties.name + "土地使用情况</h3>" + '<div id="dijiChart" style="width:380px;height:300px"></div>').openPopup();
-                $('.leaflet-popup-content-wrapper').width(420);
+                $('.leaflet-popup-content-wrapper').width(420).height(365);
                 setTimeout(function () {
                     runDijiChartScript();
                 }, 250);
@@ -444,7 +406,6 @@ function addDijiLayer() {
         map.addLayer(dijiLayer);
     }
 };
-
 
 function showHeatmap() {
     if (heatmap == null) {

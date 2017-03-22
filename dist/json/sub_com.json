@@ -11,10 +11,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "0771-4603250",
-        "email": "jiangxi@gzjtch.com",
         "name": "\u5e7f\u897f\u5206\u516c\u53f8",
-        "address": "\u5357\u5b81\u5e02\u5174\u5b81\u533a\u6c11\u4e3b\u8def8\u53f7\u65af\u58ee\u5927\u53a610\u5c42"
+        "address": "\u5357\u5b81\u5e02\u5174\u5b81\u533a\u6c11\u4e3b\u8def8\u53f7\u65af\u58ee\u5927\u53a610\u5c42",
+        "telephone": "0771-4603250",
+        "email": "jiangxi@gzjtch.com"
       }
     },
     {
@@ -27,10 +27,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "0791-87879524",
-        "email": "jiangx@gzjtch.com",
         "name": "\u6c5f\u897f\u5206\u516c\u53f8",
-        "address": "\u5357\u660c\u5e02\u5357\u660c\u53bf\u516b\u6708\u6e56\u8def1999\u53f7\u94f6\u4ebf\u4e0a\u5c1a\u57ce"
+        "address": "\u5357\u660c\u5e02\u5357\u660c\u53bf\u516b\u6708\u6e56\u8def1999\u53f7\u94f6\u4ebf\u4e0a\u5c1a\u57ce",
+        "telephone": "0791-87879524",
+        "email": "jiangx@gzjtch.com"
       }
     },
     {
@@ -43,10 +43,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "0371-61990678",
-        "email": "henan@gzjtch.com",
         "name": "\u6cb3\u5357\u5206\u516c\u53f8",
-        "address": "\u90d1\u5dde\u5e02\u91d1\u6c34\u533a\u4e2d\u5dde\u5927\u9053\u4e0e\u519c\u4e1a\u8def\u53e3\u82cf\u8377\u4e2d\u5fc38\u697c\u4e1c\u5317"
+        "address": "\u90d1\u5dde\u5e02\u91d1\u6c34\u533a\u4e2d\u5dde\u5927\u9053\u4e0e\u519c\u4e1a\u8def\u53e3\u82cf\u8377\u4e2d\u5fc38\u697c\u4e1c\u5317",
+        "telephone": "0371-61990678",
+        "email": "henan@gzjtch.com"
       }
     },
     {
@@ -59,10 +59,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "13503055236",
-        "email": "xinjiang@gzjtch.com",
         "name": "\u65b0\u7586\u5206\u516c\u53f8",
-        "address": "\u4e4c\u9c81\u6728\u9f50\u5e02\u65b0\u5e02\u533a\u957f\u6c99\u8def 1006 \u53f7\u767e\u59d3\u5eb7\u57ce\u6d1b\u6749\u77f6\u56ed A \u680b 1-2 \u5c42 03 \u5ba4"
+        "address": "\u4e4c\u9c81\u6728\u9f50\u5e02\u65b0\u5e02\u533a\u957f\u6c99\u8def 1006 \u53f7\u767e\u59d3\u5eb7\u57ce\u6d1b\u6749\u77f6\u56ed A \u680b 1-2 \u5c42 03 \u5ba4",
+        "telephone": "13503055236",
+        "email": "xinjiang@gzjtch.com"
       }
     },
     {
@@ -91,10 +91,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "13902491616",
-        "email": "wuhan@gzjtch.com",
         "name": "\u6b66\u6c49\u5206\u516c\u53f8",
-        "address": "\u6b66\u6c49\u5e02\u4e1c\u6e56\u9ad8\u65b0\u533a\u6b66\u5927\u79d1\u6280\u56ed\u6b66\u5927\u56ed\u4e00\u8def\u6167\u4e1a\u697c 3 \u697c 3028 \u5ba4"
+        "address": "\u6b66\u6c49\u5e02\u4e1c\u6e56\u9ad8\u65b0\u533a\u6b66\u5927\u79d1\u6280\u56ed\u6b66\u5927\u56ed\u4e00\u8def\u6167\u4e1a\u697c 3 \u697c 3028 \u5ba4",
+        "telephone": "13902491616",
+        "email": "wuhan@gzjtch.com"
       }
     },
     {
@@ -107,10 +107,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "0757-86232066",
-        "email": "foshan@gzjtch.com",
         "name": "\u4f5b\u5c71\u5206\u516c\u53f8",
-        "address": "\u4f5b\u5c71\u5e02\u5357\u6d77\u533a\u6842\u57ce\u5e86\u5b89\u8def 6 \u53f7\u5706\u65b9\u5e7f\u573a\uff08\u6842\u57ce\u5458\u5de5\u6751\uff093 \u53f7\u697c 3 \u5c42 B07-08 \u53f7"
+        "address": "\u4f5b\u5c71\u5e02\u5357\u6d77\u533a\u6842\u57ce\u5e86\u5b89\u8def 6 \u53f7\u5706\u65b9\u5e7f\u573a\uff08\u6842\u57ce\u5458\u5de5\u6751\uff093 \u53f7\u697c 3 \u5c42 B07-08 \u53f7",
+        "telephone": "0757-86232066",
+        "email": "foshan@gzjtch.com"
       }
     },
     {
@@ -123,10 +123,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "0759-3100488",
-        "email": "zhanjiang@gzjtch.com",
         "name": "\u6e5b\u6c5f\u5206\u516c\u53f8",
-        "address": "\u6e5b\u6c5f\u5e02\u8d64\u574e\u533a\u6d77\u7530\u8def 288 \u53f7\u91d1\u6d77\u522b\u5885\u9152\u5e97 303 \u623f"
+        "address": "\u6e5b\u6c5f\u5e02\u8d64\u574e\u533a\u6d77\u7530\u8def 288 \u53f7\u91d1\u6d77\u522b\u5885\u9152\u5e97 303 \u623f",
+        "telephone": "0759-3100488",
+        "email": "zhanjiang@gzjtch.com"
       }
     },
     {
@@ -139,10 +139,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "0753-2265123",
-        "email": "meizhou@gzjtch.com",
         "name": "\u6885\u5dde\u5206\u516c\u53f8",
-        "address": "\u6885\u5dde\u5e02\u6885\u6c5f\u533a\u6c5f\u5357\u65b0\u90fd\u8def 51 \u53f7"
+        "address": "\u6885\u5dde\u5e02\u6885\u6c5f\u533a\u6c5f\u5357\u65b0\u90fd\u8def 51 \u53f7",
+        "telephone": "0753-2265123",
+        "email": "meizhou@gzjtch.com"
       }
     },
     {
@@ -155,10 +155,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "13503028395",
-        "email": "haiyang@gzjtch.com",
         "name": "\u6d77\u6d0b\u6d4b\u7ed8\u5206\u516c\u53f8",
-        "address": "\u5e7f\u5dde\u5e02\u5929\u6cb3\u533a\u9ad8\u666e\u8def 1027 \u53f7 D \u680b 6 \u697c"
+        "address": "\u5e7f\u5dde\u5e02\u5929\u6cb3\u533a\u9ad8\u666e\u8def 1027 \u53f7 D \u680b 6 \u697c",
+        "telephone": "13503028395",
+        "email": "haiyang@gzjtch.com"
       }
     },
     {
@@ -171,10 +171,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "020-37889101",
-        "email": "xinxi@gzjtch.com",
         "name": "\u4fe1\u606f\u5de5\u7a0b\u5206\u516c\u53f8",
-        "address": "\u5e7f\u5dde\u5e02\u5929\u6cb3\u533a\u5927\u89c2\u4e2d\u8def 95 \u53f7\uff08\u79d1\u6c47\u56ed\uff09G \u680b 5 \u697c"
+        "address": "\u5e7f\u5dde\u5e02\u5929\u6cb3\u533a\u5927\u89c2\u4e2d\u8def 95 \u53f7\uff08\u79d1\u6c47\u56ed\uff09G \u680b 5 \u697c",
+        "telephone": "020-37889101",
+        "email": "xinxi@gzjtch.com"
       }
     },
     {
@@ -187,10 +187,10 @@
       },
       "type": "Feature",
       "properties": {
-        "telephone": "13697446644",
-        "email": "shizheng@gzjtch.com",
         "name": "\u5e02\u653f\u5206\u516c\u53f8",
-        "address": "\u5e7f\u5dde\u5e02\u5929\u6cb3\u533a\u5927\u89c2\u4e2d\u8def 95 \u53f7\uff08\u79d1\u6c47\u56ed\uff09G \u680b 5 \u697c"
+        "address": "\u5e7f\u5dde\u5e02\u5929\u6cb3\u533a\u5927\u89c2\u4e2d\u8def 95 \u53f7\uff08\u79d1\u6c47\u56ed\uff09G \u680b 5 \u697c",
+        "telephone": "13697446644",
+        "email": "shizheng@gzjtch.com"
       }
     }
   ]

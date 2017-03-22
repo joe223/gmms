@@ -21,6 +21,9 @@ function switcher(timelineSwitcher, heatmapSwitcher, featureSwitcher, timeLineSw
     if (isoLayer != null) {
         map.removeLayer(isoLayer);
     }
+    if (dijiLayer != null) {
+        map.removeLayer(dijiLayer);
+    }
 }
 
 //隐藏时间线功能及其控件

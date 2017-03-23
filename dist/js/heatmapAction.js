@@ -104,7 +104,7 @@ $('#analyze').on('click', function () {
                 marker.setLatLng(e.latlng);
                 var table = createFlightDom(details, details_map);
                 map.addLayer(marker);
-                map.flyTo(e.latlng, 9);
+                map.flyTo([e.latlng.lat + 0.7, e.latlng.lng], 9);
                 marker.bindPopup(table[0].outerHTML).openPopup();
                 $('.leaflet-popup-content-wrapper').width(440).height(560);
             })

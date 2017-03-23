@@ -39,6 +39,18 @@ $('#heatmapCheckbox').click(function () {
             map.removeLayer(heatmap);
         }
     }
+});
+$('#heatmapPoints').click(function () {
+    if (this.checked) {
+        if (heatmapPointsLayer != null) {
+            map.addLayer(markers);
+            map.fitBounds(heatmapPointsLayer.getBounds());
+        }
+    } else {
+        if (heatmapPointsLayer != null) {
+            map.removeLayer(markers);
+        }
+    }
 })
 
 $('#tracksCheckbox').click(function () {

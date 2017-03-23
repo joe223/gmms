@@ -467,7 +467,7 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
                 layer.on('click', function (e) {
                     marker.setLatLng(e.latlng);
                     marker.options.opacity = 1;
-                    map.flyTo([e.latlng.lat + 0.5, e.latlng.lng], 8);
+                    map.flyTo([e.latlng.lat + 0.7, e.latlng.lng], 8);
                     map.addLayer(marker);
                     var title = e.layer.feature.properties.NAME_1
                         + ' ' + e.layer.feature.properties.NAME_2 + '' + e.layer.feature.properties.ENGTYPE_2;
@@ -496,7 +496,7 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
                 pointLayer.on('click', function (e) {
                     marker.options.opacity = 1;
                     marker.setLatLng(e.latlng);
-                    map.flyTo([e.latlng.lat + 0.06, e.latlng.lng], 12);
+                    map.flyTo([e.latlng.lat + 0.08, e.latlng.lng], 12);
                     map.addLayer(marker);
                     var table = createFlightDom(detail_forign, details_map, 'foreign')
                     marker.bindPopup(table[0].outerHTML).openPopup();

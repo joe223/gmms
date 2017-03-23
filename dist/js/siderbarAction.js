@@ -40,6 +40,7 @@ function switchSimPanel(switcher) {
         if (playback != null) {
             playback.destroy();
         }
+        timeline = null;
     }
 }
 

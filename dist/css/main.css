@@ -77,3 +77,9 @@ body {
 .jiantong-title {
     margin-left: 50px;
 }
+
+#noPointModel {
+    height: 150px;
+    width: 300px;
+    margin: auto;
+}

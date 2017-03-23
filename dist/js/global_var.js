@@ -6,6 +6,7 @@
 var isoLayer = null;
 var heatmap = null;
 var markers = null;
+var tmpMarker = null;
 
 // map control
 var globalMiniMap = null;
@@ -39,6 +40,10 @@ var bolLineLayer
 
 //    draw control
 var drawControl = null;
+
+
+// spatial analyze layer
+var spatialAnlyzeLayer = null;
 
 var colors_hex = [
     '#E52D34',

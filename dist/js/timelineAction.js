@@ -51,12 +51,6 @@ function initTimeLine() {
 
         marker: {
             getPopup: function (featureData) {
-                // var result = '';
-                //
-                // if (featureData && featureData.properties && featureData.properties.title) {
-                //     result = featureData.properties.title;
-                //     result = '项目进度';
-                // }
                 return '项目进度';
             }
         }

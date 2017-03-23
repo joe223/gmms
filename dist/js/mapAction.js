@@ -82,17 +82,10 @@ function addEarthquakePoints() {
             earthquakeLayer.on('click', function (e) {
                 var index = Math.floor(Math.random() * 2);
                 if (index == 1) {
-                    $('#3dLinesShow').modal('show');
+                    $('#3dLinesShow').modal('setting', 'transition', 'fade up ').modal('show');
                 } else {
-                    $('#3dPointsShow').modal('show');
+                    $('#3dPointsShow').modal('setting', 'transition', 'fade up ').modal('show');
                 }
-                // marker.options.opacity = 1;
-                // marker.setLatLng(e.latlng);
-                // map.flyTo([e.latlng.lat + 0.06, e.latlng.lng], 12);
-                // map.addLayer(marker);
-                // var table = createFlightDom(details, details_map, '')
-                // marker.bindPopup(table[0].outerHTML).openPopup();
-                // $('.leaflet-popup-content-wrapper').width(440).height(560);
             })
         })
     } else {

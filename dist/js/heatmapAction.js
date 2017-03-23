@@ -73,53 +73,43 @@ $('#analyze').on('click', function () {
             points.push([layer._latlngs[0][0].lng], layer._latlngs[0][0].lat);
             geoJSONData = turf.polygon([points]);
         }
-        var analyzePolygon = turf.featureCollection(geoJSONData);
+        var box = turf.bbox(geoJSONData);
 
-        var points = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [111.6318, 21.5323]
-                    }
-                }, {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [111.6318, 21.5523]
-                    }
-                }, {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [111.6318, 21.5623]
-                    }
-                }, {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [111.3318, 21.5223]
-                    }
-                }, {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [113.36318, 23.1523]
-                    }
+        var points = turf.random('points', 30, {
+            bbox: box
+        });
+        var pointWithin = [];
+        points.features.forEach(function (point) {
+            var coordinate = point.geometry.coordinates;
+            if (turf.inside(turf.point(coordinate), geoJSONData)) {
+                if (coordinate[0] > 100 && coordinate[0] < 140 && coordinate[1] > 15 && coordinate[1] < 50) {
+                    pointWithin.push(point);
                 }
-            ]
-        };
-
-        var ptsWithin = turf.within(points, analyzePolygon);
-        console.log(JSON.stringify(analyzePolygon));
-        console.log(JSON.stringify(points));
-        console.log(ptsWithin);
+            }
+        })
+        if (spatialAnlyzeLayer != null) {
+            spatialAnlyzeLayer.clearLayers();
+        }
+        if (pointWithin.length > 0) {
+            spatialAnlyzeLayer = L.geoJSON(turf.featureCollection(pointWithin), {
+                pointToLayer: function (feature, latlng) {
+                    var icon = L.AwesomeMarkers.icon({
+                        icon: icons[Math.floor(Math.random() * icons.length)],
+                        markerColor: colors[Math.floor(Math.random() * colors.length)]
+                    });
+                    return L.marker(latlng, {icon: icon});
+                }
+            }).addTo(map);
+            spatialAnlyzeLayer.on('click', function (e) {
+                marker.setLatLng(e.latlng);
+                var table = createFlightDom(details, details_map);
+                map.addLayer(marker);
+                map.flyTo(e.latlng, 9);
+                marker.bindPopup(table[0].outerHTML).openPopup();
+                $('.leaflet-popup-content-wrapper').width(440).height(560);
+            })
+        } else {
+            $('#noPointModel').modal('show');
+        }
     });
 });

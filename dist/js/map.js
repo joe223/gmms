@@ -20,7 +20,7 @@ function initMap() {
         zoomControl: false,
         // miniZoom: 3,
         zoom: 4,
-        center: [27.324, 113.434],
+        center: [27.324, 113.434]
     })
 
     // 全屏地图控件
@@ -32,7 +32,16 @@ function initMap() {
     L.control.zoom({
         position: 'topright'
     }).addTo(map);
-
+    //测量
+    L.control.measure({
+        position: 'topright',
+        localization: 'cn',
+        primaryLengthUnit: 'kilometers',
+        secondaryLengthUnit: 'metes',
+        primaryAreaUnit: 'sqmeters',
+        activeColor: '#1b2ee6',
+        completedColor: '#ff0000'
+    }).addTo(map);
 
     globalMiniMap = new L.Control.GlobeMiniMap({
         topojsonSrc: 'dist/json/world.json'

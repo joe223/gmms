@@ -45,7 +45,8 @@ body {
     width: 400px;
     height: 300px;
 }
-.leaflet-popup-content{
+
+.leaflet-popup-content {
     width: 400px !important;
 }
 
@@ -54,10 +55,15 @@ body {
     width: 900px;
 }
 
-.card-height{
-    height:100% !important;
+.card-height {
+    height: 100% !important;
 }
 
-.toc-tree{
+.toc-tree {
     display: block !important;
+}
+
+.leaflet-control-measure-toggle {
+    height: 34px !important;
+    width: 34px !important;
 }

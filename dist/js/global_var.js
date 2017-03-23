@@ -98,6 +98,7 @@ function getImageUrl() {
 var details = [
     {
         name: 'H121巡线监控点',
+        person: '张巍',
         type: '一级项目',
         position: 'XX省国道XX县市',
         contract: '项目合同',
@@ -109,6 +110,7 @@ var details = [
     },
     {
         name: 'M3812巡线监控点',
+        person: '张巍',
         type: '二级项目',
         position: 'XX省国道XX县市',
         contract: '项目合同',
@@ -120,6 +122,7 @@ var details = [
     },
     {
         name: 'H12M12 国道勘察点',
+        person: '张巍',
         type: '一级项目',
         position: 'XX省国道XX县市',
         contract: '项目合同',
@@ -131,6 +134,7 @@ var details = [
     },
     {
         name: 'M3ds12巡线监控点',
+        person: '张巍',
         type: '三级项目',
         position: 'XX省国道XX县市',
         contract: '项目合同',
@@ -145,6 +149,7 @@ var details = [
 var detail_forign = [
     {
         name: 'FF CC Santa Cruz  点',
+        person: '张巍',
         type: '一级项目',
         position: 'William Moffet Expressway',
         contract: '项目合同',
@@ -156,6 +161,7 @@ var detail_forign = [
     },
     {
         name: 'FFCC Oruro - Viacha  施工点',
+        person: '张巍',
         type: '二级项目',
         position: 'Mill Park Road',
         contract: '项目合同',
@@ -167,6 +173,7 @@ var detail_forign = [
     },
     {
         name: 'El Beni 勘察点',
+        person: '张巍',
         type: '一级项目',
         position: 'Pimloco Street',
         contract: '项目合同',
@@ -178,6 +185,7 @@ var detail_forign = [
     },
     {
         name: 'Chuquisaca  施工点',
+        person: '张巍',
         type: '三级项目',
         position: 'Carnoustie Crescent',
         contract: '项目合同',
@@ -191,6 +199,7 @@ var detail_forign = [
 
 var details_map = {
     name: '项目名称',
+    person: '项目负责人',
     type: '项目类型',
     position: '项目地点',
     contract: '项目合同',

@@ -86,7 +86,7 @@ function addEarthquakePoints() {
                 map.addLayer(marker);
                 var table = createFlightDom(details, details_map, '')
                 marker.bindPopup(table[0].outerHTML).openPopup();
-                $('.leaflet-popup-content-wrapper').width(440).height(528);
+                $('.leaflet-popup-content-wrapper').width(440).height(560);
             })
         })
     } else {
@@ -112,6 +112,7 @@ function addFlightPoints() {
                     var table = createFlightDom(details, details_map);
                     flightMarker.bindPopup(table[0].outerHTML).openPopup();
                     flightLayer.addLayer(flightMarker);
+                    $('.leaflet-popup-content-wrapper').width(440).height(560);
                 }
             }
             map.addLayer(flightLayer);

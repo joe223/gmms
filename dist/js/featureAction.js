@@ -512,7 +512,7 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
                     map.addLayer(marker);
                     var table = createFlightDom(detail_forign, details_map, 'foreign')
                     marker.bindPopup(table[0].outerHTML).openPopup();
-                    $('.leaflet-popup-content-wrapper').width(440).height(520);
+                    $('.leaflet-popup-content-wrapper').width(440).height(560);
                 });
             });
         } else {

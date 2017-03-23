@@ -11,7 +11,7 @@ $('#flightCheckbox').click(function () {
     }
 });
 
-$('#earthquakeCheckbox').click(function () {
+$('#3DShow').click(function () {
     hideMarker();
     if (this.checked) {
         addEarthquakePoints();
@@ -480,18 +480,6 @@ function layerSwitcher(name, checked, layer, pointLayer, lineLayer, data) {
                 map.addLayer(layer);
                 map.fitBounds(layer.getBounds());
             });
-            // var color = colors_hex[Math.floor(Math.random() * colors_hex.length)];
-            // lineLayer = L.geoJSON.ajax(data[1], {
-            //     'type': name, style: {
-            //         "color": color,
-            //         "weight": 2,
-            //         "opacity": 1,
-            //         "width": 3
-            //     }
-            // });
-            // lineLayer.on('data:loaded', function () {
-            //     map.addLayer(lineLayer);
-            // });
 
             pointLayer = L.geoJSON.ajax(data[2], {
                 'type': name,

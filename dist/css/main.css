@@ -67,3 +67,13 @@ body {
     height: 34px !important;
     width: 34px !important;
 }
+
+.jiantong {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.jiantong-title {
+    margin-left: 50px;
+}

@@ -30,8 +30,10 @@
 
 <!-- 导航条 start -->
 <div class="ui top fixed inverted menu menu-height">
+    <img src="dist/css/images/favicon1.png" alt="" width="50px" height="40px" class="jiantong">
     <a href="#" class="ui item left">
-        <h1 class="ui inverted "><i class="cube icon"></i>建通全球地理信息工程项目监管平台</h1>
+        <!--<h1 class="ui inverted "><i class="cube icon"></i>建通全球地理信息工程项目监管平台</h1>-->
+        <h1 class="ui inverted jiantong-title">建通全球地理信息工程项目监管平台</h1>
     </a>
     <div class="right menu">
         <a class="item">张巍</a>
@@ -69,35 +71,18 @@
             <div class="styled ui accordion">
                 <div class="title">
                     <i class="dropdown icon"></i>
-                    WebGIS三维展示平台
+                    建通三维WebGIS项目
                 </div>
                 <div class="content">
-                    <div class="accordion transition visible" style="display:block !important;">
-                        <button class="ui basic button" id="show3DPointsModel">
-                            <i class="fa fa-circle"></i>
-                            倾斜摄影测量应用
-                        </button>
-                        <div class="ui divider"></div>
-                        <button class="ui basic button" id="show3DLineModel">
-                            <i class="fa fa-minus"></i>
-                            点云数据在线浏览
-                        </button>
-                        <!--<div class="ui divider"></div>-->
-                        <!--<button class="ui basic button" id="show3DPolygonModel">-->
-                        <!--<i class="fa fa-square"></i>-->
-                        <!--数字城市项目展示-->
-                        <!--</button>-->
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="3DShow">
+                        <label>项目施工点</label>
                     </div>
                 </div>
                 <div class="title">
                     <i class="icon dropdown"></i>电力巡线监控项目
                 </div>
                 <div class="content">
-                    <div class="ui checkbox">
-                        <input type="checkbox" id="earthquakeCheckbox">
-                        <label>监测站点</label>
-                    </div>
-                    <div class="ui divider"></div>
                     <div class="ui checkbox">
                         <input type="checkbox" id="tracksCheckbox">
                         <label>电力巡线沿路监控</label>

@@ -15,7 +15,7 @@ var wind = null;
 var pressure = null;
 var temperature = null;
 
-module.exports = function initMap() {
+`module.exports = `function initMap() {
     var map = L.map('map', {
         zoomControl: false,
         // miniZoom: 3,

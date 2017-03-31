@@ -6,23 +6,18 @@ module.exports = {
     entry: "./main.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'js/index_bundle.js'
+        filename: 'main/index.js'
     },
     resolve: {
         alias: {
-            "script": path.resolve(__dirname,"src/js")
+            "script": path.resolve(__dirname,"dist/js")
         }
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: "test in webpack",
-            template: "index.html",
-            filename: "main.html"
-        })
-    ],
-    devServer: {
-        port: PORT,
-        compress: false,
-        contentBase: path.resolve(__dirname, "dist")
+    module: {
+        rules: [{
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: [/node_modules/]
+        }]
     }
 }

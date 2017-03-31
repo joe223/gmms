@@ -87,6 +87,5 @@ function changeBaseMap(baseLayer) {
     } else {
         map.addLayer(baseMap[baseLayer]);
     }
-
 }
 

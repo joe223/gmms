@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>建通全球地理信息工程项目监管平台</title>
-    <link rel="stylesheet" href="src/css/semantic.min.css">
-    <link rel="stylesheet" href="src/css/font-awesome.css">
-    <link rel="stylesheet" href="src/css/leaflet.css"/>
-    <link rel="stylesheet" href="src/css/leaflet.fullscreen.css">
-    <link rel="stylesheet" href="src/css/leaflet-sidebar.css">
-    <link rel="stylesheet" href="src/css/MarkerCluster.css">
-    <link rel="stylesheet" href="src/css/MarkerCluster.Default.css">
-    <link rel="stylesheet" href="src/css/main.css">
-    <link rel="stylesheet" href="src/css/vis.min.css">
-    <link rel="stylesheet" href="src/css/leaflet.draw.css">
-    <link rel="stylesheet" href="src/css/L.Icon.Pulse.css">
+    <link rel="stylesheet" href="dist/css/vendor/semantic.min.css">
+    <link rel="stylesheet" href="dist/css/vendor/font-awesome.css">
+
+    <link rel="stylesheet" href="dist/css/leaflet.css"/>
+    <link rel="stylesheet" href="dist/css/leaflet.fullscreen.css">
+    <link rel="stylesheet" href="dist/css/leaflet-sidebar.css">
+    <link rel="stylesheet" href="dist/css/MarkerCluster.css">
+    <link rel="stylesheet" href="dist/css/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="dist/css/main.css">
+    <link rel="stylesheet" href="dist/css/vis.min.css">
+    <link rel="stylesheet" href="dist/css/leaflet.draw.css">
+    <link rel="stylesheet" href="dist/css/L.Icon.Pulse.css">
+    <link rel="stylesheet" href="dist/css/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="dist/css/leaflet-measure.css">
+    <link rel="stylesheet" href="build/style.min.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
-    <link rel="stylesheet" href="src/css/leaflet.awesome-markers.css">
-    <link rel="stylesheet" href="src/css/leaflet-measure.css">
+    
     <!--[if lt IE 9]>
     <!--<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> -->
     <!--<![endif]&ndash;&gt;-->
@@ -29,7 +32,7 @@
 
 <!-- 导航条 start -->
 <div class="ui top fixed inverted menu menu-height">
-    <img src="src/css/images/favicon1.png" alt="" width="50px" height="40px" class="jiantong">
+    <img src="dist/css/images/favicon1.png" alt="" width="50px" height="40px" class="jiantong">
     <a href="#" class="ui item left">
         <!--<h1 class="ui inverted "><i class="cube icon"></i>建通全球地理信息工程项目监管平台</h1>-->
         <h1 class="ui inverted jiantong-title">建通全球地理信息工程项目监管平台</h1>
@@ -137,7 +140,7 @@
                 </div>
                 <div class="content ">
                     <div class="ui image" id="tiandiMap">
-                        <img src="src/css/images/tianDiTuTerrain.jpg">
+                        <img src="dist/css/images/tianDiTuTerrain.jpg">
                     </div>
                 </div>
 
@@ -147,7 +150,7 @@
                 </div>
                 <div class="content link">
                     <div class="ui image " id="gaodeMap">
-                        <img src="src/css/images/gaode.png">
+                        <img src="dist/css/images/gaode.png">
                     </div>
                 </div>
                 <div class="title">
@@ -157,7 +160,7 @@
                 </div>
                 <div class="content link">
                     <div class="ui image " id="geoQMap">
-                        <img src="src/css/images/geoq.png">
+                        <img src="dist/css/images/geoq.png">
                     </div>
                 </div>
                 <div class="title">
@@ -166,7 +169,7 @@
                 </div>
                 <div class="content link">
                     <div class="ui image " id="googleMap">
-                        <img src="src/css/images/google.png">
+                        <img src="dist/css/images/google.png">
                     </div>
                 </div>
                 <div class="title">
@@ -175,7 +178,7 @@
                 </div>
                 <div class="content link">
                     <div class="ui image " id="darkMap">
-                        <img src="src/css/images/dark.png">
+                        <img src="dist/css/images/dark.png">
                     </div>
                 </div>
                 <div class="title">
@@ -183,7 +186,7 @@
                 </div>
                 <div class="content link">
                     <div class="ui image" id="tonerMap">
-                        <img src="src/css/images/toner.png" alt="">
+                        <img src="dist/css/images/toner.png" alt="">
                     </div>
                 </div>
             </div>
@@ -198,7 +201,7 @@
                 </div>
                 <div class="active content">
                     <div class="ui image" id="trackSimulation">
-                        <img src="src/css/images/track.png">
+                        <img src="dist/css/images/track.png">
                     </div>
                 </div>
 
@@ -339,7 +342,7 @@
         <div class="image content">
             <div class="ui large image">
                 <a href="http://www.gzjtch.com/" class="ui large image" target="_blank">
-                    <img src="src/css/images/lidar.jpg" id="imgAddress">
+                    <img src="dist/css/images/lidar.jpg" id="imgAddress">
                 </a>
             </div>
             <div class="description">
@@ -361,55 +364,52 @@
 
 </div>
 
+<!--tools-->
+<script src="dist/js/plugins/jquery-3.1.1.min.js"></script>
+<script src="dist/js/plugins/semantic.min.js"></script>
+<script src="dist/js/plugins/d3.min.js"></script>
+<script src="dist/js/plugins/topojson.min.js"></script>
+<script src="dist/js/plugins/leaflet.js"></script>
+<script src="dist/js/plugins/echarts.min.js"></script>
+
 <!--plugins-->
-<!-- <script src="src/js/plugins/jquery-3.1.1.min.js"></script> -->
-<!-- <script src="src/js/plugins/semantic.min.js"></script> -->
-<script src="src/js/plugins/leaflet.js"></script>
-<script src="src/js/plugins/d3.min.js"></script>
-<script src="src/js/plugins/Leaflet.fullscreen.min.js"></script>
-<script src="src/js/plugins/topojson.min.js"></script>
-<script src="src/js/plugins/leaflet-sidebar.js"></script>
-<script src="src/js/plugins/tdtLayer.js"></script>
-<script src="src/js/plugins/Control.GlobeMiniMap.js"></script>
-<script src="src/js/plugins/route.js"></script>
-<script src="src/js/plugins/leaflet-heat.js"></script>
-<script src="src/js/plugins/leaflet.ajax.js"></script>
-<script src="src/js/timelineAction.js"></script>
-<script src="src/js/plugins/leaflet.ChineseTmsProviders.js"></script>
-<script src="src/js/plugins/vis.min.js"></script>
-<script src="src/js/plugins/LeafletPlayback.js"></script>
-<script src="src/js/plugins/leaflet.markercluster-src.js"></script>
-<script src="src/js/plugins/L.Icon.Pulse.js"></script>
-<script src="src/js/plugins/leaflet.awesome-markers.min.js"></script>
-<script src="src/js/plugins/L.Terminator.js"></script>
-<script src="src/js/plugins/leaflet-measure.min.js"></script>
+<script src="build/bundle-leaflet.min.js"></script>
+
+
+<script src="dist/js/plugins/tdtLayer.js"></script>
+<script src="dist/js/plugins/route.js"></script>
+<script src="dist/js/plugins/vis.min.js"></script>
+
 
 <!--chart-->
-<script src="src/js/plugins/echarts.min.js"></script>
 
 <!--analyze-->
-<script src="src/js/plugins/turf.min.js"></script>
+<script src="dist/js/plugins/turf.min.js"></script>
 
 <!--draw-->
-<script src="src/js/plugins/leaflet.draw.js"></script>
+<!--<script src="dist/js/plugins/leaflet.draw.js"></script>-->
 
 <!--data-->
-<script src="src/js/data/demo-tracks.js"></script>
-<script src="src/js/data/realworld.10000.js"></script>
+<!--<script src="dist/js/data/demo-tracks.js"></script>-->
+<!--<script src="dist/js/data/realworld.10000.js"></script>-->
+<script src="build/bundle-data.min.js"></script>
 
 <!--global var-->
-<script src="src/js/global_var.js"></script>
+<script src="dist/js/global_var.js"></script>
 <!--map-->
-<script src="src/js/map.js"></script>
-<!--action-->
-<script src="src/js/mapAction.js"></script>
-<script src="src/js/siderbarAction.js"></script>
-<!--<script src="src/js/3dAction.js"></script>-->
-<script src="src/js/heatmapAction.js"></script>
-<script src="src/js/featureAction.js"></script>
-<script src="src/js/basemap.js"></script>
-<script src="src/js/simlationAction.js"></script>
+<script src="dist/js/map.js"></script>
 
-<script type="text/javascript" src="js/index_bundle.js"></script></body>
+<!--action-->
+<!--<script src="dist/js/mapAction.js"></script>-->
+<!--<script src="dist/js/siderbarAction.js"></script>-->
+<!--<script src="dist/js/heatmapAction.js"></script>-->
+<!--<script src="dist/js/featureAction.js"></script>-->
+<!--<script src="dist/js/basemap.js"></script>-->
+<!--<script src="dist/js/simlationAction.js"></script>-->
+<!--<script src="dist/js/timelineAction.js"></script>-->
+<script src="build/bundle-actions.min.js"></script>
+
+
+<script type="text/javascript" src="dist/main/index.js"></script></body>
 
 </html>
